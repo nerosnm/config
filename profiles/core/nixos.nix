@@ -5,22 +5,21 @@
     ./common.nix
   ];
 
-  # This is just a representation of the nix default
-  nix.systemFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-
   environment = {
-
-    # Selection of sysadmin tools that can come in handy
     systemPackages = with pkgs; [
+      catgirl
       dosfstools
       gptfdisk
       iputils
+      lm_sensors
       usbutils
       utillinux
     ];
 
     shellAliases =
-      let ifSudo = lib.mkIf config.security.sudo.enable; in
+      let
+        ifSudo = lib.mkIf config.security.sudo.enable;
+      in
       {
         # nix
         nrb = ifSudo "sudo nixos-rebuild";
@@ -40,16 +39,19 @@
       };
   };
 
+  users.mutableUsers = false;
+
   fonts.fontconfig.defaultFonts = {
-    monospace = [ "DejaVu Sans Mono for Powerline" ];
-    sansSerif = [ "DejaVu Sans" ];
+    monospace = [ "Iosevka" ];
   };
 
   nix = {
     # Improve nix store disk usage
-    autoOptimiseStore = true;
+    settings.auto-optimise-store = true;
     optimise.automatic = true;
-    allowedUsers = [ "@wheel" ];
+    settings.allowed-users = [ "@wheel" ];
+    # This is just a representation of the nix default
+    settings.system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
   };
 
   programs.bash = {
@@ -63,6 +65,17 @@
     '';
   };
 
+  programs.zsh = {
+    # Enable starship
+    promptInit = ''
+      eval "$(${pkgs.starship}/bin/starship init zsh)"
+    '';
+    # Enable direnv, a tool for managing shell environments
+    interactiveShellInit = ''
+      eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
+    '';
+  };
+
   # For rage encryption, all hosts need a ssh key pair
   services.openssh = {
     enable = true;
@@ -72,4 +85,16 @@
   # Service that makes Out of Memory Killer more effective
   services.earlyoom.enable = true;
 
+  # Localisation settings
+  time.timeZone = "Europe/London";
+  i18n.defaultLocale = "en_GB.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "uk";
+  };
+
+  # Set X keyboard layouts to gb and dk, and enable toggling between them with 
+  # alt-space
+  services.xserver.layout = "gb,dk";
+  services.xserver.xkbOptions = "grp:alt_space_toggle";
 }

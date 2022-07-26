@@ -1,4 +1,52 @@
-# nvfetcher.toml
+[carbon-now-nvim]
+src.git = "https://github.com/ellisonleao/carbon-now.nvim"
+fetch.github = "ellisonleao/carbon-now.nvim"
+
+[cmp-fuzzy-path]
+src.git = "https://github.com/tzachar/cmp-fuzzy-path"
+fetch.github = "tzachar/cmp-fuzzy-path"
+
+[discord-linux]
+src.manual = "0.0.18"
+fetch.url = "https://dl.discordapp.net/apps/linux/$ver/discord-$ver.tar.gz"
+
+[discord-ptb-linux]
+src.manual = "0.0.31"
+fetch.url = "https://dl-ptb.discordapp.net/apps/linux/$ver/discord-ptb-$ver.tar.gz"
+
+[fuzzy-nvim]
+src.git = "https://github.com/tzachar/fuzzy.nvim"
+fetch.github = "tzachar/fuzzy.nvim"
+
+[git-blame-nvim]
+src.git = "https://github.com/f-person/git-blame.nvim"
+fetch.github = "f-person/git-blame.nvim"
+
+[key-menu-nvim]
+src.git = "https://github.com/linty-org/key-menu.nvim"
+fetch.github = "linty-org/key-menu.nvim"
+
 [manix]
 src.git = "https://github.com/mlvzk/manix"
 fetch.github = "mlvzk/manix"
+
+[pest-vim]
+src.git = "https://github.com/pest-parser/pest.vim"
+fetch.github = "pest-parser/pest.vim"
+
+[polymc]
+src.github = "PolyMC/PolyMC"
+fetch.github = "PolyMC/PolyMC"
+git.fetchSubmodules = true
+
+[telescope-file-browser-nvim]
+src.git = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+fetch.github = "nvim-telescope/telescope-file-browser.nvim"
+
+[tree-sitter-rust]
+src.manual = "67d304c81e3b2a6cda7e9f577c1f527c53c8348e"
+fetch.github = "tree-sitter/tree-sitter-rust"
+
+[vim-dogrun]
+src.git = "https://github.com/wadackel/vim-dogrun"
+fetch.github = "wadackel/vim-dogrun"

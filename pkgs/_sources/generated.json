@@ -1,0 +1,239 @@
+{
+    "carbon-now-nvim": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "carbon-now-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "ellisonleao",
+            "repo": "carbon-now.nvim",
+            "rev": "e64e29e5b89d20548e792b3d6c3995c08d7ee636",
+            "sha256": "sha256-v+Q9qCPrp7s14jeHJJq3pOUrx336+lo9zuwI/VYry5g=",
+            "type": "github"
+        },
+        "version": "e64e29e5b89d20548e792b3d6c3995c08d7ee636"
+    },
+    "cmp-fuzzy-path": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "cmp-fuzzy-path",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "tzachar",
+            "repo": "cmp-fuzzy-path",
+            "rev": "b4a8c1bebfe5a5d45b36e0b09e72f9f082e9a40c",
+            "sha256": "sha256-Tszr7F51SC7rsbKHxg3GUjZYCCh5G9ru3VXgRWAF3X0=",
+            "type": "github"
+        },
+        "version": "b4a8c1bebfe5a5d45b36e0b09e72f9f082e9a40c"
+    },
+    "discord-linux": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "discord-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-BBc4n6Q3xuBE13JS3gz/6EcwdOWW57NLp2saOlwOgMI=",
+            "type": "url",
+            "url": "https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.tar.gz"
+        },
+        "version": "0.0.18"
+    },
+    "discord-ptb-linux": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "discord-ptb-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-XQDfXMJekfk1lvWDniupfYCRBMYVeLJtF+iFS9qZ2xM=",
+            "type": "url",
+            "url": "https://dl-ptb.discordapp.net/apps/linux/0.0.31/discord-ptb-0.0.31.tar.gz"
+        },
+        "version": "0.0.31"
+    },
+    "fuzzy-nvim": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "fuzzy-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "tzachar",
+            "repo": "fuzzy.nvim",
+            "rev": "d5fee69b54ef400f0ccedf37917c4782e8929424",
+            "sha256": "sha256-znlS/F3lc6Ue0g0UPSWyifJBiWPvlLnJHtJpmVfl1fY=",
+            "type": "github"
+        },
+        "version": "d5fee69b54ef400f0ccedf37917c4782e8929424"
+    },
+    "git-blame-nvim": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "git-blame-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "f-person",
+            "repo": "git-blame.nvim",
+            "rev": "1bb73289929107309d2d90f7582ece5e9436bfd8",
+            "sha256": "sha256-GQGECWtVZFKNP6LcK6dxUK4gZpLgMxbZqqieest2yws=",
+            "type": "github"
+        },
+        "version": "1bb73289929107309d2d90f7582ece5e9436bfd8"
+    },
+    "key-menu-nvim": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "key-menu-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "linty-org",
+            "repo": "key-menu.nvim",
+            "rev": "6fcb95126c882d285f32d6f34f0e61d82fd516c1",
+            "sha256": "sha256-3hIBHCthiOQJi9icVCNvIBiopvgw4iHtSCh/MZTJ1C4=",
+            "type": "github"
+        },
+        "version": "6fcb95126c882d285f32d6f34f0e61d82fd516c1"
+    },
+    "manix": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "manix",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "mlvzk",
+            "repo": "manix",
+            "rev": "d08e7ca185445b929f097f8bfb1243a8ef3e10e4",
+            "sha256": "sha256-GqPuYscLhkR5E2HnSFV4R48hCWvtM3C++3zlJhiK/aw=",
+            "type": "github"
+        },
+        "version": "d08e7ca185445b929f097f8bfb1243a8ef3e10e4"
+    },
+    "pest-vim": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "pest-vim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "pest-parser",
+            "repo": "pest.vim",
+            "rev": "ebeeea5e0757adee037135cf3b8248589b22ae16",
+            "sha256": "sha256-cbGq0CVkQGD89HoPmtZyYIrM0OIMSAZi4EeEbpJLMJU=",
+            "type": "github"
+        },
+        "version": "ebeeea5e0757adee037135cf3b8248589b22ae16"
+    },
+    "polymc": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "polymc",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": true,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "PolyMC",
+            "repo": "PolyMC",
+            "rev": "1.4.0",
+            "sha256": "sha256-gaPqCAC/tE6nUONgWSrVm3oBzSnOhZ5xiAJ+QyX+8rA=",
+            "type": "github"
+        },
+        "version": "1.4.0"
+    },
+    "telescope-file-browser-nvim": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "telescope-file-browser-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "nvim-telescope",
+            "repo": "telescope-file-browser.nvim",
+            "rev": "c30fcb6214acf8538616e403e0f82a6430bf6801",
+            "sha256": "sha256-78mT73qlEcMTHmu9PRr7Vr0P4a2Ueu0W0sbgZPCm8Z4=",
+            "type": "github"
+        },
+        "version": "c30fcb6214acf8538616e403e0f82a6430bf6801"
+    },
+    "tree-sitter-rust": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "tree-sitter-rust",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "tree-sitter",
+            "repo": "tree-sitter-rust",
+            "rev": "67d304c81e3b2a6cda7e9f577c1f527c53c8348e",
+            "sha256": "sha256-xxiqcCXWb3T12W4z+bnYmCWo4U6lyOFCBy2H2p7AHWI=",
+            "type": "github"
+        },
+        "version": "67d304c81e3b2a6cda7e9f577c1f527c53c8348e"
+    },
+    "vim-dogrun": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "vim-dogrun",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "wadackel",
+            "repo": "vim-dogrun",
+            "rev": "f1a6ec680da5f2da7d8629dfa55fe222ae878c2d",
+            "sha256": "sha256-t2McCjljcROG+sGMJ5y4585si9I0man7XmQrWS2J9Xg=",
+            "type": "github"
+        },
+        "version": "f1a6ec680da5f2da7d8629dfa55fe222ae878c2d"
+    }
+}

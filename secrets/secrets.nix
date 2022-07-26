@@ -1,9 +1,14 @@
 let
-  # set ssh public keys here for your system and user
-  system = "";
-  user = "";
-  allKeys = [ system user ];
+  inherit (builtins) readFile;
+
+  talitha = readFile ../keys/talitha.pub;
+
+  allKeys = [ talitha ];
 in
 {
-  "secret.age".publicKeys = allKeys;
+  "root-pwhash.age".publicKeys = [ talitha ];
+  "soren-pwhash.age".publicKeys = [ talitha ];
+  "datadog-api-key.age".publicKeys = [ talitha ];
+  "tailscale-talitha.age".publicKeys = [ talitha ];
+  "soren-libera-cert.age".publicKeys = [ talitha ];
 }

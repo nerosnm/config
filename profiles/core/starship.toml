@@ -1,3 +1,5 @@
+add_newline = true
+
 [aws]
 symbol = " "
 
@@ -26,25 +28,6 @@ symbol = " "
 [elm]
 symbol = " "
 
-[git_branch]
-format = "[$symbol$branch]($style) "
-symbol = " "
-style = "bold dimmed white"
-
-[git_status]
-format = '([「$all_status$ahead_behind」]($style) )'
-conflicted = "⚠️"
-ahead = "⟫${count} "
-behind = "⟪${count}"
-diverged = "🔀 "
-untracked = "📁 "
-stashed = "↪ "
-modified = "𝚫 "
-staged = "✔ "
-renamed = "⇆ "
-deleted = "✘ "
-style = "bold bright-white"
-
 [golang]
 symbol = " "
 
@@ -68,7 +51,7 @@ disabled = false
 symbol = " "
 
 [nix_shell]
-format = '[$symbol$state]($style) '
+format = 'in [$symbol$state( \($name\))]($style) '
 symbol = " "
 pure_msg = "λ"
 impure_msg = "⎔"

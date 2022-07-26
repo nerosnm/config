@@ -23,8 +23,8 @@
     digga.inputs.home-manager.follows = "home";
     digga.inputs.deploy.follows = "deploy";
 
-    home.url = "github:nix-community/home-manager/release-22.05";
-    home.inputs.nixpkgs.follows = "nixos";
+    home.url = "github:nix-community/home-manager/master";
+    home.inputs.nixpkgs.follows = "latest";
 
     darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs-darwin-stable";
@@ -44,6 +44,9 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     nixos-generators.url = "github:nix-community/nixos-generators";
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "latest";
   };
 
   outputs =
@@ -57,10 +60,18 @@
     , nvfetcher
     , deploy
     , nixpkgs
+    , rust-overlay
     , ...
     } @ inputs:
     digga.lib.mkFlake {
-      inherit self inputs;
+      inherit self;
+
+      # If rust-overlay isn't removed from the attrset `inputs` passed to 
+      # mkFlake, digga tries to access its `.overlay` output automatically, 
+      # which causes a deprecation warning.
+      inputs = nixos.lib.attrsets.filterAttrs
+        (name: _: name != "rust-overlay")
+        inputs;
 
       channelsConfig = { allowUnfree = true; };
 
@@ -89,6 +100,7 @@
         nur.overlay
         agenix.overlay
         nvfetcher.overlay
+        rust-overlay.overlays.default
 
         (import ./pkgs)
       ];
@@ -96,7 +108,7 @@
       nixos = {
         hostDefaults = {
           system = "x86_64-linux";
-          channelName = "nixos";
+          channelName = "latest";
           imports = [ (digga.lib.importExportableModules ./modules) ];
           modules = [
             { lib.our = self.lib; }
@@ -110,14 +122,32 @@
         imports = [ (digga.lib.importHosts ./hosts/nixos) ];
         hosts = {
           /* set host-specific properties here */
-          NixOS = { };
+          talitha = { };
+          dalim = { };
         };
         importables = rec {
           profiles = digga.lib.rakeLeaves ./profiles // {
             users = digga.lib.rakeLeaves ./users;
           };
           suites = with profiles; rec {
-            base = [ core.nixos users.nixos users.root ];
+            base = [
+              core.nixos
+
+              auth.nixos
+              dev.nixos
+              gnome
+              utility.nixos
+
+              users.root
+              users.soren.nixos
+            ];
+            home = base ++ [
+              gaming.nixos
+              social.nixos
+            ];
+            work = base ++ [
+              collab.nixos
+            ];
           };
         };
       };
@@ -138,14 +168,31 @@
         imports = [ (digga.lib.importHosts ./hosts/darwin) ];
         hosts = {
           /* set host-specific properties here */
-          Mac = { };
+          Rigel = { };
+          Diadem = { };
         };
         importables = rec {
           profiles = digga.lib.rakeLeaves ./profiles // {
             users = digga.lib.rakeLeaves ./users;
           };
           suites = with profiles; rec {
-            base = [ core.darwin users.darwin ];
+            base = [
+              core.darwin
+
+              auth.darwin
+              dev.darwin
+              homebrew
+              utility.darwin
+
+              users.soren.darwin
+            ];
+            home = base ++ [
+              gaming.darwin
+              social.darwin
+            ];
+            work = base ++ [
+              collab.darwin
+            ];
           };
         };
       };
@@ -156,34 +203,77 @@
         importables = rec {
           profiles = digga.lib.rakeLeaves ./users/profiles;
           suites = with profiles; rec {
-            base = [ direnv git ];
+            base = [ ];
           };
         };
         users = {
-          # TODO: does this naming convention still make sense with darwin support?
-          #
-          # - it doesn't make sense to make a 'nixos' user available on
-          #   darwin, and vice versa
-          #
-          # - the 'nixos' user might have special significance as the default
-          #   user for fresh systems
-          #
-          # - perhaps a system-agnostic home-manager user is more appropriate?
-          #   something like 'primaryuser'?
-          #
-          # all that said, these only exist within the `hmUsers` attrset, so
-          # it could just be left to the developer to determine what's
-          # appropriate. after all, configuring these hm users is one of the
-          # first steps in customizing the template.
-          nixos = { suites, ... }: { imports = suites.base; };
-          darwin = { suites, ... }: { imports = suites.base; };
-        }; # digga.lib.importers.rakeLeaves ./users/hm;
+          soren = { suites, ... }: {
+            imports = suites.base;
+
+            home = {
+              stateVersion = "20.09";
+
+              sessionPath = [
+                "$HOME/.cargo/bin"
+              ];
+
+              file.".ssh/id_ed25519_sk.pub".source = ./keys/soren.pub;
+
+              file.".cargo/cargo-generate.toml".text = ''
+                [favorites.rust-nix]
+                description = "Rust project template with optional Nix flake support"
+                git = "https://github.com/nerosnm/rust-nix-template"
+              '';
+            };
+
+            custom = {
+              auth.publicKeys = [
+                { host = "*"; path = ./keys/soren.pub; }
+              ];
+              auth.allowedSigners = [
+                { email = "soren@neros.dev"; key = (builtins.readFile ./keys/soren.pub); }
+              ];
+
+              dconf = {
+                enable = true;
+                background = ./assets/misael-moreno-ttLeeAdG-gE-unsplash.jpg;
+
+                # Two sources: UK English and Danish.
+                xkbSources = [ "gb" "dk" ];
+              };
+
+              git = {
+                enable = true;
+
+                user = {
+                  name = "Søren Mortensen";
+                  email = "soren@neros.dev";
+                  key = ./keys/soren.pub;
+                };
+              };
+
+              irc = {
+                enable = true;
+                servers = {
+                  defaults = {
+                    nick = "nerosnm";
+                    real = "søren";
+                  };
+
+                  libera = {
+                    host = "irc.eu.libera.chat";
+                    cert = "/run/agenix/soren-libera-cert";
+                    join = [ "##rust" "#nixos" "#latex" "#coffee" "#lobsters" "#datahoarder" ];
+                  };
+                };
+              };
+            };
+          };
+        };
       };
 
       devshell = ./shell;
 
-      # TODO: similar to the above note: does it make sense to make all of
-      # these users available on all systems?
       homeConfigurations = digga.lib.mergeAny
         (digga.lib.mkHomeConfigurations self.darwinConfigurations)
         (digga.lib.mkHomeConfigurations self.nixosConfigurations)

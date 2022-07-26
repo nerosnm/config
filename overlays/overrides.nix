@@ -1,19 +1,20 @@
 channels: final: prev: {
-
   __dontExport = true; # overrides clutter up actual creations
 
   inherit (channels.latest)
     cachix
+    deploy-rs
     dhall
-    discord
     element-desktop
-    rage
+    git
     nix-index
     nixpkgs-fmt
+    polymc
     qutebrowser
+    rage
     signal-desktop
     starship
-    deploy-rs
+    wezterm
     ;
 
   haskellPackages = prev.haskellPackages.override
