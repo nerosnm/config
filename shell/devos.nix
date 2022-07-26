@@ -11,8 +11,6 @@ let
     nvfetcher-bin
     ;
 
-  hooks = import ./hooks;
-
   pkgWithCategory = category: package: { inherit package category; };
   devos = pkgWithCategory "devos";
   linter = pkgWithCategory "linter";
@@ -21,9 +19,6 @@ let
 in
 {
   _file = toString ./.;
-
-  imports = [ "${extraModulesPath}/git/hooks.nix" ];
-  git = { inherit hooks; };
 
   # tempfix: remove when merged https://github.com/numtide/devshell/pull/123
   devshell.startup.load_profiles = pkgs.lib.mkForce (pkgs.lib.noDepEntry ''
