@@ -53,8 +53,6 @@ symbol = " "
 [nix_shell]
 format = 'in [$symbol$state( \($name\))]($style) '
 symbol = " "
-pure_msg = "λ"
-impure_msg = "⎔"
 
 [nodejs]
 symbol = " "
