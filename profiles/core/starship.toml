@@ -45,7 +45,7 @@ symbol = " "
 
 [memory_usage]
 symbol = " "
-disabled = false
+disabled = true
 
 [nim]
 symbol = " "
