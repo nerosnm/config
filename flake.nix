@@ -143,6 +143,7 @@
             ];
             home = base ++ [
               gaming.nixos
+              photo.nixos
               social.nixos
             ];
             work = base ++ [
