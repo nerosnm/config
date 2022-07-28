@@ -73,4 +73,13 @@ symbol = " "
 symbol = " "
 
 [status]
+symbol = "×"
+not_executable_symbol = "∅"
+not_found_symbol = "∉"
+sigint_symbol = "⊥"
+signal_symbol = "⋕"
+disabled = false
+
+[sudo]
+symbol = "⚝ "
 disabled = false
