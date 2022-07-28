@@ -10,6 +10,7 @@
   # are communication apps used at least partly for work communication.
   environment.systemPackages = with pkgs; [
     discord-linux
+    discord-ptb-linux
     signal-desktop
     tiny
     thunderbird
