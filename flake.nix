@@ -237,7 +237,7 @@
 
               dconf = {
                 enable = true;
-                background = ./assets/misael-moreno-ttLeeAdG-gE-unsplash.jpg;
+                background = ./assets/plompplomp.png;
 
                 # Two sources: UK English and Danish.
                 xkbSources = [ "gb" "dk" ];
