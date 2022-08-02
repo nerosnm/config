@@ -37,7 +37,7 @@ in
     systemd.user.services.rpiplay = {
       enable = true;
 
-      wantedBy = [ "default.target" ];
+      wantedBy = [ ];
       after = [ "network.target" ];
       wants = [ "network.target" ];
 
