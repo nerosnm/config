@@ -44,4 +44,7 @@
     # node use and some subnet routing setups.
     checkReversePath = "loose";
   };
+
+  networking.nameservers = [ "100.100.100.100" "8.8.8.8" "1.1.1.1" ];
+  networking.search = [ "example.com.beta.tailscale.net" ];
 }
