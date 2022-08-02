@@ -95,39 +95,33 @@
     "/" = {
       device = "tank/system/talitha/root";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
 
     "/nix" = {
       device = "tank/local/nix";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
 
     "/var/log" = {
       device = "tank/system/talitha/log";
       fsType = "zfs";
-      options = [ "zfsutil" ];
       neededForBoot = true;
     };
 
     "/home" = {
       device = "tank/safe/talitha/home";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
 
     "/persist" = {
       device = "tank/safe/talitha/persist";
       fsType = "zfs";
-      options = [ "zfsutil" ];
       neededForBoot = true;
     };
 
     "/var/lib/tailscale" = {
       device = "tank/safe/talitha/persist/tailscale";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
   };
 
