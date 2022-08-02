@@ -8,7 +8,7 @@
 }:
 
 {
-  imports = suites.home ++ suites.work ++ (with profiles; [
+  imports = suites.home ++ (with profiles; [
     datadog.nixos
     moonlander.nixos
     music.nixos
