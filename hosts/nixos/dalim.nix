@@ -222,6 +222,8 @@
     '';
   };
 
+  services.buildkite.enable = true;
+
   # Use the performance CPU freq governor.
   powerManagement.cpuFreqGovernor = "performance";
 
