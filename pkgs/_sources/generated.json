@@ -97,11 +97,11 @@
             "name": null,
             "owner": "f-person",
             "repo": "git-blame.nvim",
-            "rev": "1bb73289929107309d2d90f7582ece5e9436bfd8",
-            "sha256": "sha256-GQGECWtVZFKNP6LcK6dxUK4gZpLgMxbZqqieest2yws=",
+            "rev": "65292dfcd80897a5f24962096b8df2bb5bb65e15",
+            "sha256": "sha256-sUB0BcZ5c3+jRVxKIbE+FmtEH5IymL+HoDB/ojTv9Hw=",
             "type": "github"
         },
-        "version": "1bb73289929107309d2d90f7582ece5e9436bfd8"
+        "version": "65292dfcd80897a5f24962096b8df2bb5bb65e15"
     },
     "key-menu-nvim": {
         "cargoLocks": null,
@@ -121,6 +121,24 @@
             "type": "github"
         },
         "version": "6fcb95126c882d285f32d6f34f0e61d82fd516c1"
+    },
+    "lsp_lines-nvim": {
+        "cargoLocks": null,
+        "extract": null,
+        "name": "lsp_lines-nvim",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea",
+            "sha256": "sha256-c+MrWKK7ZIcj2XrPruiQLQ1sr3SJWQfzAR+JM5g+kLE=",
+            "type": "git",
+            "url": "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+        },
+        "version": "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea"
     },
     "manix": {
         "cargoLocks": null,
@@ -173,11 +191,11 @@
             "name": null,
             "owner": "PolyMC",
             "repo": "PolyMC",
-            "rev": "1.4.0",
-            "sha256": "sha256-gaPqCAC/tE6nUONgWSrVm3oBzSnOhZ5xiAJ+QyX+8rA=",
+            "rev": "1.4.1",
+            "sha256": "sha256-Pu2Eb3g6gwCZjJN0N6S/N82eBMLduQQUzXo8nMmtE+Y=",
             "type": "github"
         },
-        "version": "1.4.0"
+        "version": "1.4.1"
     },
     "telescope-file-browser-nvim": {
         "cargoLocks": null,
@@ -192,11 +210,11 @@
             "name": null,
             "owner": "nvim-telescope",
             "repo": "telescope-file-browser.nvim",
-            "rev": "c30fcb6214acf8538616e403e0f82a6430bf6801",
-            "sha256": "sha256-78mT73qlEcMTHmu9PRr7Vr0P4a2Ueu0W0sbgZPCm8Z4=",
+            "rev": "4272c52078cc457dfaabce6fa3545e7495651d04",
+            "sha256": "sha256-LYkyvjv6LO39c49s5fjzfdzRVRHrtTI1dweaZMFPLVc=",
             "type": "github"
         },
-        "version": "c30fcb6214acf8538616e403e0f82a6430bf6801"
+        "version": "4272c52078cc457dfaabce6fa3545e7495651d04"
     },
     "tree-sitter-rust": {
         "cargoLocks": null,

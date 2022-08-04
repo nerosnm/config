@@ -52,13 +52,13 @@
   };
   git-blame-nvim = {
     pname = "git-blame-nvim";
-    version = "1bb73289929107309d2d90f7582ece5e9436bfd8";
+    version = "65292dfcd80897a5f24962096b8df2bb5bb65e15";
     src = fetchFromGitHub ({
       owner = "f-person";
       repo = "git-blame.nvim";
-      rev = "1bb73289929107309d2d90f7582ece5e9436bfd8";
+      rev = "65292dfcd80897a5f24962096b8df2bb5bb65e15";
       fetchSubmodules = false;
-      sha256 = "sha256-GQGECWtVZFKNP6LcK6dxUK4gZpLgMxbZqqieest2yws=";
+      sha256 = "sha256-sUB0BcZ5c3+jRVxKIbE+FmtEH5IymL+HoDB/ojTv9Hw=";
     });
   };
   key-menu-nvim = {
@@ -71,6 +71,18 @@
       fetchSubmodules = false;
       sha256 = "sha256-3hIBHCthiOQJi9icVCNvIBiopvgw4iHtSCh/MZTJ1C4=";
     });
+  };
+  lsp_lines-nvim = {
+    pname = "lsp_lines-nvim";
+    version = "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea";
+    src = fetchgit {
+      url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim";
+      rev = "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-c+MrWKK7ZIcj2XrPruiQLQ1sr3SJWQfzAR+JM5g+kLE=";
+    };
   };
   manix = {
     pname = "manix";
@@ -96,24 +108,24 @@
   };
   polymc = {
     pname = "polymc";
-    version = "1.4.0";
+    version = "1.4.1";
     src = fetchFromGitHub ({
       owner = "PolyMC";
       repo = "PolyMC";
-      rev = "1.4.0";
+      rev = "1.4.1";
       fetchSubmodules = true;
-      sha256 = "sha256-gaPqCAC/tE6nUONgWSrVm3oBzSnOhZ5xiAJ+QyX+8rA=";
+      sha256 = "sha256-Pu2Eb3g6gwCZjJN0N6S/N82eBMLduQQUzXo8nMmtE+Y=";
     });
   };
   telescope-file-browser-nvim = {
     pname = "telescope-file-browser-nvim";
-    version = "c30fcb6214acf8538616e403e0f82a6430bf6801";
+    version = "4272c52078cc457dfaabce6fa3545e7495651d04";
     src = fetchFromGitHub ({
       owner = "nvim-telescope";
       repo = "telescope-file-browser.nvim";
-      rev = "c30fcb6214acf8538616e403e0f82a6430bf6801";
+      rev = "4272c52078cc457dfaabce6fa3545e7495651d04";
       fetchSubmodules = false;
-      sha256 = "sha256-78mT73qlEcMTHmu9PRr7Vr0P4a2Ueu0W0sbgZPCm8Z4=";
+      sha256 = "sha256-LYkyvjv6LO39c49s5fjzfdzRVRHrtTI1dweaZMFPLVc=";
     });
   };
   tree-sitter-rust = {
