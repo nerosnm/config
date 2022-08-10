@@ -161,6 +161,8 @@
       # Expose the SSH port to the public internet
       allowedTCPPorts = [ 22 ];
     };
+
+    interfaces.enp42s0.macAddress = "ea:db:c6:ec:b4:06";
   };
 
   # For the tailscale profile
