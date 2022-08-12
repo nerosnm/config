@@ -25,10 +25,10 @@
   };
   discord-linux = {
     pname = "discord-linux";
-    version = "0.0.18";
+    version = "0.0.19";
     src = fetchurl {
-      url = "https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.tar.gz";
-      sha256 = "sha256-BBc4n6Q3xuBE13JS3gz/6EcwdOWW57NLp2saOlwOgMI=";
+      url = "https://dl.discordapp.net/apps/linux/0.0.19/discord-0.0.19.tar.gz";
+      sha256 = "sha256-GfSyddbGF8WA6JmHo4tUM27cyHV5kRAyrEiZe1jbA5A=";
     };
   };
   discord-ptb-linux = {

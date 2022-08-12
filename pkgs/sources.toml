@@ -7,7 +7,7 @@ src.git = "https://github.com/tzachar/cmp-fuzzy-path"
 fetch.github = "tzachar/cmp-fuzzy-path"
 
 [discord-linux]
-src.manual = "0.0.18"
+src.manual = "0.0.19"
 fetch.url = "https://dl.discordapp.net/apps/linux/$ver/discord-$ver.tar.gz"
 
 [discord-ptb-linux]
