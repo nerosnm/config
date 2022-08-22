@@ -173,10 +173,13 @@ in
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
         ];
 
         # Mute the mic
-        mic-mute = [ "<Shift><Control><Alt><Super>m" ];
+        mic-mute = [ "<Shift><Super>k" ];
 
         # I don't know why locking the screen is a media key.
         screensaver = [ "<Shift><Super>l" ];
@@ -204,6 +207,25 @@ in
         binding = "<Shift><Super>d";
         command = "true";
         name = "Deafen Discord";
+      };
+
+      # Toggle streamer mode.
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+        binding = "<Shift><Super>s";
+        command = "true";
+        name = "Toggle Discord Streamer Mode";
+      };
+
+      # The same again for keys for Discord PTB
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+        binding = "<Shift><Super>n";
+        command = "true";
+        name = "Mute Discord PTB";
+      };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
+        binding = "<Shift><Super>f";
+        command = "true";
+        name = "Deafen Discord PTB";
       };
 
       "org/gnome/settings-daemon/plugins/power" = {
