@@ -26,6 +26,10 @@
       RestartSec = "5s";
     };
 
+    path = with pkgs; [
+      xdotool
+    ];
+
     script = "${pkgs.streamdeck-ui}/bin/streamdeck -n";
   };
 }
