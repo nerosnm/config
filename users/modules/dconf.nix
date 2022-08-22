@@ -175,6 +175,9 @@ in
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         ];
 
+        # Mute the mic
+        mic-mute = [ "<Shift><Control><Alt><Super>m" ];
+
         # I don't know why locking the screen is a media key.
         screensaver = [ "<Shift><Super>l" ];
 
