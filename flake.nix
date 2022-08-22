@@ -140,6 +140,7 @@
               auth.nixos
               dev.nixos
               gnome
+              streamdeck.nixos
               utility.nixos
 
               users.root
