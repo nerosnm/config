@@ -135,6 +135,7 @@ in
             "systemctl stop --user streamdeck && ${pkgs.streamdeck-ui}/bin/streamdeck && systemctl start --user streamdeck";
         in
         with pkgs; [
+          playerctl
           pulseaudio
           streamdeck-config
           streamdeck-ui
@@ -178,6 +179,7 @@ in
           Environment =
             let
               path = lib.makeBinPath (with pkgs; [
+                playerctl
                 pulseaudio
                 xdotool
               ] ++ streamdeck-scripts);

@@ -67,6 +67,27 @@
             command = "xdotool key shift+super+k";
           };
 
+          "7" = {
+            icon = ./icons/streamos/classic/w95-spotify.png;
+            command = "playerctl --player spotify play-pause";
+          };
+          "6" = {
+            icon = ./icons/streamos/classic/w95-mm-prev.png;
+            command = "playerctl --player spotify previous";
+          };
+          "8" = {
+            icon = ./icons/streamos/classic/w95-mm-next.png;
+            command = "playerctl --player spotify next";
+          };
+          "0" = {
+            icon = ./icons/streamos/classic/w95-mm-volume-up.png;
+            command = "playerctl --player spotify volume 0.1+";
+          };
+          "5" = {
+            icon = ./icons/streamos/classic/w95-mm-volume-down.png;
+            command = "playerctl --player spotify volume 0.1-";
+          };
+
           "10" = {
             icon = ./icons/streamos/classic-2/w95-scene-1-off.png;
             command = "xdotool set_desktop 0";
