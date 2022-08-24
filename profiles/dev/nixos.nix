@@ -27,6 +27,7 @@
     with pkgs; [
       aseprite-unfree
       insomnia
+      jetbrains.clion
       jetbrains.idea-ultimate
       vscode-with-extensions
     ];
