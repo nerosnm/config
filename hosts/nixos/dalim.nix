@@ -66,6 +66,8 @@
     # kernelPackages = pkgs.linuxKernel.packages.linux_5_17;
   };
 
+  virtualisation.libvirtd.enable = true;
+
   services.zfs = {
     trim.enable = true;
     autoSnapshot.enable = true;

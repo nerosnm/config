@@ -17,7 +17,7 @@
     ];
 
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "libvirtd" "qemu-libvirtd" ];
   };
 
   age.secrets.soren-pwhash.file = "${self}/secrets/soren-pwhash.age";
