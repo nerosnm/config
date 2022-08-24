@@ -29,6 +29,8 @@ in
     go
     gopls
 
+    gh
+
     ocamlPackages.ocaml-lsp
     ocamlformat
   ];
