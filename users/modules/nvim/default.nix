@@ -94,7 +94,7 @@ in
             tree-sitter-latex
             tree-sitter-lua
             tree-sitter-make
-            tree-sitter-nix
+            # tree-sitter-nix
             pkgs.tree-sitter-rust
             tree-sitter-toml
             tree-sitter-typescript
