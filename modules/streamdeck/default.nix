@@ -8,7 +8,6 @@
 with lib;
 let
   cfg = config.custom.streamdeck;
-  inherit (lib.hm.gvariant) mkTuple mkUint32;
 
   page = {
     options = with types; {
@@ -128,11 +127,11 @@ in
       ];
     in
     mkIf cfg.enable {
-      home.packages =
+      environment.systemPackages =
         let
           streamdeck-config = writeShellScriptBin
             "streamdeck-config"
-            "systemctl stop --user streamdeck && ${pkgs.streamdeck-ui}/bin/streamdeck && systemctl start --user streamdeck";
+            "systemctl --user stop streamdeck && ${pkgs.streamdeck-ui}/bin/streamdeck && systemctl --user start streamdeck";
         in
         with pkgs; [
           playerctl
@@ -142,7 +141,7 @@ in
           xdotool
         ] ++ streamdeck-scripts;
 
-      home.file.".streamdeck_ui_generated.json".text = builtins.toJSON {
+      environment.etc."streamdeck-ui/generated.json".text = builtins.toJSON {
         streamdeck_ui_version = 1;
         state = {
           "${cfg.id}" = {
@@ -162,32 +161,22 @@ in
       };
 
       systemd.user.services.streamdeck = {
-        Unit = {
-          Description = "Background streamdeck-ui process";
-        };
+        description = "Background streamdeck-ui process";
 
-        Install = {
-          WantedBy = [ "multi-user.target" ];
-        };
+        wantedBy = [ "multi-user.target" ];
 
-        Service = {
+        serviceConfig = {
           Restart = "on-failure";
           RestartSec = "5s";
-
-          ExecStart = "${pkgs.streamdeck-ui}/bin/streamdeck -n";
-
-          Environment =
-            let
-              path = lib.makeBinPath (with pkgs; [
-                playerctl
-                pulseaudio
-                xdotool
-              ] ++ streamdeck-scripts);
-            in
-            [
-              "PATH=${path}"
-            ];
         };
+
+        path = with pkgs; [
+          playerctl
+          pulseaudio
+          xdotool
+        ] ++ streamdeck-scripts;
+
+        script = "${pkgs.streamdeck-ui}/bin/streamdeck -n";
       };
     };
 }

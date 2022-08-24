@@ -140,6 +140,7 @@
               auth.nixos
               dev.nixos
               gnome
+              streamdeck
               utility.nixos
 
               users.root
@@ -212,10 +213,8 @@
           };
         };
         users = {
-          soren = { suites, profiles, ... }: {
-            imports = suites.base ++ [
-              profiles.streamdeck
-            ];
+          soren = { suites, ... }: {
+            imports = suites.base;
 
             home = {
               stateVersion = "20.09";
