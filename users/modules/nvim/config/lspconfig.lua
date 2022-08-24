@@ -110,3 +110,13 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
         vim.opt_local.textwidth = 79
     end,
 })
+
+lspconfig.rnix.setup {}
+
+local nix_group = vim.api.nvim_create_augroup('nix', {})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+    group = nix_group,
+    pattern = '*.nix',
+    callback = vim.lsp.buf.formatting,
+})
