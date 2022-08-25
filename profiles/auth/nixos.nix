@@ -40,7 +40,7 @@
       Detects when your YubiKey is waiting for a touch
     '';
 
-    wantedBy = [ "default.target" ];
+    wantedBy = [ "graphical-session.target" ];
 
     serviceConfig = {
       Restart = "on-failure";
