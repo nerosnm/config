@@ -163,7 +163,7 @@ in
       systemd.user.services.streamdeck = {
         description = "Background streamdeck-ui process";
 
-        wantedBy = [ "multi-user.target" ];
+        wantedBy = [ "graphical-session.target" ];
 
         serviceConfig = {
           Restart = "on-failure";
