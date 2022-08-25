@@ -140,6 +140,7 @@
               auth.nixos
               dev.nixos
               gnome
+              rpiplay.nixos
               streamdeck
               utility.nixos
 

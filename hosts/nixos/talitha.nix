@@ -210,8 +210,6 @@
   #   ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --primary --mode 2560x1440 --rate 74.99 --output DP-0 --mode 2560x1440 --right-of DP-2 --rate 74.97
   # '';
 
-  services.rpiplay.enable = true;
-
   systemd.services.eos-webcam = {
     enable = true;
 
