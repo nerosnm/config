@@ -9,7 +9,6 @@
     # Track channels with commits tested and built by hydra
     nixos.url = "github:nixos/nixpkgs/nixos-22.05";
     latest.url = "github:nixos/nixpkgs/nixos-unstable";
-    iosevka-update.url = "github:otavio/nixpkgs/topic/iosevka-update";
     # For darwin hosts: it can be helpful to track this darwin-specific stable
     # channel equivalent to the `nixos-*` channels for NixOS. For one, these
     # channels are more likely to provide cached binaries for darwin systems.
