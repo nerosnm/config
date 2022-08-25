@@ -17,7 +17,7 @@
     # failures on Linux systems.
     nixpkgs-darwin-stable.url = "github:NixOS/nixpkgs/nixpkgs-22.05-darwin";
 
-    digga.url = "github:divnix/digga";
+    digga.url = "github:nerosnm/digga/fix-deprecations";
     digga.inputs.nixpkgs.follows = "nixos";
     digga.inputs.nixlib.follows = "nixos";
     digga.inputs.home-manager.follows = "home";
@@ -280,11 +280,12 @@
 
       devshell = ./shell;
 
-      homeConfigurations = digga.lib.mergeAny
-        (digga.lib.mkHomeConfigurations self.darwinConfigurations)
+      homeConfigurations =
+        # digga.lib.mergeAny
+        # (digga.lib.mkHomeConfigurations self.darwinConfigurations)
         (digga.lib.mkHomeConfigurations self.nixosConfigurations)
       ;
 
-      deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations { };
+      deploy.nodes = { };
     };
 }
