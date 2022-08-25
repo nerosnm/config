@@ -66,6 +66,10 @@
             icon = ./icons/streamos/classic-2/w95-mic-off.png;
             command = "xdotool key shift+super+k";
           };
+          "3" = {
+            icon = ./icons/streamos/classic/w95-mic-off.png;
+            command = "xdotool key shift+super+m";
+          };
 
           "7" = {
             icon = ./icons/streamos/classic/w95-spotify.png;
