@@ -9,7 +9,6 @@ in
 {
   "root-pwhash.age".publicKeys = [ talitha dalim ];
   "soren-pwhash.age".publicKeys = [ talitha dalim ];
-  "datadog-api-key.age".publicKeys = [ talitha dalim ];
   "buildkite-token.age".publicKeys = [ dalim ];
   "buildkite-ssh-dalim.pub.age".publicKeys = [ dalim ];
   "buildkite-ssh-dalim.age".publicKeys = [ dalim ];

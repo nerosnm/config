@@ -9,7 +9,6 @@
 
 {
   imports = suites.home ++ (with profiles; [
-    datadog.nixos
     moonlander.nixos
     music.nixos
     printing.nixos
