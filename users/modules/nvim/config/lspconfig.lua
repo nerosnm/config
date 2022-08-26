@@ -51,7 +51,7 @@ local go_group = vim.api.nvim_create_augroup('go', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
     group = go_group,
     pattern = '*.go',
-    callback = vim.lsp.buf.formatting,
+    callback = vim.lsp.buf.formatting_sync,
 })
 
 lspconfig.ocamllsp.setup{}
@@ -60,7 +60,7 @@ local ocaml_group = vim.api.nvim_create_augroup('ocaml', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
     group = ocaml_group,
     pattern = '*.ml',
-    callback = vim.lsp.buf.formatting,
+    callback = vim.lsp.buf.formatting_sync,
 })
 
 lspconfig.texlab.setup {
@@ -88,7 +88,7 @@ local latex_group = vim.api.nvim_create_augroup('latex', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
     group = latex_group,
     pattern = { '*.tex', '*.bib' },
-    callback = vim.lsp.buf.formatting,
+    callback = vim.lsp.buf.formatting_sync,
 })
 
 lspconfig.pylsp.setup {
@@ -112,7 +112,7 @@ local python_group = vim.api.nvim_create_augroup('python', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
     group = python_group,
     pattern = '*.py',
-    callback = vim.lsp.buf.formatting,
+    callback = vim.lsp.buf.formatting_sync,
 })
 
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
@@ -130,5 +130,5 @@ local nix_group = vim.api.nvim_create_augroup('nix', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
     group = nix_group,
     pattern = '*.nix',
-    callback = vim.lsp.buf.formatting,
+    callback = vim.lsp.buf.formatting_sync,
 })
