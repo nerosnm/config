@@ -92,7 +92,6 @@ in
             tree-sitter-javascript
             tree-sitter-json
             tree-sitter-latex
-            tree-sitter-lua
             tree-sitter-make
             # tree-sitter-nix
             pkgs.tree-sitter-rust
