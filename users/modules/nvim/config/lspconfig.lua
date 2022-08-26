@@ -15,6 +15,18 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
+local undercurl_group = vim.api.nvim_create_augroup('lsp_undercurl', {})
+vim.api.nvim_create_autocmd('ColorScheme', {
+    group = undercurl_group,
+    pattern = '*',
+    callback = function()
+        vim.cmd('highlight DiagnosticUnderlineHint gui=undercurl')
+        vim.cmd('highlight DiagnosticUnderlineInfo gui=undercurl')
+        vim.cmd('highlight DiagnosticUnderlineWarn gui=undercurl')
+        vim.cmd('highlight DiagnosticUnderlineError gui=undercurl')
+    end,
+})
+
 -- Code navigation shortcuts
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Documentation' })
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename, { desc = 'Rename' })
