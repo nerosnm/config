@@ -157,17 +157,15 @@ in
           action = wezterm.action { ActivateTab = 9 },
         })
 
-        function basename(s)
-          return string.gsub(s, '(.*[/\\])(.*)', '%2')
-        end
-
         wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
           local pane = tab.active_pane
-          local proc = basename(pane.foreground_process_name)
           local cwd = string.match(pane.current_working_dir, "/([^/]+)/$")
-          return {
-            {Text=" " .. proc .. " | " .. cwd .. " "},
-          }
+          if cwd ~= nil then
+            return {
+              {Text=" " .. (tab.tab_index + 1) .. ": " .. tab.active_pane.title .. " | " .. cwd .. " "},
+            }
+          end
+          return tab.active_pane.title
         end)
 
         return {
