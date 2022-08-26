@@ -93,7 +93,6 @@ in
             tree-sitter-json
             tree-sitter-latex
             tree-sitter-make
-            # tree-sitter-nix
             pkgs.tree-sitter-rust
             tree-sitter-toml
             tree-sitter-typescript
