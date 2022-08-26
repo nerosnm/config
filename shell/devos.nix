@@ -3,6 +3,7 @@ let
 
   inherit (pkgs)
     agenix
+    age-plugin-yubikey
     cachix
     editorconfig-checker
     mdbook
@@ -38,6 +39,7 @@ in
   commands = [
     (devos nixUnstable)
     (devos agenix)
+    (devos age-plugin-yubikey)
 
     {
       category = "devos";
