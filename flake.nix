@@ -230,6 +230,8 @@
                 description = "Rust project template with optional Nix flake support"
                 git = "https://github.com/nerosnm/rust-nix-template"
               '';
+
+              file.".icons/yubikey-touch-detector.png".source = ./assets/yubico.png;
             };
 
             custom = {
