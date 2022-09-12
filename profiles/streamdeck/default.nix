@@ -68,7 +68,7 @@
           };
           "3" = {
             icon = ./icons/streamos/classic/w95-mic-off.png;
-            command = "xdotool key shift+super+m";
+            command = "xdotool key --window '- Discord$' shift+super+m";
           };
 
           "7" = {
@@ -159,11 +159,11 @@
 
           "5" = {
             icon = ./icons/streamos/classic/w95-off.png;
-            command = "xdotool key shift+super+d";
+            command = "xdotool key --window '- Discord$' shift+super+d";
           };
           "6" = {
             icon = ./icons/streamos/classic/w95-mic-off.png;
-            command = "xdotool key shift+super+m";
+            command = "xdotool key --window '- Discord$' shift+super+m";
           };
 
           "8" = {
