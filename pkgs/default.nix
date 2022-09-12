@@ -12,5 +12,6 @@ final: prev: {
   pest-vim = final.callPackage ./pest-vim { };
   telescope-file-browser-nvim = final.callPackage ./telescope-file-browser-nvim { };
   tree-sitter-rust = final.callPackage ./tree-sitter-rust { };
+  rust-vim = final.callPackage ./rust-vim { };
   vim-dogrun = final.callPackage ./vim-dogrun { };
 }

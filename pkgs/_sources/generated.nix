@@ -14,13 +14,13 @@
   };
   cmp-fuzzy-path = {
     pname = "cmp-fuzzy-path";
-    version = "b4a8c1bebfe5a5d45b36e0b09e72f9f082e9a40c";
+    version = "857097778bc772f9d6f885e50eeb05f39632d2bb";
     src = fetchFromGitHub ({
       owner = "tzachar";
       repo = "cmp-fuzzy-path";
-      rev = "b4a8c1bebfe5a5d45b36e0b09e72f9f082e9a40c";
+      rev = "857097778bc772f9d6f885e50eeb05f39632d2bb";
       fetchSubmodules = false;
-      sha256 = "sha256-Tszr7F51SC7rsbKHxg3GUjZYCCh5G9ru3VXgRWAF3X0=";
+      sha256 = "sha256-6bwfyvkba0cmF0ygZ/WLqgfcbFAFVqp93lhUBNBimr8=";
     });
   };
   discord-linux = {
@@ -52,13 +52,13 @@
   };
   git-blame-nvim = {
     pname = "git-blame-nvim";
-    version = "65292dfcd80897a5f24962096b8df2bb5bb65e15";
+    version = "1087c3c78ea9f7b7825a256e8fe1ec3af1ad88d0";
     src = fetchFromGitHub ({
       owner = "f-person";
       repo = "git-blame.nvim";
-      rev = "65292dfcd80897a5f24962096b8df2bb5bb65e15";
+      rev = "1087c3c78ea9f7b7825a256e8fe1ec3af1ad88d0";
       fetchSubmodules = false;
-      sha256 = "sha256-sUB0BcZ5c3+jRVxKIbE+FmtEH5IymL+HoDB/ojTv9Hw=";
+      sha256 = "sha256-aS3p9TYRQJOS0vfwmKnU5zPY4dQsTrSgCfaa50sDpPA=";
     });
   };
   key-menu-nvim = {
@@ -117,15 +117,27 @@
       sha256 = "sha256-Pu2Eb3g6gwCZjJN0N6S/N82eBMLduQQUzXo8nMmtE+Y=";
     });
   };
+  rust-vim = {
+    pname = "rust-vim";
+    version = "4aa69b84c8a58fcec6b6dad6fe244b916b1cf830";
+    src = fetchgit {
+      url = "https://github.com/rust-lang/rust.vim";
+      rev = "4aa69b84c8a58fcec6b6dad6fe244b916b1cf830";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-qPHwvjmF1zpFQgJ/4tRoZGnEqCwzg8/wiSFhPvdD0B4=";
+    };
+  };
   telescope-file-browser-nvim = {
     pname = "telescope-file-browser-nvim";
-    version = "4272c52078cc457dfaabce6fa3545e7495651d04";
+    version = "00a814a891de086ed446151bacc559c63682b6ee";
     src = fetchFromGitHub ({
       owner = "nvim-telescope";
       repo = "telescope-file-browser.nvim";
-      rev = "4272c52078cc457dfaabce6fa3545e7495651d04";
+      rev = "00a814a891de086ed446151bacc559c63682b6ee";
       fetchSubmodules = false;
-      sha256 = "sha256-LYkyvjv6LO39c49s5fjzfdzRVRHrtTI1dweaZMFPLVc=";
+      sha256 = "sha256-HnALvKA4/K8T5LbITzRE0JLF4MN/o/KA3VTDC22o41Q=";
     });
   };
   tree-sitter-rust = {

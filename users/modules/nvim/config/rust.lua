@@ -1,6 +1,4 @@
--- Turn on automatic formatting on save using nightly rustfmt
-vim.g.rustfmt_command = 'rustfmt'
-vim.g.rustfmt_autosave = 1
+vim.g.rustfmt_autosave = 0
 
 local id = vim.api.nvim_create_augroup('rust', {})
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
