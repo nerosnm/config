@@ -7,7 +7,18 @@
 
   environment = {
     systemPackages = with pkgs; [
-      catgirl
+      (pkgs.runCommand "catgirl" { buildInputs = [ pkgs.makeWrapper ]; } ''
+        mkdir $out
+        ln -s ${pkgs.catgirl}/* $out
+        rm $out/bin
+        mkdir $out/bin
+        ln -s ${pkgs.catgirl}/bin/* $out/bin
+        rm $out/bin/catgirl
+        makeWrapper ${pkgs.catgirl}/bin/catgirl $out/bin/catgirl \
+          --set TERM wezterm \
+          --add-flags -H \
+          --add-flags 0,15
+      '')
       dosfstools
       gptfdisk
       iputils

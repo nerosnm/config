@@ -271,7 +271,14 @@
                   libera = {
                     host = "irc.eu.libera.chat";
                     cert = "/run/agenix/soren-libera-cert";
-                    join = [ "##rust" "#nixos" "#latex" "#coffee" "#lobsters" "#datahoarder" ];
+                    join = [
+                      "##rust"
+                      "#nixos"
+                      "#latex"
+                      "#coffee"
+                      "#lobsters"
+                      "#datahoarder"
+                    ];
                   };
                 };
               };

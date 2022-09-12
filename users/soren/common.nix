@@ -11,5 +11,8 @@
     description = "Søren Mortensen";
   };
 
-  age.secrets.soren-libera-cert.file = "${self}/secrets/soren-libera-cert.age";
+  age.secrets.soren-libera-cert = {
+    file = "${self}/secrets/soren-libera-cert.age";
+    owner = "soren";
+  };
 }
