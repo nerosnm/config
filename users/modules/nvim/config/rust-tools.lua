@@ -14,9 +14,6 @@ require('rust-tools').setup({
         capabilities = capabilities,
         settings = {
             ["rust-analyzer"] = {
-                cargo = {
-                    allFeatures = true,
-                },
                 diagnostics = {
                     disabled = {
                         "unresolved-proc-macro",
