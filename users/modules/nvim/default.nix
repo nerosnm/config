@@ -85,27 +85,27 @@ in
         vim-toml
         vimtex
 
-        (luaPlugin
-          (nvim-treesitter.withPlugins (plugins: with tree-sitter-grammars; [
-            tree-sitter-bash
-            tree-sitter-bibtex
-            tree-sitter-comment
-            tree-sitter-cpp
-            tree-sitter-css
-            tree-sitter-dockerfile
-            tree-sitter-go
-            tree-sitter-html
-            tree-sitter-java
-            tree-sitter-javascript
-            tree-sitter-json
-            tree-sitter-latex
-            tree-sitter-make
-            pkgs.tree-sitter-rust
-            tree-sitter-toml
-            tree-sitter-typescript
-            tree-sitter-vim
-            tree-sitter-yaml
-          ])) ./config/treesitter.lua)
+        # (luaPlugin
+        #   (nvim-treesitter.withPlugins (plugins: with tree-sitter-grammars; [
+        #     tree-sitter-bash
+        #     tree-sitter-bibtex
+        #     tree-sitter-comment
+        #     tree-sitter-cpp
+        #     tree-sitter-css
+        #     tree-sitter-dockerfile
+        #     tree-sitter-go
+        #     tree-sitter-html
+        #     tree-sitter-java
+        #     tree-sitter-javascript
+        #     tree-sitter-json
+        #     tree-sitter-latex
+        #     tree-sitter-make
+        #     pkgs.tree-sitter-rust
+        #     tree-sitter-toml
+        #     tree-sitter-typescript
+        #     tree-sitter-vim
+        #     tree-sitter-yaml
+        #   ])) ./config/treesitter.lua)
 
         (luaPlugin carbon-now-nvim ./config/carbon-now.lua)
         (luaPlugin dressing-nvim ./config/dressing.lua)
