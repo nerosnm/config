@@ -266,6 +266,9 @@
                   defaults = {
                     nick = "nerosnm";
                     real = "søren";
+                    notify = true;
+                    quiet = true;
+                    _16color = true;
                   };
 
                   libera = {
@@ -275,9 +278,8 @@
                       "##rust"
                       "#nixos"
                       "#latex"
+                      "##electronics"
                       "#coffee"
-                      "#lobsters"
-                      "#datahoarder"
                     ];
                   };
                 };

@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 
@@ -51,6 +52,15 @@ in
             type = types.nullOr types.path;
             default = null;
           };
+          notify = mkEnableOption "notifications with libnotify";
+          quiet = mkEnableOption ''
+            Raise the default message visibility threshold for new windows, 
+            hiding general events (joins, quits, etc.).
+          '';
+          _16color = mkEnableOption ''
+            Restrict the maximum IRC colour value to use only colours from the 
+            16-colour terminal set.
+          '';
         };
       });
       default = { };
@@ -75,6 +85,12 @@ in
           '' ++ optional (server.cert != null) ''
             cert = ${server.cert}
             sasl-external
+          '' ++ optional server.notify ''
+            notify = ${pkgs.libnotify}/bin/notify-send
+          '' ++ optional server.quiet ''
+            quiet
+          '' ++ optional server._16color ''
+            hash = 0,15
           '');
         };
       })
