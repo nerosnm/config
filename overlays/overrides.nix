@@ -17,6 +17,12 @@ channels: final: prev: {
   #   wezterm
   #   ;
 
+  catgirl = prev.catgirl.overrideAttrs (old: {
+    patches = old.patches or [ ] ++ [
+      ./patches/exclude-black.patch
+    ];
+  });
+
   iosevka-custom = channels.nixos.iosevka.override {
     privateBuildPlan = ''
       [buildPlans.iosevka-custom]

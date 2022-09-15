@@ -268,7 +268,6 @@
                     real = "søren";
                     notify = true;
                     quiet = true;
-                    _16color = true;
                   };
 
                   libera = {

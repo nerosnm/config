@@ -1,0 +1,18 @@
+diff --git a/chat.h b/chat.h
+index 15c757f..62ea09a 100644
+--- a/chat.h
++++ b/chat.h
+@@ -149,7 +149,12 @@ static inline uint32_t _hash(const char *str) {
+ }
+ static inline enum Color hash(const char *str) {
+ 	if (hashBound < Blue) return Default;
+-	return Blue + _hash(str) % (hashBound + 1 - Blue);
++	enum Color col = Blue + _hash(str) % (hashBound + 1 - Blue);
++	if (col == Black) {
++		return White;
++	} else {
++		return col;
++	}
+ }
+ 
+ extern struct Network {
