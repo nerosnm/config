@@ -276,10 +276,14 @@
                     cert = "/run/agenix/soren-libera-cert";
                     join = [
                       "##rust"
+                      "##rust-offtopic"
+                      "#mechboards"
                       "#nixos"
-                      "#latex"
-                      "##electronics"
                       "#coffee"
+                      "#learnprogramming"
+                      "#regex"
+                      "#photogeeks"
+                      "#xeserv"
                     ];
                   };
                 };
