@@ -272,8 +272,9 @@
                   };
 
                   libera = {
-                    host = "irc.eu.libera.chat";
+                    host = "libera.cacti.dev";
                     cert = "/run/agenix/soren-libera-cert";
+                    user = "nerosnm";
                     join = [
                       "##rust"
                       "##rust-offtopic"

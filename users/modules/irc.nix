@@ -36,6 +36,12 @@ in
             default = null;
             example = "name (pron/ouns)";
           };
+          user = mkOption {
+            description = "Username";
+            type = types.nullOr types.str;
+            default = null;
+            example = "username";
+          };
           join = mkOption {
             description = "List of channels to automatically join";
             type = types.listOf types.str;
@@ -78,6 +84,8 @@ in
             nick = ${server.nick}
           '' ++ optional (server.real != null) ''
             real = ${server.real}
+          '' ++ optional (server.user != null) ''
+            user = ${server.user}
           '' ++ optional ((length server.join) > 0) ''
             join = ${concatStringsSep "," server.join}
           '' ++ optional (server.pass != null) ''
