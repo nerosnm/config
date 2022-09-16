@@ -18,8 +18,8 @@ channels: final: prev: {
   #   ;
 
   catgirl = prev.catgirl.overrideAttrs (old: {
-    patches = old.patches or [ ] ++ [
-      ./patches/exclude-black.patch
+    patches = (old.patches or [ ]) ++ [
+      ./patches/bright.patch
     ];
   });
 

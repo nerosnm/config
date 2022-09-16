@@ -173,6 +173,22 @@ in
           font = wezterm.font("Iosevka", { weight = "Light", }),
           enable_scroll_bar = true,
 
+          ${optionalString (cfg.wezterm.colorScheme == "OneHalfDark") ''
+          -- colors = {
+          --   ansi = {
+          --     '#383e49',
+          --     '#e06c75',
+          --     '#98c379',
+          --     '#e5c07b',
+          --     '#61afef',
+          --     '#c678dd',
+          --     '#56b6c2',
+          --     '#dcdfe4',
+          --   },
+          -- },
+          ''}
+
+
           exit_behavior = "Close",
 
           -- The leader key (Ctrl-Space) must be pressed before any bindings with the LEADER modifier
