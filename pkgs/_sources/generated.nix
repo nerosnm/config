@@ -25,18 +25,18 @@
   };
   discord-linux = {
     pname = "discord-linux";
-    version = "0.0.19";
+    version = "0.0.20";
     src = fetchurl {
-      url = "https://dl.discordapp.net/apps/linux/0.0.19/discord-0.0.19.tar.gz";
-      sha256 = "sha256-GfSyddbGF8WA6JmHo4tUM27cyHV5kRAyrEiZe1jbA5A=";
+      url = "https://dl.discordapp.net/apps/linux/0.0.20/discord-0.0.20.tar.gz";
+      sha256 = "sha256-3f7yuxigEF3e8qhCetCHKBtV4XUHsx/iYiaCCXjspYw=";
     };
   };
   discord-ptb-linux = {
     pname = "discord-ptb-linux";
-    version = "0.0.31";
+    version = "0.0.33";
     src = fetchurl {
-      url = "https://dl-ptb.discordapp.net/apps/linux/0.0.31/discord-ptb-0.0.31.tar.gz";
-      sha256 = "sha256-XQDfXMJekfk1lvWDniupfYCRBMYVeLJtF+iFS9qZ2xM=";
+      url = "https://dl-ptb.discordapp.net/apps/linux/0.0.33/discord-ptb-0.0.33.tar.gz";
+      sha256 = "sha256-N+uWlFuGwhcc2yFePhtz5r0sZUUfv7VOgGOpuCyzByE=";
     };
   };
   fuzzy-nvim = {
@@ -52,13 +52,13 @@
   };
   git-blame-nvim = {
     pname = "git-blame-nvim";
-    version = "1087c3c78ea9f7b7825a256e8fe1ec3af1ad88d0";
+    version = "54be7081bfdedc29eeeb55193c63821abf3084e1";
     src = fetchFromGitHub ({
       owner = "f-person";
       repo = "git-blame.nvim";
-      rev = "1087c3c78ea9f7b7825a256e8fe1ec3af1ad88d0";
+      rev = "54be7081bfdedc29eeeb55193c63821abf3084e1";
       fetchSubmodules = false;
-      sha256 = "sha256-aS3p9TYRQJOS0vfwmKnU5zPY4dQsTrSgCfaa50sDpPA=";
+      sha256 = "sha256-8r2IAgTOa3oaviw7w+RIcdjnqkw2HsSJmSKgp6bBUow=";
     });
   };
   key-menu-nvim = {
@@ -108,13 +108,13 @@
   };
   polymc = {
     pname = "polymc";
-    version = "1.4.1";
+    version = "1.4.2";
     src = fetchFromGitHub ({
       owner = "PolyMC";
       repo = "PolyMC";
-      rev = "1.4.1";
+      rev = "1.4.2";
       fetchSubmodules = true;
-      sha256 = "sha256-Pu2Eb3g6gwCZjJN0N6S/N82eBMLduQQUzXo8nMmtE+Y=";
+      sha256 = "sha256-mqLk7ZcSrtvlUziNUCtnH7xQplXBruuiuN2b1+VX1ng=";
     });
   };
   rust-vim = {
@@ -131,13 +131,13 @@
   };
   telescope-file-browser-nvim = {
     pname = "telescope-file-browser-nvim";
-    version = "00a814a891de086ed446151bacc559c63682b6ee";
+    version = "60bcf4e70ecb9392445c2a2205ee8181dff964d5";
     src = fetchFromGitHub ({
       owner = "nvim-telescope";
       repo = "telescope-file-browser.nvim";
-      rev = "00a814a891de086ed446151bacc559c63682b6ee";
+      rev = "60bcf4e70ecb9392445c2a2205ee8181dff964d5";
       fetchSubmodules = false;
-      sha256 = "sha256-HnALvKA4/K8T5LbITzRE0JLF4MN/o/KA3VTDC22o41Q=";
+      sha256 = "sha256-25nYpWCprrisPeaXCNVucdBwBpwWLEleQIQ6bqzZ1TY=";
     });
   };
   tree-sitter-rust = {
@@ -153,13 +153,13 @@
   };
   vim-dogrun = {
     pname = "vim-dogrun";
-    version = "f1a6ec680da5f2da7d8629dfa55fe222ae878c2d";
+    version = "7261253c9a293b9a1e247008964c6cbb860e1700";
     src = fetchFromGitHub ({
       owner = "wadackel";
       repo = "vim-dogrun";
-      rev = "f1a6ec680da5f2da7d8629dfa55fe222ae878c2d";
+      rev = "7261253c9a293b9a1e247008964c6cbb860e1700";
       fetchSubmodules = false;
-      sha256 = "sha256-t2McCjljcROG+sGMJ5y4585si9I0man7XmQrWS2J9Xg=";
+      sha256 = "sha256-e50y6ru8BBH+mcCIPLOODAczd5zaDL35dcBLhTBx/NI=";
     });
   };
 }
