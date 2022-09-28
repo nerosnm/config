@@ -46,7 +46,7 @@ in
       ];
 
       extraPackages = with pkgs; [
-        ccls # For C/C++ completions
+        # ccls # For C/C++ completions
         nodePackages.bash-language-server # Bash language server
         rnix-lsp # Nix language server
         shellcheck # For Bash

@@ -43,7 +43,7 @@ vim.keymap.set('n', '<leader>d', '<cmd>Telescope diagnostics<cr>', { desc = 'Dia
 
 lspconfig.bashls.setup {}
 
-lspconfig.ccls.setup {}
+-- lspconfig.ccls.setup {}
 
 lspconfig.gopls.setup {}
 

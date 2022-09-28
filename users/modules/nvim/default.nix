@@ -174,9 +174,9 @@ in
 
         let g:clang_format#command = '${pkgs.clang-tools}/bin/clang-format'
 
-        augroup clangformat | au!
-          au BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp :ClangFormatAutoEnable
-        augroup END
+        " augroup clangformat | au!
+        "   au BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp :ClangFormatAutoEnable
+        " augroup END
 
         " =================
         " LANGUAGE SETTINGS
