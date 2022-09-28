@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 
@@ -176,6 +177,8 @@ in
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/"
         ];
 
         # Mute the mic
@@ -226,6 +229,17 @@ in
         binding = "<Shift><Super>f";
         command = "true";
         name = "Deafen Discord PTB";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
+        binding = "<Shift><Super>i";
+        command = "${pkgs.playerctl}/bin/playerctl --player spotify volume 0.1+";
+        name = "Increase Spotify Volume";
+      };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6" = {
+        binding = "<Shift><Super>o";
+        command = "${pkgs.playerctl}/bin/playerctl --player spotify volume 0.1-";
+        name = "Decrease Spotify Volume";
       };
 
       "org/gnome/settings-daemon/plugins/power" = {
