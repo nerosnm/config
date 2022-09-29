@@ -4,6 +4,7 @@ final: prev: {
   # then, call packages with `final.callPackage`
   carbon-now-nvim = final.callPackage ./carbon-now-nvim { };
   cmp-fuzzy-path = final.callPackage ./cmp-fuzzy-path { };
+  doing = final.callPackage ./doing { };
   discord-linux = final.callPackage ./discord-linux { };
   discord-ptb-linux = final.callPackage ./discord-ptb-linux { };
   fuzzy-nvim = final.callPackage ./fuzzy-nvim { };

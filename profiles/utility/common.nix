@@ -5,6 +5,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    doing
     tectonic
     python39Packages.pygments
   ];
