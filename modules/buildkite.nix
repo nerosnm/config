@@ -24,6 +24,7 @@ in
 
       tags = {
         queue = "nixos";
+        nix = "true";
       };
 
       extraConfig = ''
