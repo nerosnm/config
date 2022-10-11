@@ -15,6 +15,11 @@ let
     config = builtins.readFile configPath;
   };
 
+  luaPluginInline = plugin: config: {
+    inherit plugin config;
+    type = "lua";
+  };
+
   inherit (lib) mkIf mkOverride optionals;
 in
 {
