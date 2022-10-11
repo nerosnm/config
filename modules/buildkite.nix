@@ -30,9 +30,30 @@ in
       extraConfig = ''
         tags-from-host=true
       '';
+
+      hooks.environment = ''
+        cat ${config.age.secrets.cachix-ditto-token.path} | ${pkgs.cachix}/bin/cachix authtoken --stdin
+      '';
+
+      hooks.pre-command = ''
+        ${pkgs.cachix}/bin/cachix use ditto-nerosnm-test
+      '';
+
+      runtimePackages = with pkgs; [
+        # Defaults
+        bash
+        git
+        gnutar
+        gzip
+        nix
+
+        # Custom
+        cachix
+      ];
     };
 
     nix.settings.allowed-users = [ "buildkite-agent-${config.networking.hostName}" ];
+    nix.settings.trusted-users = [ "buildkite-agent-${config.networking.hostName}" ];
 
     age.secrets.buildkite-token = {
       file = "${self}/secrets/buildkite-token.age";
@@ -46,6 +67,11 @@ in
 
     age.secrets."buildkite-ssh-dalim" = {
       file = "${self}/secrets/buildkite-ssh-dalim.age";
+      owner = "buildkite-agent-${config.networking.hostName}";
+    };
+
+    age.secrets.cachix-ditto-token = {
+      file = "${self}/secrets/cachix-ditto-token.age";
       owner = "buildkite-agent-${config.networking.hostName}";
     };
 
@@ -67,5 +93,9 @@ in
         ];
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      cachix
+    ];
   };
 }

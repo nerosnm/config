@@ -13,6 +13,7 @@ let
     "buildkite-ssh-dalim.age".publicKeys = [ dalim ];
     "buildkite-ssh-dalim.pub.age".publicKeys = [ dalim ];
     "buildkite-token.age".publicKeys = [ dalim ];
+    "cachix-ditto-token.age".publicKeys = [ dalim ];
     "root-pwhash.age".publicKeys = [ dalim talitha ];
     "soren-libera-cert.age".publicKeys = [ dalim talitha ];
     "soren-pwhash.age".publicKeys = [ dalim talitha ];
