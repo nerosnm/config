@@ -25,6 +25,7 @@ in
     rust
     rust-analyzer
     rustfmt
+    rustup
 
     go
     gopls
