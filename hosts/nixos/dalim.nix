@@ -11,6 +11,7 @@
   imports = suites.work ++ (with profiles; [
     moonlander.nixos
     printing.nixos
+    social.nixos
     tailscale.nixos
   ]);
 
