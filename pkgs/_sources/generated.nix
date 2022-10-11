@@ -72,18 +72,6 @@
       sha256 = "sha256-3hIBHCthiOQJi9icVCNvIBiopvgw4iHtSCh/MZTJ1C4=";
     });
   };
-  lsp_lines-nvim = {
-    pname = "lsp_lines-nvim";
-    version = "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea";
-    src = fetchgit {
-      url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim";
-      rev = "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea";
-      fetchSubmodules = false;
-      deepClone = false;
-      leaveDotGit = false;
-      sha256 = "sha256-c+MrWKK7ZIcj2XrPruiQLQ1sr3SJWQfzAR+JM5g+kLE=";
-    };
-  };
   manix = {
     pname = "manix";
     version = "d08e7ca185445b929f097f8bfb1243a8ef3e10e4";

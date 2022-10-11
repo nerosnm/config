@@ -26,10 +26,6 @@ fetch.github = "f-person/git-blame.nvim"
 src.git = "https://github.com/linty-org/key-menu.nvim"
 fetch.github = "linty-org/key-menu.nvim"
 
-[lsp_lines-nvim]
-src.git = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-fetch.git = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-
 [manix]
 src.git = "https://github.com/mlvzk/manix"
 fetch.github = "mlvzk/manix"

@@ -122,24 +122,6 @@
         },
         "version": "6fcb95126c882d285f32d6f34f0e61d82fd516c1"
     },
-    "lsp_lines-nvim": {
-        "cargoLocks": null,
-        "extract": null,
-        "name": "lsp_lines-nvim",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "rev": "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea",
-            "sha256": "sha256-c+MrWKK7ZIcj2XrPruiQLQ1sr3SJWQfzAR+JM5g+kLE=",
-            "type": "git",
-            "url": "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-        },
-        "version": "dbfd8e96ec2696e1ceedcd23fd70e842256e3dea"
-    },
     "manix": {
         "cargoLocks": null,
         "extract": null,

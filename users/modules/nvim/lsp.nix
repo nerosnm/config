@@ -40,7 +40,6 @@ in
 
         (luaPlugin nvim-cmp ./config/nvim-cmp.lua)
         (luaPlugin fidget-nvim ./config/fidget.lua)
-        (luaPlugin lsp_lines-nvim ./config/lsp-lines.lua)
         (luaPlugin nvim-lspconfig ./config/lspconfig.lua)
         (luaPlugin rust-tools-nvim ./config/rust-tools.lua)
       ];
