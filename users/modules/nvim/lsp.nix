@@ -38,8 +38,8 @@ in
         lspkind-nvim
         luasnip
 
-        (luaPlugin nvim-cmp ./config/nvim-cmp.lua)
         (luaPlugin fidget-nvim ./config/fidget.lua)
+        (luaPlugin nvim-cmp ./config/nvim-cmp.lua)
         (luaPlugin nvim-lspconfig ./config/lspconfig.lua)
         (luaPlugin rust-tools-nvim ./config/rust-tools.lua)
       ];
