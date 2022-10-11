@@ -29,6 +29,7 @@ in
 
       extraConfig = ''
         tags-from-host=true
+        plugins-path = ${config.services.buildkite-agents.${config.networking.hostName}.dataDir}/plugins
       '';
 
       hooks.environment = ''
