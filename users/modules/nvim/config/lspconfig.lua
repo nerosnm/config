@@ -132,3 +132,10 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*.nix',
     callback = vim.lsp.buf.formatting_sync,
 })
+
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = '⚕',
+    },
+})
+
