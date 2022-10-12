@@ -47,7 +47,7 @@ in
         (luaPlugin nvim-cmp ./config/nvim-cmp.lua)
         (luaPlugin nvim-lspconfig ./config/lspconfig.lua)
         (luaPlugin rust-tools-nvim ./config/rust-tools.lua)
-        (luaPluginInline vim-illuminate "require'illuminate'.configure{}")
+        (luaPlugin vim-illuminate ./config/illuminate.lua)
       ];
 
       extraPackages = with pkgs; [
