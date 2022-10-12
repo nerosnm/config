@@ -294,9 +294,9 @@ in
         " Appearance
         " ----------
 
-        " Lighten special (doc) comments a bit and make all comments italic
-        autocmd ColorScheme * hi Comment guifg=#6D7688 gui=italic
-        autocmd ColorScheme * hi SpecialComment guifg=#9Ca3b0 gui=italic
+        " Lighten comments and special (doc) comments, make special comments italic
+        autocmd ColorScheme * hi Comment guifg=#7c828c gui=NONE
+        autocmd ColorScheme * hi SpecialComment guifg=#7c828c gui=italic
 
         " Display a background on the line with the cursor on it
         set cursorline
