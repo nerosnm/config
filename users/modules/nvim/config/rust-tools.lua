@@ -24,15 +24,19 @@ require('rust-tools').setup({
         capabilities = capabilities,
         settings = {
             ["rust-analyzer"] = {
-                diagnostics = {
-                    disabled = {
-                        "unresolved-proc-macro",
-                    }
+                assist = {
+                    importEnforceGranularity = true,
+                    importPrefix = "crate",
                 },
                 completion = {
                     postfix = {
                         enable = false,
                     },
+                },
+                diagnostics = {
+                    disabled = {
+                        "unresolved-proc-macro",
+                    }
                 },
             },
         },
