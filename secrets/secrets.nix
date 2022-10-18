@@ -18,6 +18,9 @@ let
     "soren-libera-cert.age".publicKeys = [ dalim talitha ];
     "soren-pwhash.age".publicKeys = [ dalim talitha ];
     "tailscale-talitha.age".publicKeys = [ talitha ];
+    "ditto-quay-token.age".publicKeys = [ dalim ];
+    "ditto-quay-user.age".publicKeys = [ dalim ];
+    "ditto-quay-email.age".publicKeys = [ dalim ];
   };
 
   # Public key of an age-plugin-yubikey key, the counterpart to the keygrip 
