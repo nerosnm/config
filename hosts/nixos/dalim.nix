@@ -68,6 +68,7 @@
   };
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
 
   services.zfs = {
     trim.enable = true;
