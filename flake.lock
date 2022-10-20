@@ -143,16 +143,15 @@
         "nixpkgs-unstable": "nixpkgs-unstable"
       },
       "locked": {
-        "lastModified": 1661441327,
-        "narHash": "sha256-Rw/WU5ngELQf2xRX6zNUczqh/BVm2HulWWWNNcPSzPs=",
-        "owner": "nerosnm",
+        "lastModified": 1665848456,
+        "narHash": "sha256-UwJ2bY/K5rK5oa+uIQjyz9EXyNoGYBlKXZCcdav5w14=",
+        "owner": "divnix",
         "repo": "digga",
-        "rev": "c8d08a70077d4b957abebfaa0edc3b13c29e5e30",
+        "rev": "1f97cb28f13aa0770947568589116468c68b3f26",
         "type": "github"
       },
       "original": {
-        "owner": "nerosnm",
-        "ref": "fix-deprecations",
+        "owner": "divnix",
         "repo": "digga",
         "type": "github"
       }

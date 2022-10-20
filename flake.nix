@@ -2,8 +2,8 @@
   description = "A highly structured configuration database.";
 
   nixConfig.extra-experimental-features = "nix-command flakes";
-  nixConfig.extra-substituters = "https://nrdxp.cachix.org https://nix-community.cachix.org";
-  nixConfig.extra-trusted-public-keys = "nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+  nixConfig.extra-substituters = "https://nix-community.cachix.org";
+  nixConfig.extra-trusted-public-keys = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
 
   inputs = {
     # Track channels with commits tested and built by hydra
@@ -17,7 +17,7 @@
     # failures on Linux systems.
     nixpkgs-darwin-stable.url = "github:NixOS/nixpkgs/nixpkgs-22.05-darwin";
 
-    digga.url = "github:nerosnm/digga/fix-deprecations";
+    digga.url = "github:divnix/digga";
     digga.inputs.nixpkgs.follows = "nixos";
     digga.inputs.nixlib.follows = "nixos";
     digga.inputs.home-manager.follows = "home";
@@ -116,7 +116,6 @@
           modules = [
             { lib.our = self.lib; }
             digga.nixosModules.bootstrapIso
-            digga.nixosModules.nixConfig
             home.nixosModules.home-manager
             agenix.nixosModules.age
           ];

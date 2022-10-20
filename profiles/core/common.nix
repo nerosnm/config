@@ -5,7 +5,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in
 {
-  # Sets nrdxp.cachix.org binary cache which just speeds up some builds
+  # Sets the nix community binary cache which just speeds up some builds
   imports = [ ../cachix ];
 
   environment = {
