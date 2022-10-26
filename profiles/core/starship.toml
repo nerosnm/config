@@ -4,8 +4,8 @@ add_newline = true
 symbol = " "
 
 [character]
-success_symbol = "[❯](bold purple)"
-vicmd_symbol = "[❮](bold purple)"
+# success_symbol = "[❯](bold purple)"
+# vicmd_symbol = "[❮](bold purple)"
 
 [battery]
 full_symbol = ""
@@ -78,7 +78,7 @@ not_executable_symbol = "∅"
 not_found_symbol = "∉"
 sigint_symbol = "⊥"
 signal_symbol = "⋕"
-disabled = false
+disabled = true
 
 [sudo]
 symbol = "⚝ "
