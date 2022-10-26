@@ -63,6 +63,8 @@ in
         pkgs.writeText "starship.toml"
         (fileContents ./starship.toml)
       }
+
+      ulimit -n 4096
     '';
 
     shellAliases =
