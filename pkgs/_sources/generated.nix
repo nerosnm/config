@@ -14,29 +14,29 @@
   };
   cmp-fuzzy-path = {
     pname = "cmp-fuzzy-path";
-    version = "857097778bc772f9d6f885e50eeb05f39632d2bb";
+    version = "13fdf779f833571ae72ca3a540531cfa9e67e714";
     src = fetchFromGitHub ({
       owner = "tzachar";
       repo = "cmp-fuzzy-path";
-      rev = "857097778bc772f9d6f885e50eeb05f39632d2bb";
+      rev = "13fdf779f833571ae72ca3a540531cfa9e67e714";
       fetchSubmodules = false;
-      sha256 = "sha256-6bwfyvkba0cmF0ygZ/WLqgfcbFAFVqp93lhUBNBimr8=";
+      sha256 = "sha256-MvdQeT2N/2xEpmp6YPJLFxzg2KJBVf46l6/FzdJ7nO0=";
     });
   };
   discord-linux = {
     pname = "discord-linux";
-    version = "0.0.20";
+    version = "0.0.21";
     src = fetchurl {
-      url = "https://dl.discordapp.net/apps/linux/0.0.20/discord-0.0.20.tar.gz";
-      sha256 = "sha256-3f7yuxigEF3e8qhCetCHKBtV4XUHsx/iYiaCCXjspYw=";
+      url = "https://dl.discordapp.net/apps/linux/0.0.21/discord-0.0.21.tar.gz";
+      sha256 = "sha256-KDKUssPRrs/D10s5GhJ23hctatQmyqd27xS9nU7iNaM=";
     };
   };
   discord-ptb-linux = {
     pname = "discord-ptb-linux";
-    version = "0.0.33";
+    version = "0.0.34";
     src = fetchurl {
-      url = "https://dl-ptb.discordapp.net/apps/linux/0.0.33/discord-ptb-0.0.33.tar.gz";
-      sha256 = "sha256-N+uWlFuGwhcc2yFePhtz5r0sZUUfv7VOgGOpuCyzByE=";
+      url = "https://dl-ptb.discordapp.net/apps/linux/0.0.34/discord-ptb-0.0.34.tar.gz";
+      sha256 = "sha256-CD6dLoBnlvhpwEFfLI9OqjhviZPj3xNDyPK9qBJUqck=";
     };
   };
   fuzzy-nvim = {
@@ -52,24 +52,24 @@
   };
   git-blame-nvim = {
     pname = "git-blame-nvim";
-    version = "54be7081bfdedc29eeeb55193c63821abf3084e1";
+    version = "7c498272d0f97c583fc3a92f196231a90455eb19";
     src = fetchFromGitHub ({
       owner = "f-person";
       repo = "git-blame.nvim";
-      rev = "54be7081bfdedc29eeeb55193c63821abf3084e1";
+      rev = "7c498272d0f97c583fc3a92f196231a90455eb19";
       fetchSubmodules = false;
-      sha256 = "sha256-8r2IAgTOa3oaviw7w+RIcdjnqkw2HsSJmSKgp6bBUow=";
+      sha256 = "sha256-GJ0W4G773HxPyxF3AX8oydh+AJvgR/Q7FQZ7s3DHpjo=";
     });
   };
   key-menu-nvim = {
     pname = "key-menu-nvim";
-    version = "6fcb95126c882d285f32d6f34f0e61d82fd516c1";
+    version = "f63055d25c50ff961e6969e6a024fae4d64f92ee";
     src = fetchFromGitHub ({
       owner = "linty-org";
       repo = "key-menu.nvim";
-      rev = "6fcb95126c882d285f32d6f34f0e61d82fd516c1";
+      rev = "f63055d25c50ff961e6969e6a024fae4d64f92ee";
       fetchSubmodules = false;
-      sha256 = "sha256-3hIBHCthiOQJi9icVCNvIBiopvgw4iHtSCh/MZTJ1C4=";
+      sha256 = "sha256-NPZuay1qF0FJ5nqckbCL0FWvYS0v72430TSwxIt6OzU=";
     });
   };
   manix = {
@@ -96,36 +96,36 @@
   };
   polymc = {
     pname = "polymc";
-    version = "1.4.2";
+    version = "1.4.3";
     src = fetchFromGitHub ({
       owner = "PolyMC";
       repo = "PolyMC";
-      rev = "1.4.2";
+      rev = "1.4.3";
       fetchSubmodules = true;
-      sha256 = "sha256-mqLk7ZcSrtvlUziNUCtnH7xQplXBruuiuN2b1+VX1ng=";
+      sha256 = "sha256-nMNUGUkLH0pefDjhRHPvNVzxAOGMDhIVrS5E0X2UJZI=";
     });
   };
   rust-vim = {
     pname = "rust-vim";
-    version = "4aa69b84c8a58fcec6b6dad6fe244b916b1cf830";
+    version = "1cdc5cb4bd061bc30b502e07321682b5a4396dca";
     src = fetchgit {
       url = "https://github.com/rust-lang/rust.vim";
-      rev = "4aa69b84c8a58fcec6b6dad6fe244b916b1cf830";
+      rev = "1cdc5cb4bd061bc30b502e07321682b5a4396dca";
       fetchSubmodules = false;
       deepClone = false;
       leaveDotGit = false;
-      sha256 = "sha256-qPHwvjmF1zpFQgJ/4tRoZGnEqCwzg8/wiSFhPvdD0B4=";
+      sha256 = "sha256-70kp644jOtJ4wguty/SUFX+YEsoxW12LGg3vZh7BdPY=";
     };
   };
   telescope-file-browser-nvim = {
     pname = "telescope-file-browser-nvim";
-    version = "60bcf4e70ecb9392445c2a2205ee8181dff964d5";
+    version = "2429ecfd2d76e3eb6c9f8d8ba2c6ce328975a95a";
     src = fetchFromGitHub ({
       owner = "nvim-telescope";
       repo = "telescope-file-browser.nvim";
-      rev = "60bcf4e70ecb9392445c2a2205ee8181dff964d5";
+      rev = "2429ecfd2d76e3eb6c9f8d8ba2c6ce328975a95a";
       fetchSubmodules = false;
-      sha256 = "sha256-25nYpWCprrisPeaXCNVucdBwBpwWLEleQIQ6bqzZ1TY=";
+      sha256 = "sha256-fIm2FWYJXNl0SlQgmRuULOTRc2VVv2p1jJ2slcP4veY=";
     });
   };
   tree-sitter-rust = {
@@ -141,13 +141,13 @@
   };
   vim-dogrun = {
     pname = "vim-dogrun";
-    version = "7261253c9a293b9a1e247008964c6cbb860e1700";
+    version = "b9651e1b5b65a07867eaada3e3fc77a936f35dc4";
     src = fetchFromGitHub ({
       owner = "wadackel";
       repo = "vim-dogrun";
-      rev = "7261253c9a293b9a1e247008964c6cbb860e1700";
+      rev = "b9651e1b5b65a07867eaada3e3fc77a936f35dc4";
       fetchSubmodules = false;
-      sha256 = "sha256-e50y6ru8BBH+mcCIPLOODAczd5zaDL35dcBLhTBx/NI=";
+      sha256 = "sha256-r2HIbo7q1GupySr/zefD8jOODksSK8PxG9pF8b8tPZs=";
     });
   };
 }
