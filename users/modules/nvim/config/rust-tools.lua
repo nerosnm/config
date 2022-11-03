@@ -30,6 +30,9 @@ require('rust-tools').setup({
                 },
                 checkOnSave = {
                     command = "clippy",
+                    extraArgs = {
+                        "--target-dir=target/rust-analyzer",
+                    },
                 },
                 completion = {
                     postfix = {
