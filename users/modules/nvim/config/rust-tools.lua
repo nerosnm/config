@@ -28,6 +28,9 @@ require('rust-tools').setup({
                     importEnforceGranularity = true,
                     importPrefix = "crate",
                 },
+                checkOnSave = {
+                    command = "clippy",
+                },
                 completion = {
                     postfix = {
                         enable = false,
