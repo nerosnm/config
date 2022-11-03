@@ -342,8 +342,8 @@ in
         " Text Display
         " ------------
 
-        " Display tab characters with a width of 8 spaces
-        set tabstop=8
+        " Display tab characters with a width of 4 spaces
+        set tabstop=4
 
         " Set the number of lines to keep visible above and below the cursor at the top and bottom of the
         " screen
