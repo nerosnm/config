@@ -11,6 +11,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    keybase-gui
     yubikey-manager-qt # To customise Yubikey options
   ];
 
@@ -32,6 +33,7 @@
   };
 
   services.keybase.enable = true;
+  services.kbfs.enable = true;
 
   systemd.user.services.yubikey-touch-detector = {
     enable = true;
