@@ -28,6 +28,7 @@
       aseprite-unfree
       insomnia
       jetbrains.clion
+      jetbrains.idea-community
       jetbrains.idea-ultimate
       vscode-with-extensions
     ];
