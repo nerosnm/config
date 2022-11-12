@@ -9,7 +9,6 @@ channels: final: prev: {
   #   git
   #   nix-index
   #   nixpkgs-fmt
-  #   polymc
   #   qutebrowser
   #   rage
   #   signal-desktop

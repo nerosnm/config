@@ -94,17 +94,6 @@
       sha256 = "sha256-cbGq0CVkQGD89HoPmtZyYIrM0OIMSAZi4EeEbpJLMJU=";
     });
   };
-  polymc = {
-    pname = "polymc";
-    version = "1.4.3";
-    src = fetchFromGitHub ({
-      owner = "PolyMC";
-      repo = "PolyMC";
-      rev = "1.4.3";
-      fetchSubmodules = true;
-      sha256 = "sha256-nMNUGUkLH0pefDjhRHPvNVzxAOGMDhIVrS5E0X2UJZI=";
-    });
-  };
   rust-vim = {
     pname = "rust-vim";
     version = "1cdc5cb4bd061bc30b502e07321682b5a4396dca";

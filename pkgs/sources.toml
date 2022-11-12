@@ -34,11 +34,6 @@ fetch.github = "mlvzk/manix"
 src.git = "https://github.com/pest-parser/pest.vim"
 fetch.github = "pest-parser/pest.vim"
 
-[polymc]
-src.github = "PolyMC/PolyMC"
-fetch.github = "PolyMC/PolyMC"
-git.fetchSubmodules = true
-
 [rust-vim]
 src.git = "https://github.com/rust-lang/rust.vim"
 fetch.git = "https://github.com/rust-lang/rust.vim"

@@ -12,7 +12,7 @@
     jdk
     jdk8
     minecraft
-    polymc
+    prismlauncher
 
     # Lutris
     lutris

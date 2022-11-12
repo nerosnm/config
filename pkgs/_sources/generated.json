@@ -160,25 +160,6 @@
         },
         "version": "ebeeea5e0757adee037135cf3b8248589b22ae16"
     },
-    "polymc": {
-        "cargoLocks": null,
-        "extract": null,
-        "name": "polymc",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": true,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "PolyMC",
-            "repo": "PolyMC",
-            "rev": "1.4.3",
-            "sha256": "sha256-nMNUGUkLH0pefDjhRHPvNVzxAOGMDhIVrS5E0X2UJZI=",
-            "type": "github"
-        },
-        "version": "1.4.3"
-    },
     "rust-vim": {
         "cargoLocks": null,
         "extract": null,
