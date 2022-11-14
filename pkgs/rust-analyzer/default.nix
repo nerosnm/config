@@ -2,7 +2,9 @@
 , stdenv
 , callPackage
 , fetchFromGitHub
-, rustPlatform
+, rust-bin
+, makeRustPlatform
+, rustc
 , darwin
 , cmake
 , libiconv
@@ -11,6 +13,15 @@
 , sources
 }:
 
+let
+  toolchain = rust-bin.stable.latest;
+  rustPlatform = makeRustPlatform {
+    inherit (toolchain) cargo;
+    rustc = lib.attrsets.recursiveUpdate toolchain.rustc {
+      meta.platforms = rustc.meta.platforms;
+    };
+  };
+in
 rustPlatform.buildRustPackage rec {
   pname = "rust-analyzer-unwrapped";
 
