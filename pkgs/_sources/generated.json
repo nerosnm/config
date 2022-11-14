@@ -192,6 +192,30 @@
         },
         "version": "ebeeea5e0757adee037135cf3b8248589b22ae16"
     },
+    "rust-analyzer": {
+        "cargoLocks": {
+            "Cargo.lock": [
+                "./rust-analyzer-1b74800d6e4c9a3130500fe9208e9c9f2ccd2f01/Cargo.lock",
+                {}
+            ]
+        },
+        "date": "2022-11-07",
+        "extract": null,
+        "name": "rust-analyzer",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "1b74800d6e4c9a3130500fe9208e9c9f2ccd2f01",
+            "sha256": "sha256-DSLkVDY4pQcF5xwtXVKmcfWTaHNeQobXRZskBOiJkFo=",
+            "type": "git",
+            "url": "https://github.com/nerosnm/rust-analyzer"
+        },
+        "version": "1b74800d6e4c9a3130500fe9208e9c9f2ccd2f01"
+    },
     "rust-vim": {
         "cargoLocks": null,
         "date": "2022-09-28",

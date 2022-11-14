@@ -119,6 +119,25 @@
     });
     date = "2020-04-20";
   };
+  rust-analyzer = {
+    pname = "rust-analyzer";
+    version = "1b74800d6e4c9a3130500fe9208e9c9f2ccd2f01";
+    src = fetchgit {
+      url = "https://github.com/nerosnm/rust-analyzer";
+      rev = "1b74800d6e4c9a3130500fe9208e9c9f2ccd2f01";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-DSLkVDY4pQcF5xwtXVKmcfWTaHNeQobXRZskBOiJkFo=";
+    };
+    cargoLock."Cargo.lock" = {
+      lockFile = ./rust-analyzer-1b74800d6e4c9a3130500fe9208e9c9f2ccd2f01/Cargo.lock;
+      outputHashes = {
+        
+      };
+    };
+    date = "2022-11-07";
+  };
   rust-vim = {
     pname = "rust-vim";
     version = "1cdc5cb4bd061bc30b502e07321682b5a4396dca";

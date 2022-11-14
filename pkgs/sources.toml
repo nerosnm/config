@@ -39,6 +39,12 @@ fetch.github = "mlvzk/manix"
 src.git = "https://github.com/pest-parser/pest.vim"
 fetch.github = "pest-parser/pest.vim"
 
+[rust-analyzer]
+src.git = "https://github.com/nerosnm/rust-analyzer"
+src.branch = "multi-check-command"
+fetch.git = "https://github.com/nerosnm/rust-analyzer"
+cargo_locks = [ "Cargo.lock" ]
+
 [rust-vim]
 src.git = "https://github.com/rust-lang/rust.vim"
 fetch.git = "https://github.com/rust-lang/rust.vim"

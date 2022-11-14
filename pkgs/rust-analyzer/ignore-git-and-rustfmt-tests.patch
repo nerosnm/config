@@ -1,0 +1,12 @@
+diff --git a/crates/rust-analyzer/tests/slow-tests/tidy.rs b/crates/rust-analyzer/tests/slow-tests/tidy.rs
+index 24e68eca6..8cbef7e48 100644
+--- a/crates/rust-analyzer/tests/slow-tests/tidy.rs
++++ b/crates/rust-analyzer/tests/slow-tests/tidy.rs
+@@ -10,6 +10,7 @@ use xshell::cmd;
+ 
+ #[cfg(not(feature = "in-rust-tree"))]
+ #[test]
++#[ignore]
+ fn check_code_formatting() {
+     let sh = &Shell::new().unwrap();
+     sh.change_dir(sourcegen::project_root());
