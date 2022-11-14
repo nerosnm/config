@@ -51,7 +51,6 @@
     in
     [
       gnome.gnome-tweaks
-      gnomeExtensions.sound-output-device-chooser
       spotify-tray
     ];
 }
