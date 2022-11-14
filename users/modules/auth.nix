@@ -8,7 +8,7 @@
 let
   cfg = config.custom.auth;
 
-  inherit (lib) concatMapStrings mkIf;
+  inherit (lib) concatMapStrings mkIf mkMerge;
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
 in
 {
@@ -69,23 +69,27 @@ in
     programs.ssh.enable = true;
     home.file.".ssh/allowed_signers".text = concatMapStrings (key: "${key.email} ${key.key}") cfg.allowedSigners;
 
-    programs.ssh.matchBlocks = (builtins.listToAttrs (map
-      ({ path, host }: {
-        name = host;
-        value = {
-          identityFile = "${path}";
+    programs.ssh.matchBlocks = mkMerge [
+      (builtins.listToAttrs (map
+        ({ path, host }: {
+          name = host;
+          value = {
+            identityFile = "${path}";
+          };
+        })
+        cfg.publicKeys
+      ))
+
+      (mkIf isDarwin {
+        "*" = {
+          identitiesOnly = true;
+          serverAliveInterval = 15;
+
+          extraOptions = {
+            PreferredAuthentications = "publickey";
+          };
         };
       })
-      cfg.publicKeys
-    )) // mkIf isDarwin {
-      "*" = {
-        identitiesOnly = true;
-        serverAliveInterval = 15;
-
-        extraOptions = {
-          PreferredAuthentications = "publickey";
-        };
-      };
-    };
+    ];
   };
 }

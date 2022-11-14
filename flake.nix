@@ -47,6 +47,10 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "latest";
+
+    ditto.url = "git+ssh://git@github.com/getditto/ditto.git?ref=sm/nix-ssh-module";
+    ditto.inputs.rust-overlay.follows = "rust-overlay";
+    ditto.inputs.agenix.follows = "agenix";
   };
 
   outputs =
@@ -61,6 +65,7 @@
     , deploy
     , nixpkgs
     , rust-overlay
+    , ditto
     , ...
     } @ inputs:
     digga.lib.mkFlake {
@@ -203,8 +208,12 @@
       };
 
       home = {
-        imports = [ (digga.lib.importExportableModules ./users/modules) ];
-        modules = [ ];
+        imports = [
+          (digga.lib.importExportableModules ./users/modules)
+        ];
+        modules = [
+          ditto.homeModules.ssh-buildkite
+        ];
         importables = rec {
           profiles = digga.lib.rakeLeaves ./users/profiles;
           suites = with profiles; rec {
@@ -231,6 +240,12 @@
               '';
 
               file.".icons/yubikey-touch-detector.png".source = ./assets/yubico.png;
+            };
+
+            ssh-buildkite = {
+              enable = true;
+              username = "soren";
+              sshKey = "${./keys/soren.pub}";
             };
 
             custom = {
