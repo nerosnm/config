@@ -322,7 +322,6 @@ in
         set fo+=r " Auto-insert the current comment leader when pressing enter in insert mode
         set fo+=o " Auto-insert the current comment leader when entering new lines with o
         set fo+=q " Allow `gq` to format comments
-        set fo+=w " Use a single trailing whitespace character to indicate continuing paragraphs
         set fo+=n " Format numbered lists as well
         set fo+=j " Auto-remove comment characters when joining lines
 
