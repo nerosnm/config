@@ -19,6 +19,29 @@
         },
         "version": "e64e29e5b89d20548e792b3d6c3995c08d7ee636"
     },
+    "cargo-lints": {
+        "cargoLocks": {
+            "Cargo.lock": [
+                "./cargo-lints-2f8cad228c0add12352097a9ede0c54833ec18fb/Cargo.lock",
+                {}
+            ]
+        },
+        "extract": null,
+        "name": "cargo-lints",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "2f8cad228c0add12352097a9ede0c54833ec18fb",
+            "sha256": "sha256-L8+cpB7e1JdpAIfkWXRmX5u5ah1/gqA3rSW//OeO8SQ=",
+            "type": "git",
+            "url": "https://github.com/soramitsu/iroha2-cargo_lints"
+        },
+        "version": "2f8cad228c0add12352097a9ede0c54833ec18fb"
+    },
     "cmp-fuzzy-path": {
         "cargoLocks": null,
         "date": "2022-10-30",

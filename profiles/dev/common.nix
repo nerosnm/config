@@ -17,6 +17,7 @@ in
     cargo-expand
     cargo-geiger
     cargo-generate
+    cargo-lints
     cargo-modules
     cargo-update
     cargo-watch

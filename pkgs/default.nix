@@ -3,6 +3,7 @@ final: prev: {
   sources = prev.callPackage (import ./_sources/generated.nix) { };
   # then, call packages with `final.callPackage`
   carbon-now-nvim = final.callPackage ./carbon-now-nvim { };
+  cargo-lints = final.callPackage ./cargo-lints { };
   cmp-fuzzy-path = final.callPackage ./cmp-fuzzy-path { };
   doing = final.callPackage ./doing { };
   discord-linux = final.callPackage ./discord-linux { };

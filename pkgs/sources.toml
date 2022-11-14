@@ -2,6 +2,11 @@
 src.git = "https://github.com/ellisonleao/carbon-now.nvim"
 fetch.github = "ellisonleao/carbon-now.nvim"
 
+[cargo-lints]
+src.git = "https://github.com/soramitsu/iroha2-cargo_lints"
+fetch.git = "https://github.com/soramitsu/iroha2-cargo_lints"
+cargo_locks = [ "Cargo.lock" ]
+
 [cmp-fuzzy-path]
 src.git = "https://github.com/tzachar/cmp-fuzzy-path"
 fetch.github = "tzachar/cmp-fuzzy-path"

@@ -13,6 +13,24 @@
     });
     date = "2022-07-15";
   };
+  cargo-lints = {
+    pname = "cargo-lints";
+    version = "2f8cad228c0add12352097a9ede0c54833ec18fb";
+    src = fetchgit {
+      url = "https://github.com/soramitsu/iroha2-cargo_lints";
+      rev = "2f8cad228c0add12352097a9ede0c54833ec18fb";
+      fetchSubmodules = false;
+      deepClone = false;
+      leaveDotGit = false;
+      sha256 = "sha256-L8+cpB7e1JdpAIfkWXRmX5u5ah1/gqA3rSW//OeO8SQ=";
+    };
+    cargoLock."Cargo.lock" = {
+      lockFile = ./cargo-lints-2f8cad228c0add12352097a9ede0c54833ec18fb/Cargo.lock;
+      outputHashes = {
+        
+      };
+    };
+  };
   cmp-fuzzy-path = {
     pname = "cmp-fuzzy-path";
     version = "18ee8f81ab704f3f6656cfe52180dec6f7b497a7";
