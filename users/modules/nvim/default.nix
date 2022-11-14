@@ -56,15 +56,6 @@ in
     programs.neovim = {
       inherit (cfg) enable;
 
-      package = pkgs.neovim-unwrapped.overrideAttrs (old: {
-        buildInputs = old.buildInputs ++ [ pkgs.makeWrapper ];
-        postInstall = old.postInstall or "" + ''
-          mkdir -p $out/bin/unwrapped
-          mv $out/bin/nvim $out/bin/unwrapped/nvim
-          makeWrapper $out/bin/unwrapped/nvim $out/bin/nvim --set TERM wezterm
-        '';
-      });
-
       plugins = with pkgs; with vimPlugins; [
         glow-nvim
         haskell-vim

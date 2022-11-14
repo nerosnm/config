@@ -5,6 +5,7 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
-require'nvim-treesitter.highlight'.set_custom_captures {
-    ["definition.doc"] = "SpecialComment",
-}
+vim.api.nvim_set_hl(0, "@definition.doc", { link = "SpecialComment" })
+-- require'nvim-treesitter.highlight'.set_custom_captures {
+--     ["definition.doc"] = "SpecialComment",
+-- }

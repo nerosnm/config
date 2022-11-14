@@ -1,6 +1,7 @@
 {
     "carbon-now-nvim": {
         "cargoLocks": null,
+        "date": "2022-07-15",
         "extract": null,
         "name": "carbon-now-nvim",
         "passthru": null,
@@ -20,6 +21,7 @@
     },
     "cmp-fuzzy-path": {
         "cargoLocks": null,
+        "date": "2022-10-30",
         "extract": null,
         "name": "cmp-fuzzy-path",
         "passthru": null,
@@ -31,14 +33,15 @@
             "name": null,
             "owner": "tzachar",
             "repo": "cmp-fuzzy-path",
-            "rev": "13fdf779f833571ae72ca3a540531cfa9e67e714",
-            "sha256": "sha256-MvdQeT2N/2xEpmp6YPJLFxzg2KJBVf46l6/FzdJ7nO0=",
+            "rev": "18ee8f81ab704f3f6656cfe52180dec6f7b497a7",
+            "sha256": "sha256-E77kTQf7OOciTwZFjR18uLraJ8EFkVjcc350Lffc0Zc=",
             "type": "github"
         },
-        "version": "13fdf779f833571ae72ca3a540531cfa9e67e714"
+        "version": "18ee8f81ab704f3f6656cfe52180dec6f7b497a7"
     },
     "discord-linux": {
         "cargoLocks": null,
+        "date": null,
         "extract": null,
         "name": "discord-linux",
         "passthru": null,
@@ -53,6 +56,7 @@
     },
     "discord-ptb-linux": {
         "cargoLocks": null,
+        "date": null,
         "extract": null,
         "name": "discord-ptb-linux",
         "passthru": null,
@@ -67,6 +71,7 @@
     },
     "fuzzy-nvim": {
         "cargoLocks": null,
+        "date": "2022-02-20",
         "extract": null,
         "name": "fuzzy-nvim",
         "passthru": null,
@@ -86,6 +91,7 @@
     },
     "git-blame-nvim": {
         "cargoLocks": null,
+        "date": "2022-11-06",
         "extract": null,
         "name": "git-blame-nvim",
         "passthru": null,
@@ -97,14 +103,15 @@
             "name": null,
             "owner": "f-person",
             "repo": "git-blame.nvim",
-            "rev": "7c498272d0f97c583fc3a92f196231a90455eb19",
-            "sha256": "sha256-GJ0W4G773HxPyxF3AX8oydh+AJvgR/Q7FQZ7s3DHpjo=",
+            "rev": "d3afb1c57918720548effb42edec530232436378",
+            "sha256": "sha256-6imANfRFuY23A276CD8DWqHB89cyKN2TCKIQGG6elrc=",
             "type": "github"
         },
-        "version": "7c498272d0f97c583fc3a92f196231a90455eb19"
+        "version": "d3afb1c57918720548effb42edec530232436378"
     },
     "key-menu-nvim": {
         "cargoLocks": null,
+        "date": "2022-10-09",
         "extract": null,
         "name": "key-menu-nvim",
         "passthru": null,
@@ -124,6 +131,7 @@
     },
     "manix": {
         "cargoLocks": null,
+        "date": "2021-04-20",
         "extract": null,
         "name": "manix",
         "passthru": null,
@@ -143,6 +151,7 @@
     },
     "pest-vim": {
         "cargoLocks": null,
+        "date": "2020-04-20",
         "extract": null,
         "name": "pest-vim",
         "passthru": null,
@@ -162,6 +171,7 @@
     },
     "rust-vim": {
         "cargoLocks": null,
+        "date": "2022-09-28",
         "extract": null,
         "name": "rust-vim",
         "passthru": null,
@@ -180,6 +190,7 @@
     },
     "telescope-file-browser-nvim": {
         "cargoLocks": null,
+        "date": "2022-10-16",
         "extract": null,
         "name": "telescope-file-browser-nvim",
         "passthru": null,
@@ -199,6 +210,7 @@
     },
     "tree-sitter-rust": {
         "cargoLocks": null,
+        "date": null,
         "extract": null,
         "name": "tree-sitter-rust",
         "passthru": null,
@@ -218,6 +230,7 @@
     },
     "vim-dogrun": {
         "cargoLocks": null,
+        "date": "2022-11-06",
         "extract": null,
         "name": "vim-dogrun",
         "passthru": null,
@@ -229,10 +242,10 @@
             "name": null,
             "owner": "wadackel",
             "repo": "vim-dogrun",
-            "rev": "b9651e1b5b65a07867eaada3e3fc77a936f35dc4",
-            "sha256": "sha256-r2HIbo7q1GupySr/zefD8jOODksSK8PxG9pF8b8tPZs=",
+            "rev": "7622fa0d300dce9a9223797413b8d4f97417b7b5",
+            "sha256": "sha256-K7ioTbi9oXm4gD4bv7QRyqU9t1tGBcjgtwHMeBPfRbw=",
             "type": "github"
         },
-        "version": "b9651e1b5b65a07867eaada3e3fc77a936f35dc4"
+        "version": "7622fa0d300dce9a9223797413b8d4f97417b7b5"
     }
 }

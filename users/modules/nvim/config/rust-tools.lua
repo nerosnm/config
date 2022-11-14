@@ -1,5 +1,5 @@
 local cmp_lsp = require'cmp_nvim_lsp'
-local capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = cmp_lsp.default_capabilities()
 
 local inlay_group = vim.api.nvim_create_augroup('inlay_highlight', {})
 vim.api.nvim_create_autocmd('ColorScheme', {

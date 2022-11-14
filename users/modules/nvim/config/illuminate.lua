@@ -3,9 +3,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     group = illuminate_group,
     pattern = '*',
     callback = function()
-        vim.cmd('highlight IlluminatedWordText gui=underdot')
-        vim.cmd('highlight IlluminatedWordRead gui=underdot')
-        vim.cmd('highlight IlluminatedWordWrite gui=underdot')
+        vim.cmd('highlight IlluminatedWordText gui=underdotted')
+        vim.cmd('highlight IlluminatedWordRead gui=underdotted')
+        vim.cmd('highlight IlluminatedWordWrite gui=underdotted')
     end,
 })
 
