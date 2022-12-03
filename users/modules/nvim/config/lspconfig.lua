@@ -1,4 +1,5 @@
 local lspconfig = require'lspconfig'
+local notify = require'notify'
 
 -- Override the default signs shown in the signcolumn for each type of 
 -- diagnostic.
@@ -14,6 +15,36 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         severity_sort = true,
     }
 )
+
+vim.lsp.handlers['window/showMessage'] = function(_, result, ctx)
+    local client = vim.lsp.get_client_by_id(ctx.client_id)
+    local lvl = ({ 'ERROR', 'WARN', 'INFO', 'DEBUG' })[result.type]
+    notify(result.message, lvl, {
+        title = 'LSP | ' .. client.name,
+        -- timeout = 10000,
+        keep = function()
+            return lvl == 'ERROR' or lvl == 'WARN'
+        end,
+    })
+end
+
+vim.notify = notify
+
+vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
+    config = config or {}
+    config.focus_id = ctx.method
+    if not (result and result.contents) then
+        notify('No information available', 'ERROR')
+        return
+    end
+    local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+    markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+    if vim.tbl_isempty(markdown_lines) then
+        notify('No information available', 'WARN')
+        return
+    end
+    return vim.lsp.util.open_floating_preview(markdown_lines, 'markdown', config)
+end
 
 local undercurl_group = vim.api.nvim_create_augroup('lsp_undercurl', {})
 vim.api.nvim_create_autocmd('ColorScheme', {
