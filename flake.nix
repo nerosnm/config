@@ -48,7 +48,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "latest";
 
-    ditto.url = "git+ssh://git@github.com/getditto/ditto.git?ref=sm/nix-ssh-module";
+    ditto.url = "git+ssh://git@github.com/getditto/ditto.git";
     ditto.inputs.rust-overlay.follows = "rust-overlay";
     ditto.inputs.agenix.follows = "agenix";
   };

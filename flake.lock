@@ -226,16 +226,15 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1667481662,
-        "narHash": "sha256-lySkL6hf5x2bpe9chEXU0Z016LKlg4TE+Ge5zJ/2gss=",
-        "ref": "sm/nix-ssh-module",
-        "rev": "55a67b7cd6d954ff578cd52f7d3f25825ff9bfa2",
-        "revCount": 19145,
+        "lastModified": 1670039655,
+        "narHash": "sha256-qoKJQmncVbNYaCg7Mqo2zfGc86+Aavlq6NumQvspZYk=",
+        "ref": "refs/heads/main",
+        "rev": "4c6909baaf5a9cc6bb40c5f5cb62dccb6a09d5cc",
+        "revCount": 20143,
         "type": "git",
         "url": "ssh://git@github.com/getditto/ditto.git"
       },
       "original": {
-        "ref": "sm/nix-ssh-module",
         "type": "git",
         "url": "ssh://git@github.com/getditto/ditto.git"
       }
