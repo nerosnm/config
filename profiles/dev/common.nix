@@ -3,13 +3,6 @@
 , ...
 }:
 
-let
-  rust = pkgs.rust-bin.stable.latest.minimal.override {
-    extensions = [ "rust-docs" "rust-src" "clippy" ];
-  };
-
-  rustfmt = pkgs.rust-bin.nightly.latest.rustfmt;
-in
 {
   environment.systemPackages = with pkgs; [
     cargo-about
@@ -23,9 +16,7 @@ in
     cargo-watch
 
     clang_12
-    rust
     rust-analyzer
-    rustfmt
     rustup
 
     go

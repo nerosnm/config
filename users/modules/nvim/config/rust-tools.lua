@@ -23,6 +23,9 @@ require('rust-tools').setup({
     server = {
         capabilities = capabilities,
         settings = {
+            flags = {
+                debounce_text_changes = 150,
+            },
             ["rust-analyzer"] = {
                 assist = {
                     importEnforceGranularity = true,

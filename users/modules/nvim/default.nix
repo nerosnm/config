@@ -57,50 +57,21 @@ in
       inherit (cfg) enable;
 
       plugins = with pkgs; with vimPlugins; [
-        glow-nvim
         haskell-vim
-        pest-vim
         plenary-nvim
         swift-vim
-        tabular
         telescope-file-browser-nvim
         telescope-fzf-native-nvim
-        vim-clang-format
-        vim-dogrun
-        vim-easymotion
+        nvim-notify
         vim-glsl
         vim-highlightedyank
         vim-javascript
         vim-jsx-pretty
-        vim-maktaba
         vim-nix
         vim-numbertoggle
         vim-toml
         vimtex
 
-        (luaPlugin
-          (nvim-treesitter.withPlugins (plugins: with tree-sitter-grammars; [
-            # tree-sitter-bash
-            # tree-sitter-bibtex
-            # tree-sitter-comment
-            # tree-sitter-cpp
-            # tree-sitter-css
-            # tree-sitter-dockerfile
-            # tree-sitter-go
-            # tree-sitter-html
-            # tree-sitter-java
-            # tree-sitter-javascript
-            # tree-sitter-json
-            # tree-sitter-latex
-            # tree-sitter-make
-            pkgs.tree-sitter-rust
-            # tree-sitter-toml
-            # tree-sitter-typescript
-            # tree-sitter-vim
-            # tree-sitter-yaml
-          ])) ./config/treesitter.lua)
-
-        (luaPlugin carbon-now-nvim ./config/carbon-now.lua)
         (luaPlugin dressing-nvim ./config/dressing.lua)
         (luaPlugin formatter-nvim ./config/formatter.lua)
         (luaPlugin indent-blankline-nvim ./config/indent-blankline.lua)
@@ -109,14 +80,11 @@ in
         (luaPlugin onedark-vim ./config/onedark.lua)
         (luaPlugin pkgs.git-blame-nvim ./config/git-blame.lua)
         (luaPlugin pkgs.rust-vim ./config/rust.lua)
-        (luaPlugin presence-nvim ./config/presence.lua)
-        (luaPlugin spellsitter-nvim ./config/spellsitter.lua)
         (luaPlugin telescope-nvim ./config/telescope.lua)
         (luaPlugin vim-gitgutter ./config/gitgutter.lua)
         (luaPlugin vim-rooter ./config/rooter.lua)
         (luaPluginInline comment-nvim "require'Comment'.setup {}")
         (luaPluginInline nvim-colorizer-lua "require'colorizer'.setup {}")
-        (vimPlugin easymotion ./config/easymotion.vim)
       ];
 
       extraPackages = with pkgs; [
@@ -158,16 +126,6 @@ in
           \ }
         " Set the leader key for insert-mode bindings
         let g:vimtex_imaps_leader = ';'
-
-        " ----------------
-        " vim-clang-format
-        " ----------------
-
-        let g:clang_format#command = '${pkgs.clang-tools}/bin/clang-format'
-
-        " augroup clangformat | au!
-        "   au BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp :ClangFormatAutoEnable
-        " augroup END
 
         " =================
         " LANGUAGE SETTINGS

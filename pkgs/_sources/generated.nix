@@ -30,6 +30,7 @@
         
       };
     };
+    date = "2022-06-07";
   };
   cmp-fuzzy-path = {
     pname = "cmp-fuzzy-path";
@@ -61,15 +62,15 @@
   };
   fuzzy-nvim = {
     pname = "fuzzy-nvim";
-    version = "d5fee69b54ef400f0ccedf37917c4782e8929424";
+    version = "04b3d969002b5fd2db23a33aaf33a13a533cbdbd";
     src = fetchFromGitHub ({
       owner = "tzachar";
       repo = "fuzzy.nvim";
-      rev = "d5fee69b54ef400f0ccedf37917c4782e8929424";
+      rev = "04b3d969002b5fd2db23a33aaf33a13a533cbdbd";
       fetchSubmodules = false;
-      sha256 = "sha256-znlS/F3lc6Ue0g0UPSWyifJBiWPvlLnJHtJpmVfl1fY=";
+      sha256 = "sha256-s0Z48Ve5aj1XsdrAuv53+T1T/jo1zThgaaTeAKtfg5U=";
     });
-    date = "2022-02-20";
+    date = "2022-11-15";
   };
   git-blame-nvim = {
     pname = "git-blame-nvim";
@@ -143,28 +144,5 @@
       sha256 = "sha256-fIm2FWYJXNl0SlQgmRuULOTRc2VVv2p1jJ2slcP4veY=";
     });
     date = "2022-10-16";
-  };
-  tree-sitter-rust = {
-    pname = "tree-sitter-rust";
-    version = "67d304c81e3b2a6cda7e9f577c1f527c53c8348e";
-    src = fetchFromGitHub ({
-      owner = "tree-sitter";
-      repo = "tree-sitter-rust";
-      rev = "67d304c81e3b2a6cda7e9f577c1f527c53c8348e";
-      fetchSubmodules = false;
-      sha256 = "sha256-xxiqcCXWb3T12W4z+bnYmCWo4U6lyOFCBy2H2p7AHWI=";
-    });
-  };
-  vim-dogrun = {
-    pname = "vim-dogrun";
-    version = "7622fa0d300dce9a9223797413b8d4f97417b7b5";
-    src = fetchFromGitHub ({
-      owner = "wadackel";
-      repo = "vim-dogrun";
-      rev = "7622fa0d300dce9a9223797413b8d4f97417b7b5";
-      fetchSubmodules = false;
-      sha256 = "sha256-K7ioTbi9oXm4gD4bv7QRyqU9t1tGBcjgtwHMeBPfRbw=";
-    });
-    date = "2022-11-06";
   };
 }

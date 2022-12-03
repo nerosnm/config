@@ -46,11 +46,3 @@ fetch.git = "https://github.com/rust-lang/rust.vim"
 [telescope-file-browser-nvim]
 src.git = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
 fetch.github = "nvim-telescope/telescope-file-browser.nvim"
-
-[tree-sitter-rust]
-src.manual = "67d304c81e3b2a6cda7e9f577c1f527c53c8348e"
-fetch.github = "tree-sitter/tree-sitter-rust"
-
-[vim-dogrun]
-src.git = "https://github.com/wadackel/vim-dogrun"
-fetch.github = "wadackel/vim-dogrun"

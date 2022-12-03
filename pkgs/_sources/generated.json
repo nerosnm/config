@@ -26,6 +26,7 @@
                 {}
             ]
         },
+        "date": "2022-06-07",
         "extract": null,
         "name": "cargo-lints",
         "passthru": null,
@@ -94,7 +95,7 @@
     },
     "fuzzy-nvim": {
         "cargoLocks": null,
-        "date": "2022-02-20",
+        "date": "2022-11-15",
         "extract": null,
         "name": "fuzzy-nvim",
         "passthru": null,
@@ -106,11 +107,11 @@
             "name": null,
             "owner": "tzachar",
             "repo": "fuzzy.nvim",
-            "rev": "d5fee69b54ef400f0ccedf37917c4782e8929424",
-            "sha256": "sha256-znlS/F3lc6Ue0g0UPSWyifJBiWPvlLnJHtJpmVfl1fY=",
+            "rev": "04b3d969002b5fd2db23a33aaf33a13a533cbdbd",
+            "sha256": "sha256-s0Z48Ve5aj1XsdrAuv53+T1T/jo1zThgaaTeAKtfg5U=",
             "type": "github"
         },
-        "version": "d5fee69b54ef400f0ccedf37917c4782e8929424"
+        "version": "04b3d969002b5fd2db23a33aaf33a13a533cbdbd"
     },
     "git-blame-nvim": {
         "cargoLocks": null,
@@ -230,45 +231,5 @@
             "type": "github"
         },
         "version": "2429ecfd2d76e3eb6c9f8d8ba2c6ce328975a95a"
-    },
-    "tree-sitter-rust": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "tree-sitter-rust",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "tree-sitter",
-            "repo": "tree-sitter-rust",
-            "rev": "67d304c81e3b2a6cda7e9f577c1f527c53c8348e",
-            "sha256": "sha256-xxiqcCXWb3T12W4z+bnYmCWo4U6lyOFCBy2H2p7AHWI=",
-            "type": "github"
-        },
-        "version": "67d304c81e3b2a6cda7e9f577c1f527c53c8348e"
-    },
-    "vim-dogrun": {
-        "cargoLocks": null,
-        "date": "2022-11-06",
-        "extract": null,
-        "name": "vim-dogrun",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "wadackel",
-            "repo": "vim-dogrun",
-            "rev": "7622fa0d300dce9a9223797413b8d4f97417b7b5",
-            "sha256": "sha256-K7ioTbi9oXm4gD4bv7QRyqU9t1tGBcjgtwHMeBPfRbw=",
-            "type": "github"
-        },
-        "version": "7622fa0d300dce9a9223797413b8d4f97417b7b5"
     }
 }

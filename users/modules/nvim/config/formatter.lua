@@ -5,6 +5,12 @@ formatter.setup {
     logging = true,
     log_level = vim.log.levels.WARN,
     filetype = {
+        c = {
+            require'formatter.filetypes.c'.clangformat,
+        },
+        cpp = {
+            require'formatter.filetypes.cpp'.clangformat,
+        },
         rust = {
             require'formatter.filetypes.rust'.rustfmt,
         },
@@ -16,6 +22,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     group = formatter_group,
     pattern = '*',
     callback = function()
-        vim.cmd('FormatWrite')
+        vim.cmd('FormatWriteLock')
     end,
 })

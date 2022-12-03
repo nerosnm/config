@@ -86,10 +86,6 @@ in
 
       xdg.configFile."nvim/syntax/marsh.vim".source = ./marsh.vim;
 
-      xdg.configFile."nvim/after/queries/rust/highlights.scm".text = ''
-        (doc_comment) @definition.doc
-      '';
-
       xdg.configFile."helix/config.toml".text = ''
         theme = "onedark"
 

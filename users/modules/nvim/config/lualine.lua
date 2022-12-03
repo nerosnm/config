@@ -9,17 +9,6 @@ local colors = {
 onehalf.normal.b.fg = colors.fg
 onehalf.normal.c.fg = colors.fg
 
--- local treesitter = require('nvim-treesitter')
--- local function treelocation()
---   return treesitter.statusline({
---     type_patterns = {'class', 'struct', 'impl'},
---   })
--- end
-
--- local function treelocation_available()
---     return treelocation() ~= nil
--- end
-
 require'lualine'.setup {
     options = {
         theme = onehalf,
