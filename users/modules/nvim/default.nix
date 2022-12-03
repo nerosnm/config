@@ -276,12 +276,12 @@ in
         set textwidth=80
 
         " Format options (default fo=jcroql)
-        set fo=ca " Auto-wrap comments to textwidth
-        set fo+=r " Auto-insert the current comment leader when pressing enter in insert mode
-        set fo+=o " Auto-insert the current comment leader when entering new lines with o
-        set fo+=q " Allow `gq` to format comments
-        set fo+=n " Format numbered lists as well
-        set fo+=j " Auto-remove comment characters when joining lines
+        " set fo=ca " Auto-wrap comments to textwidth
+        " set fo+=r " Auto-insert the current comment leader when pressing enter in insert mode
+        " set fo+=o " Auto-insert the current comment leader when entering new lines with o
+        " set fo+=q " Allow `gq` to format comments
+        " set fo+=n " Format numbered lists as well
+        " set fo+=j " Auto-remove comment characters when joining lines
 
         " Enable mouse usage (all modes) in terminals
         set mouse=a
