@@ -466,6 +466,22 @@
         "type": "github"
       }
     },
+    "master": {
+      "locked": {
+        "lastModified": 1670423534,
+        "narHash": "sha256-akPWK1BblFM5NQhOIgrGha6z3btj1lxNpaUID8k4FY8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1f9f4af65647d2bf0dd972855b42c86be8f81b81",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "naersk": {
       "inputs": {
         "nixpkgs": [
@@ -711,6 +727,7 @@
         "ditto": "ditto",
         "home": "home",
         "latest": "latest_2",
+        "master": "master",
         "naersk": "naersk",
         "nixos": "nixos",
         "nixos-generators": "nixos-generators",
