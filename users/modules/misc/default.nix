@@ -54,6 +54,21 @@ in
         table.insert(alsa_monitor.rules,rule)
       '';
 
+      xdg.configFile."wireplumber/main.lua.d/51-cam-link-disable.lua".text = ''
+        rule = {
+          matches = {
+            {
+              { "device.name", "equals", "alsa_card.usb-Elgato_Cam_Link_4K_0003892D90000-03" }
+            },
+          },
+          apply_properties = {
+            ["device.disabled"] = true,
+          },
+        }
+
+        table.insert(alsa_monitor.rules,rule)
+      '';
+
       xdg.configFile."wireplumber/main.lua.d/51-kanto-yu2-rename.lua".text = ''
         rule = {
           matches = {
@@ -73,11 +88,12 @@ in
         rule = {
           matches = {
             {
-              { "device.name", "equals", "alsa_card.usb-Focusrite_Scarlett_Solo_USB-00" }
+              { "device.name", "equals", "alsa_card.usb-Focusrite_Scarlett_2i2_USB_Y8BAJAZ211EB4C-00" }
             },
           },
           apply_properties = {
-            ["device.description"] = "Scarlett Solo",
+            ["device.description"] = "Scarlett 2i2",
+            ["device.product.name"] = "Scarlett 2i2",
           },
         }
 
