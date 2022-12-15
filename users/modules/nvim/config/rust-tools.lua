@@ -32,7 +32,7 @@ require('rust-tools').setup({
                     importPrefix = "crate",
                 },
                 checkOnSave = {
-                    -- command = "clippy",
+                    command = "clippy",
                 },
                 completion = {
                     postfix = {
@@ -42,7 +42,19 @@ require('rust-tools').setup({
                 diagnostics = {
                     disabled = {
                         "unresolved-proc-macro",
-                    }
+                    },
+                },
+                hover = {
+                    links = {
+                        -- It's ugly when rust-analyzer tries to display docs.rs
+                        -- links for links in markdown docs.
+                        enable = false,
+                    },
+                    imports = {
+                        prefix = {
+                            "self",
+                        },
+                    },
                 },
             },
         },
