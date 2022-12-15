@@ -32,10 +32,7 @@ require('rust-tools').setup({
                     importPrefix = "crate",
                 },
                 checkOnSave = {
-                    command = "clippy",
-                    extraArgs = {
-                        "--target-dir=target/rust-analyzer",
-                    },
+                    -- command = "clippy",
                 },
                 completion = {
                     postfix = {
