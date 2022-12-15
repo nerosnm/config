@@ -251,8 +251,6 @@ in
         set cursorline
         " Always show the signcolumn
         set signcolumn=yes
-        " 100ms of no cursor movement to trigger CursorHold
-        set updatetime=100
 
         " ------------
         " Text Editing
