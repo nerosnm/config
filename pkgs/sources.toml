@@ -1,0 +1,44 @@
+[carbon-now-nvim]
+src.git = "https://github.com/ellisonleao/carbon-now.nvim"
+fetch.github = "ellisonleao/carbon-now.nvim"
+
+[cargo-lints]
+src.git = "https://github.com/soramitsu/iroha2-cargo_lints"
+fetch.git = "https://github.com/soramitsu/iroha2-cargo_lints"
+cargo_locks = [ "Cargo.lock" ]
+
+[cmp-fuzzy-path]
+src.git = "https://github.com/tzachar/cmp-fuzzy-path"
+fetch.github = "tzachar/cmp-fuzzy-path"
+
+[fuzzy-nvim]
+src.git = "https://github.com/tzachar/fuzzy.nvim"
+fetch.github = "tzachar/fuzzy.nvim"
+
+[git-blame-nvim]
+src.git = "https://github.com/f-person/git-blame.nvim"
+fetch.github = "f-person/git-blame.nvim"
+
+[key-menu-nvim]
+src.git = "https://github.com/linty-org/key-menu.nvim"
+fetch.github = "linty-org/key-menu.nvim"
+
+[manix]
+src.git = "https://github.com/mlvzk/manix"
+fetch.github = "mlvzk/manix"
+
+[pest-vim]
+src.git = "https://github.com/pest-parser/pest.vim"
+fetch.github = "pest-parser/pest.vim"
+
+[rust-tools-nvim]
+src.git = "https://github.com/simrat39/rust-tools.nvim"
+fetch.github = "simrat39/rust-tools.nvim"
+
+[rust-vim]
+src.git = "https://github.com/rust-lang/rust.vim"
+fetch.git = "https://github.com/rust-lang/rust.vim"
+
+[telescope-file-browser-nvim]
+src.git = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+fetch.github = "nvim-telescope/telescope-file-browser.nvim"

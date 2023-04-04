@@ -1,0 +1,85 @@
+add_newline = true
+
+[aws]
+symbol = " "
+
+[character]
+# success_symbol = "[❯](bold purple)"
+# vicmd_symbol = "[❮](bold purple)"
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[conda]
+symbol = " "
+
+[directory]
+style = "cyan"
+read_only = " 🔒"
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+disabled = true
+
+[nim]
+symbol = " "
+
+[nix_shell]
+format = 'in [$symbol$state( \($name\))]($style) '
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[status]
+symbol = "×"
+not_executable_symbol = "∅"
+not_found_symbol = "∉"
+sigint_symbol = "⊥"
+signal_symbol = "⋕"
+disabled = true
+
+[sudo]
+symbol = "⚝ "
+disabled = false
