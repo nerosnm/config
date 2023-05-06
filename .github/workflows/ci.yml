@@ -1,0 +1,40 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  cancel-previous:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Cancel previous runs of this workflow that have not yet completed
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+
+  check-flake:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Clone the repository
+      - name: Clone
+        uses: actions/checkout@v3
+      # Install Nix onto the runner
+      - name: Install Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          install_url: "https://releases.nixos.org/nix/nix-2.14.1/install"
+          extra_nix_config: |
+            access-tokens = github.com=${{ github.token }}
+      # Set up my Cachix cache
+      - name: Cachix
+        uses: cachix/cachix-action@v12
+        with:
+          name: nerosnm
+          authToken: ${{ secrets.CACHIX_KEY }}
+      - name: Check Nix Flake
+        run: nix flake check
