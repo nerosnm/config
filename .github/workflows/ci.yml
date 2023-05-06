@@ -37,4 +37,4 @@ jobs:
           name: nerosnm
           authToken: ${{ secrets.CACHIX_KEY }}
       - name: Check Nix Flake
-        run: nix flake check
+        run: nix flake check -L --accept-flake-config
