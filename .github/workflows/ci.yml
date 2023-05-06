@@ -99,6 +99,7 @@ jobs:
             --ssh-opts="-i ~/.ssh/${{ matrix.host }}_deploy_key" \
             .#${{ matrix.host }} \
             -- \
+            --accept-flake-config \
             --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
       # Dry-activate the configuration on the host
       - name: Dry Activate ${{ matrix.host }}
@@ -115,4 +116,5 @@ jobs:
             .#${{ matrix.host }} \
             --dry-activate \
             -- \
+            --accept-flake-config \
             --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
