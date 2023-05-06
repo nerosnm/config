@@ -5,6 +5,12 @@ final: prev: {
     ];
   });
 
+  tailscale = prev.tailscale.overrideAttrs (old: {
+    subPackages = old.subPackages ++ [
+      "cmd/proxy-to-grafana"
+    ];
+  });
+
   iosevka-custom = prev.iosevka.override {
     set = "custom";
     privateBuildPlan = ''

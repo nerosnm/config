@@ -56,6 +56,8 @@
     nvfetcher.url = "github:berberman/nvfetcher";
     nvfetcher.inputs.nixpkgs.follows = "nixpkgs-unstable";
     nvfetcher.inputs.flake-utils.follows = "flake-utils";
+
+    neros-dev.url = "git+ssh://git@github.neros.dev/nerosnm/neros.dev.git?ref=main";
   };
 
   outputs =
@@ -76,7 +78,13 @@
 
       # The list of overlays that should be applied (first) to every import of
       # nixpkgs, regardless of which channel is being imported.
-      baseOverlays = [
+      baseOverlays = system: [
+        (final: prev: {
+          neros-dev = inputs.neros-dev.packages.${system}.neros-dev;
+          neros-dev-content = inputs.neros-dev.packages.${system}.content;
+          neros-dev-static = inputs.neros-dev.packages.${system}.static;
+          neros-dev-stylesheet = inputs.neros-dev.packages.${system}.stylesheet;
+        })
       ] ++ map (input: input.overlays.default) (with inputs; [
         agenix
       ]);
@@ -127,7 +135,7 @@
         }: import channel {
           inherit system;
           config.allowUnfree = true;
-          overlays = baseOverlays ++ upgradeOverlays ++ [ overrides customPkgs ];
+          overlays = (baseOverlays system) ++ upgradeOverlays ++ [ overrides customPkgs ];
         };
 
       # An overlay that picks packages from the flake inputs, regardless of the
@@ -205,6 +213,7 @@
           fd
           git
           gnome-photos
+          grafana
           keybase
           nixpkgs-fmt
           openssh
@@ -215,6 +224,7 @@
           streamdeck-ui
           tailscale
           tectonic
+          tempo
           udisks
           yubikey-manager
           ;
@@ -292,7 +302,20 @@
 
       formatter = pkgs.nixpkgs-fmt;
     })) // {
-      nixosConfigurations = { };
+      nixosConfigurations = {
+        atria =
+          let
+            system = systems.x86_64-linux;
+            pkgs = stableFor system;
+          in
+          nixpkgs.lib.nixosSystem {
+            inherit system pkgs;
+            modules = [
+              inputs.agenix.nixosModules.age
+              ./system/hosts/atria.nix
+            ] ++ (pkgs.lib.attrValues self.nixosModules);
+          };
+      };
 
       darwinConfigurations = {
         nashira =
@@ -309,8 +332,40 @@
           };
       };
 
+      nixosModules = {
+        grafana = import ./system/modules/grafana.nix;
+        loki = import ./system/modules/loki.nix;
+        neros-dev = import ./system/modules/neros-dev.nix;
+        prometheus = import ./system/modules/prometheus.nix;
+        tailscale = import ./system/modules/tailscale.nix;
+        tempo = import ./system/modules/tempo.nix;
+      };
+
       overlays = {
         inherit customPkgs overrides;
+      };
+
+      deploy = {
+        sshUser = "root";
+        autoRollback = true;
+        magicRollback = true;
+
+        nodes = {
+          atria =
+            let
+              deployLib = inputs.deploy-rs.lib.x86_64-linux;
+            in
+            {
+              hostname = "atria";
+
+              profiles = {
+                system = {
+                  user = "root";
+                  path = deployLib.activate.nixos self.nixosConfigurations.atria;
+                };
+              };
+            };
+        };
       };
     };
 }

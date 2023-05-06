@@ -2,6 +2,7 @@ let
   inherit (builtins) mapAttrs readFile;
 
   # Public keys of specific machines.
+  atria = readFile ../keys/atria.pub;
   nashira = readFile ../keys/nashira.pub;
 
   # Each of the secrets is given a list of public keys that should be used to 
@@ -16,6 +17,10 @@ let
     "root-pwhash.age".publicKeys = [ ];
     "soren-libera-cert.age".publicKeys = [ ];
     "soren-pwhash.age".publicKeys = [ ];
+
+    "grafana-admin-password.age".publicKeys = [ atria ];
+    "tailscale-atria.age".publicKeys = [ atria ];
+    "tailscale-grafana.age".publicKeys = [ atria ];
   };
 
   # Public key of an age-plugin-yubikey key, the counterpart to the keygrip 
