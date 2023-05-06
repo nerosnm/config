@@ -29,7 +29,7 @@ jobs:
         with:
           install_url: "https://releases.nixos.org/nix/nix-2.14.1/install"
           extra_nix_config: |
-            access-tokens = github.com=${{ github.token }}
+            access-tokens = github.com=${{ secrets.PRIVATE_REPO_PAT }}
       # Set up my Cachix cache
       - name: Cachix
         uses: cachix/cachix-action@v12
@@ -37,4 +37,67 @@ jobs:
           name: nerosnm
           authToken: ${{ secrets.CACHIX_KEY }}
       - name: Check Nix Flake
-        run: nix flake check -L --accept-flake-config
+        run: |
+          neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
+          nix flake check \
+            -L \
+            --accept-flake-config \
+            --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        host:
+          - atria
+
+    steps:
+      # Clone the repository
+      - name: Clone
+        uses: actions/checkout@v3
+      # Install Nix onto the runner
+      - name: Install Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          install_url: "https://releases.nixos.org/nix/nix-2.14.1/install"
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.PRIVATE_REPO_PAT }}
+      # Set up my Cachix cache
+      - name: Cachix
+        uses: cachix/cachix-action@v12
+        with:
+          name: nerosnm
+          authToken: ${{ secrets.CACHIX_KEY }}
+      # Set up Tailscale and log into the tailnet with an ephemeral authkey
+      - name: Set up Tailscale
+        uses: tailscale/github-action@main
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+      # Set up a private key and known-hosts info for each host
+      - name: Set up SSH Keys
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$ATRIA_DEPLOY_KEY" >> ~/.ssh/atria_deploy_key
+          sudo chmod 600 ~/.ssh/atria_deploy_key
+          echo "$ATRIA_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+        shell: bash
+        env:
+          ATRIA_DEPLOY_KEY: ${{ secrets.ATRIA_DEPLOY_KEY }}
+          ATRIA_KNOWN_HOSTS: ${{ secrets.ATRIA_KNOWN_HOSTS }}
+      # Deploy the configuration to the host
+      - name: Deploy ${{ matrix.host }}
+        run: |
+          neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
+          nix develop \
+            -L \
+            --accept-flake-config \
+            --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev} \
+            -c \
+            deploy \
+            --ssh-opts="-i ~/.ssh/${{ matrix.host }}_deploy_key" \
+            .#${{ matrix.host }} \
+            --remote-build \
+            --dry-activate \
+            -- \
+            --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
