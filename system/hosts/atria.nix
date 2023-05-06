@@ -5,6 +5,7 @@
 }:
 
 let
+  deploy = builtins.readFile ../../keys/atria-deploy.pub;
   soren = builtins.readFile ../../keys/soren.pub;
 in
 {
@@ -33,7 +34,7 @@ in
     permitRootLogin = "prohibit-password";
   };
 
-  users.users.root.openssh.authorizedKeys.keys = [ soren ];
+  users.users.root.openssh.authorizedKeys.keys = [ deploy soren ];
 
   # Reject HTTP requests to the root
   services.nginx = {
