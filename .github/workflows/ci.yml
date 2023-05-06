@@ -87,6 +87,7 @@ jobs:
           ATRIA_KNOWN_HOSTS: ${{ secrets.ATRIA_KNOWN_HOSTS }}
       # Deploy the configuration to the host
       - name: Deploy ${{ matrix.host }}
+        if: github.event_name == 'push'
         run: |
           neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
           nix develop \
@@ -97,7 +98,21 @@ jobs:
             deploy \
             --ssh-opts="-i ~/.ssh/${{ matrix.host }}_deploy_key" \
             .#${{ matrix.host }} \
-            --remote-build \
+            -- \
+            --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
+      # Dry-activate the configuration on the host
+      - name: Dry Activate ${{ matrix.host }}
+        if: github.event_name == 'pull_request'
+        run: |
+          neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
+          nix develop \
+            -L \
+            --accept-flake-config \
+            --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev} \
+            -c \
+            deploy \
+            --ssh-opts="-i ~/.ssh/${{ matrix.host }}_deploy_key" \
+            .#${{ matrix.host }} \
             --dry-activate \
             -- \
             --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
