@@ -36,7 +36,7 @@ jobs:
         with:
           name: nerosnm
           authToken: ${{ secrets.CACHIX_KEY }}
-      - name: Determine input rev for neros-dev
+      - name: Input rev (neros-dev)
         run: |
           neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
           echo "neros_dev_rev=${neros_dev_rev}" >> "$GITHUB_ENV"
@@ -88,12 +88,12 @@ jobs:
         env:
           ATRIA_DEPLOY_KEY: ${{ secrets.ATRIA_DEPLOY_KEY }}
           ATRIA_KNOWN_HOSTS: ${{ secrets.ATRIA_KNOWN_HOSTS }}
-      - name: Determine input rev for neros-dev
+      - name: Input rev (neros-dev)
         run: |
           neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
           echo "neros_dev_rev=${neros_dev_rev}" >> "$GITHUB_ENV"
       # Build the configuration for the host first
-      - name: Build ${{ matrix.host }} configuration
+      - name: Build (${{ matrix.host }})
         run: |
           nix build \
             -L \
@@ -105,7 +105,7 @@ jobs:
         run: echo "dry_activation_flag=--dry-activate" >> "$GITHUB_ENV"
       # Deploy the configuration to the host (or dry-activate it if the flag was
       # set)
-      - name: Deploy ${{ matrix.host }}
+      - name: Deploy (${{ matrix.host }})
         run: |
           nix develop \
             -L \
