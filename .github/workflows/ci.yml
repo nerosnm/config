@@ -24,7 +24,7 @@ jobs:
       - name: Clone
         uses: actions/checkout@v3
       # Install Nix onto the runner
-      - name: Install Nix
+      - name: Nix
         uses: cachix/install-nix-action@v20
         with:
           install_url: "https://releases.nixos.org/nix/nix-2.14.1/install"
@@ -36,9 +36,12 @@ jobs:
         with:
           name: nerosnm
           authToken: ${{ secrets.CACHIX_KEY }}
-      - name: Check Nix Flake
+      - name: Determine input rev for neros-dev
         run: |
           neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
+          echo "neros_dev_rev=${neros_dev_rev}" >> "$GITHUB_ENV"
+      - name: Check Flake
+        run: |
           nix flake check \
             -L \
             --accept-flake-config \
@@ -57,7 +60,7 @@ jobs:
       - name: Clone
         uses: actions/checkout@v3
       # Install Nix onto the runner
-      - name: Install Nix
+      - name: Nix
         uses: cachix/install-nix-action@v20
         with:
           install_url: "https://releases.nixos.org/nix/nix-2.14.1/install"
@@ -70,12 +73,12 @@ jobs:
           name: nerosnm
           authToken: ${{ secrets.CACHIX_KEY }}
       # Set up Tailscale and log into the tailnet with an ephemeral authkey
-      - name: Set up Tailscale
+      - name: Tailscale
         uses: tailscale/github-action@main
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
       # Set up a private key and known-hosts info for each host
-      - name: Set up SSH keys
+      - name: SSH keys
         run: |
           mkdir -p ~/.ssh/
           echo "$ATRIA_DEPLOY_KEY" >> ~/.ssh/atria_deploy_key
@@ -85,7 +88,7 @@ jobs:
         env:
           ATRIA_DEPLOY_KEY: ${{ secrets.ATRIA_DEPLOY_KEY }}
           ATRIA_KNOWN_HOSTS: ${{ secrets.ATRIA_KNOWN_HOSTS }}
-      - name: Determine neros-dev input rev
+      - name: Determine input rev for neros-dev
         run: |
           neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
           echo "neros_dev_rev=${neros_dev_rev}" >> "$GITHUB_ENV"
