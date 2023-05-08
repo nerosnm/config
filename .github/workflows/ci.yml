@@ -123,17 +123,17 @@ jobs:
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
-      # Set up a private key and known-hosts info for each host.
+      # Set up a private key and known-hosts info for the host.
       - name: SSH keys
         run: |
           mkdir -p ~/.ssh/
-          echo "$ATRIA_DEPLOY_KEY" >> ~/.ssh/atria_deploy_key
-          sudo chmod 600 ~/.ssh/atria_deploy_key
-          echo "$ATRIA_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+          echo "$DEPLOY_KEY" >> ~/.ssh/deploy_key
+          sudo chmod 600 ~/.ssh/deploy_key
+          echo "$KNOWN_HOSTS" >> ~/.ssh/known_hosts
         shell: bash
         env:
-          ATRIA_DEPLOY_KEY: ${{ secrets.ATRIA_DEPLOY_KEY }}
-          ATRIA_KNOWN_HOSTS: ${{ secrets.ATRIA_KNOWN_HOSTS }}
+          DEPLOY_KEY: ${{ secrets[format('{0}_DEPLOY_KEY', matrix.host)] }}
+          KNOWN_HOSTS: ${{ secrets[format('{0}_KNOWN_HOSTS', matrix.host)] }}
 
       # Calculate the rev that the neros-dev input is locked to, so that we can
       # override the path to the input for ourselves and download the right
@@ -169,7 +169,7 @@ jobs:
             --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev} \
             -c \
             deploy \
-            --ssh-opts="-i ~/.ssh/${{ matrix.host }}_deploy_key" \
+            --ssh-opts="-i ~/.ssh/deploy_key" \
             .#${{ matrix.host }} \
             ${dry_activation_flag} \
             -- \
