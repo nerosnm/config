@@ -85,11 +85,28 @@ jobs:
         env:
           ATRIA_DEPLOY_KEY: ${{ secrets.ATRIA_DEPLOY_KEY }}
           ATRIA_KNOWN_HOSTS: ${{ secrets.ATRIA_KNOWN_HOSTS }}
-      # Deploy the configuration to the host
-      - name: Deploy ${{ matrix.host }}
+      - name: Determine neros-dev input rev
+        run: |
+          neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
+          echo "neros_dev_rev=${neros_dev_rev}" >> "$GITHUB_ENV"
+      # Build the configuration for the host first
+      - name: Build ${{ matrix.host }} Configuration
+        run: |
+          nix build \
+            -L \
+            --accept-flake-config \
+            --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev} \
+            .#deploy.nodes.${{ matrix.host }}.profiles.system.path.out
+      - name: Set dry activation flag
+        if: github.event_name != 'push'
+        run: echo "dry_activation_flag=--dry-activate" >> "$GITHUB_ENV"
+      - name: Clear dry activation flag
         if: github.event_name == 'push'
+        run: echo "dry_activation_flag=''" >> "$GITHUB_ENV"
+      # Deploy the configuration to the host (or dry-activate it if the flag was
+      # set)
+      - name: Deploy ${{ matrix.host }}
         run: |
-          neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
           nix develop \
             -L \
             --accept-flake-config \
@@ -98,23 +115,7 @@ jobs:
             deploy \
             --ssh-opts="-i ~/.ssh/${{ matrix.host }}_deploy_key" \
             .#${{ matrix.host }} \
-            -- \
-            --accept-flake-config \
-            --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
-      # Dry-activate the configuration on the host
-      - name: Dry Activate ${{ matrix.host }}
-        if: github.event_name == 'pull_request'
-        run: |
-          neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
-          nix develop \
-            -L \
-            --accept-flake-config \
-            --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev} \
-            -c \
-            deploy \
-            --ssh-opts="-i ~/.ssh/${{ matrix.host }}_deploy_key" \
-            .#${{ matrix.host }} \
-            --dry-activate \
+            ${dry_activation_flag} \
             -- \
             --accept-flake-config \
             --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
