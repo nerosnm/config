@@ -57,17 +57,28 @@
     nvfetcher.inputs.nixpkgs.follows = "nixpkgs-unstable";
     nvfetcher.inputs.flake-utils.follows = "flake-utils";
 
+    cargo2nix.url = "github:cargo2nix/cargo2nix";
+    cargo2nix.inputs.flake-utils.follows = "flake-utils";
+    cargo2nix.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    fenix.url = "github:nix-community/fenix";
+    fenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     cacti-dev.url = "github:nerosnm/cacti.dev/main";
     cacti-dev.inputs.nixpkgs.follows = "nixpkgs";
     cacti-dev.inputs.flake-utils.follows = "flake-utils";
 
     neros-dev.url = "git+ssh://git@github.neros.dev/nerosnm/neros.dev.git?ref=main";
-    neros-dev.inputs.nixpkgs.follows = "nixpkgs";
+    neros-dev.inputs.cargo2nix.follows = "cargo2nix";
+    neros-dev.inputs.fenix.follows = "fenix";
     neros-dev.inputs.flake-utils.follows = "flake-utils";
+    neros-dev.inputs.nixpkgs.follows = "nixpkgs";
 
     oxbow.url = "github:nerosnm/oxbow/main";
-    oxbow.inputs.nixpkgs.follows = "nixpkgs";
+    oxbow.inputs.cargo2nix.follows = "cargo2nix";
+    oxbow.inputs.fenix.follows = "fenix";
     oxbow.inputs.flake-utils.follows = "flake-utils";
+    oxbow.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
