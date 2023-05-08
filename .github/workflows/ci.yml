@@ -100,9 +100,6 @@ jobs:
       - name: Set dry activation flag
         if: github.event_name != 'push'
         run: echo "dry_activation_flag=--dry-activate" >> "$GITHUB_ENV"
-      - name: Clear dry activation flag
-        if: github.event_name == 'push'
-        run: echo "dry_activation_flag=''" >> "$GITHUB_ENV"
       # Deploy the configuration to the host (or dry-activate it if the flag was
       # set)
       - name: Deploy ${{ matrix.host }}
