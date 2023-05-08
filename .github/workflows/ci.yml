@@ -72,13 +72,30 @@ jobs:
         with:
           name: nerosnm
           authToken: ${{ secrets.CACHIX_KEY }}
+      - name: Cache last deployed path
+        id: cache-last-deployed-path
+        if: github.event_name == 'push'
+        uses: actions/cache@v3
+        with:
+          key: v0-last-deployed-path-${{ matrix.host }}
+          path: ./last-deployed-path
+      - name: Skip duplicate deploy
+        id: skip-duplicate-deploy
+        if: steps.cache-last-deployed-path.outputs.cache-hit == 'true'
+        run: |
+          nix eval --raw .#deploy.nodes.${{ matrix.host }}.profiles.system.path.drvPath > ./would-deploy-path
+          cmp ./would-deploy-path ./last-deployed-path \
+            && echo "skip=true" >> "$GITHUB_OUTPUT" \
+            || echo "skip=false" >> "$GITHUB_OUTPUT"
       # Set up Tailscale and log into the tailnet with an ephemeral authkey
       - name: Tailscale
+        if: steps.skip-duplicate-deploy.outputs.skip != 'true'
         uses: tailscale/github-action@main
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
       # Set up a private key and known-hosts info for each host
       - name: SSH keys
+        if: steps.skip-duplicate-deploy.outputs.skip != 'true'
         run: |
           mkdir -p ~/.ssh/
           echo "$ATRIA_DEPLOY_KEY" >> ~/.ssh/atria_deploy_key
@@ -89,11 +106,13 @@ jobs:
           ATRIA_DEPLOY_KEY: ${{ secrets.ATRIA_DEPLOY_KEY }}
           ATRIA_KNOWN_HOSTS: ${{ secrets.ATRIA_KNOWN_HOSTS }}
       - name: Input rev (neros-dev)
+        if: steps.skip-duplicate-deploy.outputs.skip != 'true'
         run: |
           neros_dev_rev=$(nix flake metadata --json | nix shell nixpkgs#jq -c jq -r '.locks.nodes."neros-dev".locked.rev')
           echo "neros_dev_rev=${neros_dev_rev}" >> "$GITHUB_ENV"
       # Build the configuration for the host first
       - name: Build (${{ matrix.host }})
+        if: steps.skip-duplicate-deploy.outputs.skip != 'true'
         run: |
           nix build \
             -L \
@@ -106,6 +125,7 @@ jobs:
       # Deploy the configuration to the host (or dry-activate it if the flag was
       # set)
       - name: Deploy (${{ matrix.host }})
+        if: steps.skip-duplicate-deploy.outputs.skip != 'true'
         run: |
           nix develop \
             -L \
@@ -119,3 +139,7 @@ jobs:
             -- \
             --accept-flake-config \
             --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
+      - name: Calculate last deployed path
+        if: github.event_name == 'push' && steps.skip-duplicate-deploy.outputs.skip != 'true'
+        run: |
+          nix eval --raw .#deploy.nodes.${{ matrix.host }}.profiles.system.path.drvPath > ./last-deployed-path
