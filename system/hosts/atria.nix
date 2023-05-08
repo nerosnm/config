@@ -159,4 +159,28 @@ in
     enable = true;
     secrets.discordToken = "hatysa-discord-token";
   };
+
+  age.secrets."pomocop-discord-token" = {
+    file = ../../secrets/pomocop-discord-token.age;
+    owner = "pomocop";
+    group = "pomocop";
+  };
+  age.secrets."pomocop-application-id" = {
+    file = ../../secrets/pomocop-application-id.age;
+    owner = "pomocop";
+    group = "pomocop";
+  };
+  age.secrets."pomocop-owner-id" = {
+    file = ../../secrets/pomocop-owner-id.age;
+    owner = "pomocop";
+    group = "pomocop";
+  };
+  nerosnm.services.pomocop = {
+    enable = true;
+    secrets = {
+      token = "pomocop-discord-token";
+      applicationId = "pomocop-application-id";
+      ownerId = "pomocop-owner-id";
+    };
+  };
 }

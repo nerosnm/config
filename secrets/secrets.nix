@@ -13,6 +13,9 @@ let
     "ditto-license.age".publicKeys = [ nashira ];
     "grafana-admin-password.age".publicKeys = [ atria ];
     "hatysa-discord-token.age".publicKeys = [ atria ];
+    "pomocop-application-id.age".publicKeys = [ atria ];
+    "pomocop-discord-token.age".publicKeys = [ atria ];
+    "pomocop-owner-id.age".publicKeys = [ atria ];
     "quay-email-ditto.age".publicKeys = [ nashira ];
     "quay-token-ditto.age".publicKeys = [ nashira ];
     "quay-user-ditto.age".publicKeys = [ nashira ];
