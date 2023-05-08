@@ -390,11 +390,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683560881,
-        "narHash": "sha256-cov6lDOA1pd+7X3nS6Ji15kkF9I0g63ryI+MN71uV8E=",
+        "lastModified": 1683564588,
+        "narHash": "sha256-jm4rnq0hbRPkWWK1luXmPpuVe1wBIlKQWf8I/NIET2k=",
         "owner": "nerosnm",
         "repo": "oxbow",
-        "rev": "c2c8bd9ff0c7762c30670ed1cd28fd4a9fa3a223",
+        "rev": "fb652328aa210783e4df6c911b05888e0919e793",
         "type": "github"
       },
       "original": {

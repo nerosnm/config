@@ -72,7 +72,7 @@ in
         export TWITCH_NAME="oxoboxowot"
         export DATABASE=./oxbow.sqlite3
         export RUST_LOG="info,oxbow=debug"
-        ${pkgs.oxbow}/bin/oxbow --channels nerosnm stuck_overflow ninthroads fisken_ai exodiquas theidofalan
+        ${pkgs.oxbow}/bin/oxbow nerosnm stuck_overflow ninthroads fisken_ai exodiquas theidofalan
       '';
     };
   };
