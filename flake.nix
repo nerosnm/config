@@ -119,6 +119,7 @@
           neros-dev-content = inputs.neros-dev.packages.${system}.content;
           neros-dev-static = inputs.neros-dev.packages.${system}.static;
           neros-dev-stylesheet = inputs.neros-dev.packages.${system}.stylesheet;
+          oxbow = inputs.oxbow.packages.${system}.default;
           oxbow-cacti-dev = inputs.oxbow.packages.${system}.oxbow-cacti-dev;
           pomocop = inputs.pomocop.packages.${system}.default;
         })
@@ -375,6 +376,7 @@
         hatysa = import ./system/modules/hatysa.nix;
         loki = import ./system/modules/loki.nix;
         neros-dev = import ./system/modules/neros-dev.nix;
+        oxbow = import ./system/modules/oxbow.nix;
         pomocop = import ./system/modules/pomocop.nix;
         prometheus = import ./system/modules/prometheus.nix;
         tailscale = import ./system/modules/tailscale.nix;

@@ -183,4 +183,22 @@ in
       ownerId = "pomocop-owner-id";
     };
   };
+
+  age.secrets."oxbow-client-id" = {
+    file = ../../secrets/oxbow-client-id.age;
+    owner = "oxbow";
+    group = "oxbow";
+  };
+  age.secrets."oxbow-client-secret" = {
+    file = ../../secrets/oxbow-client-secret.age;
+    owner = "oxbow";
+    group = "oxbow";
+  };
+  nerosnm.services.oxbow = {
+    enable = true;
+    secrets = {
+      clientId = "oxbow-client-id";
+      clientSecret = "oxbow-client-secret";
+    };
+  };
 }
