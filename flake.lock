@@ -183,6 +183,36 @@
         "type": "github"
       }
     },
+    "hatysa": {
+      "inputs": {
+        "cargo2nix": [
+          "cargo2nix"
+        ],
+        "fenix": [
+          "fenix"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683550576,
+        "narHash": "sha256-Zhv/M5FQxSd3cKJbqS4rK6PvUcd35n0M0dViViTRd7g=",
+        "owner": "nerosnm",
+        "repo": "hatysa",
+        "rev": "afb46bc53777e77b0b20b9520245d2ffd8891eb3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nerosnm",
+        "ref": "master",
+        "repo": "hatysa",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -382,6 +412,7 @@
         "deploy-rs": "deploy-rs",
         "fenix": "fenix",
         "flake-utils": "flake-utils",
+        "hatysa": "hatysa",
         "home-manager": "home-manager",
         "neros-dev": "neros-dev",
         "nix-darwin": "nix-darwin",
