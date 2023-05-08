@@ -65,6 +65,7 @@ in
             })
             [
               "atria"
+              "ll5"
               "pincoya"
               "taygeta"
             ];
