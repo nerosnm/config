@@ -85,6 +85,12 @@
     oxbow.inputs.fenix.follows = "fenix";
     oxbow.inputs.flake-utils.follows = "flake-utils";
     oxbow.inputs.nixpkgs.follows = "nixpkgs";
+
+    pomocop.url = "github:nerosnm/pomocop/main";
+    pomocop.inputs.cargo2nix.follows = "cargo2nix";
+    pomocop.inputs.fenix.follows = "fenix";
+    pomocop.inputs.flake-utils.follows = "flake-utils";
+    pomocop.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -114,6 +120,7 @@
           neros-dev-static = inputs.neros-dev.packages.${system}.static;
           neros-dev-stylesheet = inputs.neros-dev.packages.${system}.stylesheet;
           oxbow-cacti-dev = inputs.oxbow.packages.${system}.oxbow-cacti-dev;
+          pomocop = inputs.pomocop.packages.${system}.default;
         })
       ] ++ map (input: input.overlays.default) (with inputs; [
         agenix
@@ -368,6 +375,7 @@
         hatysa = import ./system/modules/hatysa.nix;
         loki = import ./system/modules/loki.nix;
         neros-dev = import ./system/modules/neros-dev.nix;
+        pomocop = import ./system/modules/pomocop.nix;
         prometheus = import ./system/modules/prometheus.nix;
         tailscale = import ./system/modules/tailscale.nix;
         tempo = import ./system/modules/tempo.nix;

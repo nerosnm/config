@@ -404,6 +404,36 @@
         "type": "github"
       }
     },
+    "pomocop": {
+      "inputs": {
+        "cargo2nix": [
+          "cargo2nix"
+        ],
+        "fenix": [
+          "fenix"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683554385,
+        "narHash": "sha256-qAmjfXpROW/L5pFNt7YwL25o4JyAsukanfJ0xqJQJIw=",
+        "owner": "nerosnm",
+        "repo": "pomocop",
+        "rev": "75aeb891cff025b10b1c1be35c6070490f0f2af5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nerosnm",
+        "ref": "main",
+        "repo": "pomocop",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -421,7 +451,8 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvfetcher": "nvfetcher",
-        "oxbow": "oxbow"
+        "oxbow": "oxbow",
+        "pomocop": "pomocop"
       }
     },
     "rust-analyzer-src": {
