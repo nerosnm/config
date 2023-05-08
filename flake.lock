@@ -199,11 +199,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683553534,
-        "narHash": "sha256-7zdG4B5v6W71gNUy/kvFG8YunNy2fhJgKtF1y3zXk1A=",
+        "lastModified": 1683554766,
+        "narHash": "sha256-OonDJ7CIJBjUZvxjo4OvtvrfrOQ8UXY+ESMhQNKqD3I=",
         "owner": "nerosnm",
         "repo": "hatysa",
-        "rev": "291346e75eb1e711ecc06d933f6de03971c9a4e1",
+        "rev": "9c13d0c305c96f8e96009d19995a7536cdbb0091",
         "type": "github"
       },
       "original": {
