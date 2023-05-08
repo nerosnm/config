@@ -13,6 +13,8 @@ let
     "ditto-license.age".publicKeys = [ nashira ];
     "grafana-admin-password.age".publicKeys = [ atria ];
     "hatysa-discord-token.age".publicKeys = [ atria ];
+    "oxbow-client-id.age".publicKeys = [ atria ];
+    "oxbow-client-secret.age".publicKeys = [ atria ];
     "pomocop-application-id.age".publicKeys = [ atria ];
     "pomocop-discord-token.age".publicKeys = [ atria ];
     "pomocop-owner-id.age".publicKeys = [ atria ];
