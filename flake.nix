@@ -57,7 +57,17 @@
     nvfetcher.inputs.nixpkgs.follows = "nixpkgs-unstable";
     nvfetcher.inputs.flake-utils.follows = "flake-utils";
 
+    cacti-dev.url = "github:nerosnm/cacti.dev/main";
+    cacti-dev.inputs.nixpkgs.follows = "nixpkgs";
+    cacti-dev.inputs.flake-utils.follows = "flake-utils";
+
     neros-dev.url = "git+ssh://git@github.neros.dev/nerosnm/neros.dev.git?ref=main";
+    neros-dev.inputs.nixpkgs.follows = "nixpkgs";
+    neros-dev.inputs.flake-utils.follows = "flake-utils";
+
+    oxbow.url = "github:nerosnm/oxbow/main";
+    oxbow.inputs.nixpkgs.follows = "nixpkgs";
+    oxbow.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs =
@@ -80,10 +90,12 @@
       # nixpkgs, regardless of which channel is being imported.
       baseOverlays = system: [
         (final: prev: {
+          cacti-dev = inputs.cacti-dev.defaultPackage.${system};
           neros-dev = inputs.neros-dev.packages.${system}.neros-dev;
           neros-dev-content = inputs.neros-dev.packages.${system}.content;
           neros-dev-static = inputs.neros-dev.packages.${system}.static;
           neros-dev-stylesheet = inputs.neros-dev.packages.${system}.stylesheet;
+          oxbow-cacti-dev = inputs.oxbow.packages.${system}.oxbow-cacti-dev;
         })
       ] ++ map (input: input.overlays.default) (with inputs; [
         agenix
@@ -333,6 +345,7 @@
       };
 
       nixosModules = {
+        cacti-dev = import ./system/modules/cacti-dev.nix;
         grafana = import ./system/modules/grafana.nix;
         loki = import ./system/modules/loki.nix;
         neros-dev = import ./system/modules/neros-dev.nix;

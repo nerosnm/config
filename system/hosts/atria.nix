@@ -147,4 +147,6 @@ in
 
     secrets = { };
   };
+
+  nerosnm.services.cacti-dev.enable = true;
 }
