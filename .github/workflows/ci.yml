@@ -55,13 +55,47 @@ jobs:
             --accept-flake-config \
             --override-input neros-dev github:nerosnm/neros.dev/${neros_dev_rev}
 
+  list-deploy-nodes:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Clone the repository
+      - name: Clone
+        uses: actions/checkout@v3
+
+      # Install Nix onto the runner
+      - name: Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          install_url: "https://releases.nixos.org/nix/nix-2.14.1/install"
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.PRIVATE_REPO_PAT }}
+
+      # Set up my Cachix cache
+      - name: Cachix
+        uses: cachix/cachix-action@v12
+        with:
+          name: nerosnm
+          authToken: ${{ secrets.CACHIX_KEY }}
+
+      - name: List Deploy Nodes
+        id: list-deploy-nodes
+        run: |
+          nodes=$(nix eval .#deploy.nodes --apply builtins.attrNames --json)
+          echo "Found deploy nodes: $nodes"
+          echo DEPLOY_NODES="$nodes" >> $GITHUB_OUTPUT
+
+    outputs:
+      deploy_nodes: ${{ steps.list-deploy-nodes.outputs.DEPLOY_NODES }}
+
   deploy:
     runs-on: ubuntu-latest
 
+    needs: list-deploy-nodes
+
     strategy:
       matrix:
-        host:
-          - atria
+        host: ${{ fromJson(needs.list-deploy-nodes.outputs.deploy_nodes) }}
 
     steps:
       # Clone the repository.
