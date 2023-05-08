@@ -60,7 +60,7 @@ in
       script = ''
         export DISCORD_TOKEN=$(cat ${config.age.secrets."${cfg.secrets.discordToken}".path})
         export HATYSA_PREFIX=","
-        export RUST_LOG="info,hatysa=debug"
+        export RUST_LOG="info,hatysa=debug,iota_orionis=debug"
         ${pkgs.hatysa}/bin/hatysa
       '';
     };
