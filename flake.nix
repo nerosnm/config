@@ -74,6 +74,12 @@
     neros-dev.inputs.flake-utils.follows = "flake-utils";
     neros-dev.inputs.nixpkgs.follows = "nixpkgs";
 
+    hatysa.url = "github:nerosnm/hatysa/master";
+    hatysa.inputs.cargo2nix.follows = "cargo2nix";
+    hatysa.inputs.fenix.follows = "fenix";
+    hatysa.inputs.flake-utils.follows = "flake-utils";
+    hatysa.inputs.nixpkgs.follows = "nixpkgs";
+
     oxbow.url = "github:nerosnm/oxbow/main";
     oxbow.inputs.cargo2nix.follows = "cargo2nix";
     oxbow.inputs.fenix.follows = "fenix";
@@ -102,6 +108,7 @@
       baseOverlays = system: [
         (final: prev: {
           cacti-dev = inputs.cacti-dev.defaultPackage.${system};
+          hatysa = inputs.hatysa.packages.${system}.default;
           neros-dev = inputs.neros-dev.packages.${system}.neros-dev;
           neros-dev-content = inputs.neros-dev.packages.${system}.content;
           neros-dev-static = inputs.neros-dev.packages.${system}.static;
@@ -358,6 +365,7 @@
       nixosModules = {
         cacti-dev = import ./system/modules/cacti-dev.nix;
         grafana = import ./system/modules/grafana.nix;
+        hatysa = import ./system/modules/hatysa.nix;
         loki = import ./system/modules/loki.nix;
         neros-dev = import ./system/modules/neros-dev.nix;
         prometheus = import ./system/modules/prometheus.nix;

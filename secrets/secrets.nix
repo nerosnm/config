@@ -11,14 +11,14 @@ let
   # necessarily be given access to every secret.
   secrets = {
     "ditto-license.age".publicKeys = [ nashira ];
+    "grafana-admin-password.age".publicKeys = [ atria ];
+    "hatysa-discord-token.age".publicKeys = [ atria ];
     "quay-email-ditto.age".publicKeys = [ nashira ];
     "quay-token-ditto.age".publicKeys = [ nashira ];
     "quay-user-ditto.age".publicKeys = [ nashira ];
     "root-pwhash.age".publicKeys = [ ];
     "soren-libera-cert.age".publicKeys = [ ];
     "soren-pwhash.age".publicKeys = [ ];
-
-    "grafana-admin-password.age".publicKeys = [ atria ];
     "tailscale-atria.age".publicKeys = [ atria ];
     "tailscale-grafana.age".publicKeys = [ atria ];
   };

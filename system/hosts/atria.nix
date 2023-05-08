@@ -149,4 +149,14 @@ in
   };
 
   nerosnm.services.cacti-dev.enable = true;
+
+  age.secrets."hatysa-discord-token" = {
+    file = ../../secrets/hatysa-discord-token.age;
+    owner = "hatysa";
+    group = "hatysa";
+  };
+  nerosnm.services.hatysa = {
+    enable = true;
+    secrets.discordToken = "hatysa-discord-token";
+  };
 }
