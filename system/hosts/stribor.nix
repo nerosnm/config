@@ -104,8 +104,8 @@ in
 
   nerosnm.services.prometheus.nodeExporter.enable = true;
 
-  # nerosnm.services.ll5 = {
-  #   enable = true;
-  #   memory = 4916;
-  # };
+  nerosnm.services.ll5 = {
+    enable = true;
+    memory = 4916;
+  };
 }
