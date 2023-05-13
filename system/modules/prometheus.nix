@@ -67,7 +67,6 @@ in
               "atria"
               "pincoya"
               "stribor"
-              "taygeta"
             ];
         }
         {
