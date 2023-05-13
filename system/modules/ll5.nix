@@ -53,22 +53,22 @@ in
 
     users.groups.minecraft = { };
 
-    # systemd.services.ll5 = {
-    #   description = "LL5 Minecraft Server Service";
-    #   wantedBy = [ "multi-user.target" ];
-    #   after = [ "network.target" ];
-    #
-    #   serviceConfig = {
-    #     ExecStart = "${pkgs.jdk}/bin/java -Xms${toString cfg.memory}M -Xmx${toString cfg.memory}M @libraries/net/minecraftforge/forge/1.18.2-40.2.0/unix_args.txt nogui";
-    #     Restart = "always";
-    #     User = "minecraft";
-    #     WorkingDirectory = "/srv/ll5";
-    #   };
-    # };
-    #
-    # networking.firewall = {
-    #   allowedTCPPorts = [ cfg.port ];
-    #   allowedUDPPorts = [ cfg.port ];
-    # };
+    systemd.services.ll5 = {
+      description = "LL5 Minecraft Server Service";
+      wantedBy = [ "multi-user.target" ];
+      after = [ "network.target" ];
+
+      serviceConfig = {
+        ExecStart = "${pkgs.jdk}/bin/java -Xms${toString cfg.memory}M -Xmx${toString cfg.memory}M @libraries/net/minecraftforge/forge/1.18.2-40.2.0/unix_args.txt nogui";
+        Restart = "always";
+        User = "minecraft";
+        WorkingDirectory = "/srv/ll5";
+      };
+    };
+
+    networking.firewall = {
+      allowedTCPPorts = [ cfg.port ];
+      allowedUDPPorts = [ cfg.port ];
+    };
   };
 }
