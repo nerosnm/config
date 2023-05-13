@@ -353,6 +353,19 @@
               ./system/hosts/atria.nix
             ] ++ (pkgs.lib.attrValues self.nixosModules);
           };
+
+        stribor =
+          let
+            system = systems.x86_64-linux;
+            pkgs = stableFor system;
+          in
+          nixpkgs.lib.nixosSystem {
+            inherit system pkgs;
+            modules = [
+              inputs.agenix.nixosModules.age
+              ./system/hosts/stribor.nix
+            ] ++ (pkgs.lib.attrValues self.nixosModules);
+          };
       };
 
       darwinConfigurations = {
@@ -374,6 +387,7 @@
         cacti-dev = import ./system/modules/cacti-dev.nix;
         grafana = import ./system/modules/grafana.nix;
         hatysa = import ./system/modules/hatysa.nix;
+        ll5 = import ./system/modules/ll5.nix;
         loki = import ./system/modules/loki.nix;
         neros-dev = import ./system/modules/neros-dev.nix;
         oxbow = import ./system/modules/oxbow.nix;
@@ -404,6 +418,21 @@
                 system = {
                   user = "root";
                   path = deployLib.activate.nixos self.nixosConfigurations.atria;
+                };
+              };
+            };
+
+          stribor =
+            let
+              deployLib = inputs.deploy-rs.lib.x86_64-linux;
+            in
+            {
+              hostname = "stribor";
+
+              profiles = {
+                system = {
+                  user = "root";
+                  path = deployLib.activate.nixos self.nixosConfigurations.stribor;
                 };
               };
             };

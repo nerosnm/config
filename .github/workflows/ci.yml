@@ -94,6 +94,7 @@ jobs:
     needs: list-deploy-nodes
 
     strategy:
+      fail-fast: false
       matrix:
         host: ${{ fromJson(needs.list-deploy-nodes.outputs.deploy_nodes) }}
 
