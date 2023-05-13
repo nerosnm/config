@@ -126,7 +126,7 @@ in
               derivedFields = [
                 {
                   datasourceUid = "Tempo";
-                  matcherRegex = "trace_id=(\\w+)";
+                  matcherRegex = "\"trace_id\":\"(\\w+)\"";
                   name = "Trace ID";
                   url = "$${__value.raw}";
                 }
