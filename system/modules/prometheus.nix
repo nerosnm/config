@@ -71,6 +71,18 @@ in
               "taygeta"
             ];
         }
+        {
+          job_name = "minecraft";
+          static_configs = [
+            {
+              targets = [ "stribor:19565" ];
+              labels = {
+                host = "stribor";
+                application = "ll5";
+              };
+            }
+          ];
+        }
       ];
     };
   };
