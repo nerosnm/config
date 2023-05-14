@@ -251,11 +251,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1684058403,
-        "narHash": "sha256-K75MInbJjPwEW+gOEQNz9OJ4MnsG+A8ZkctUpJ+q3z0=",
+        "lastModified": 1684061717,
+        "narHash": "sha256-mF5yXEvS8Lj4zelUfyw5TbS6aFSTX7CvbU0vqmRdjQA=",
         "ref": "new-observability",
-        "rev": "ffff8881852735e52b2432f33b50a7e1d3ae6391",
-        "revCount": 73,
+        "rev": "3d831de2de815482ed153cf25a1d21bea0b0665f",
+        "revCount": 77,
         "type": "git",
         "url": "ssh://git@github.neros.dev/nerosnm/neros.dev.git"
       },
