@@ -104,6 +104,10 @@ in
           headers = "Name:X-WebAuth-Name";
           enable_login_token = true;
         };
+
+        feature_toggles = {
+          enable = "traceToMetrics";
+        };
       };
 
       provision = {
