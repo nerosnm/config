@@ -153,6 +153,9 @@ in
                 mapTagNamesEnabled = true;
                 filterByTraceID = true;
               };
+              tracesToMetrics = {
+                datasourceUid = "Prometheus";
+              };
             };
           }
         ];
