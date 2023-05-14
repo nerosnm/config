@@ -110,56 +110,56 @@ in
         };
       };
 
-      # provision = {
-      #   enable = false;
-      #
-      #   datasources.settings.datasources = [
-      #     {
-      #       name = "Prometheus";
-      #       type = "prometheus";
-      #       url = "http://localhost:${toString promcfg.port}";
-      #       jsonData = {
-      #         scrape_interval = "15s";
-      #       };
-      #     }
-      #     {
-      #       name = "Loki";
-      #       type = "loki";
-      #       url = "http://localhost:${toString lokicfg.port}";
-      #       jsonData = {
-      #         derivedFields = [
-      #           {
-      #             datasourceUid = "Tempo";
-      #             matcherRegex = "\"trace_id\":\"(\\w+)\"";
-      #             name = "Trace ID";
-      #             url = "$${__value.raw}";
-      #           }
-      #         ];
-      #       };
-      #     }
-      #     {
-      #       name = "Tempo";
-      #       type = "tempo";
-      #       url = "http://localhost:${toString tempocfg.port}";
-      #       jsonData = {
-      #         tracesToLogs = {
-      #           datasourceUid = "Loki";
-      #           mappedTags = [
-      #             {
-      #               key = "service.name";
-      #               value = "service";
-      #             }
-      #           ];
-      #           mapTagNamesEnabled = true;
-      #           filterByTraceID = true;
-      #         };
-      #         tracesToMetrics = {
-      #           datasourceUid = "Prometheus";
-      #         };
-      #       };
-      #     }
-      #   ];
-      # };
+      provision = {
+        enable = false;
+
+        datasources.settings.datasources = [
+          {
+            name = "Prometheus";
+            type = "prometheus";
+            url = "http://localhost:${toString promcfg.port}";
+            jsonData = {
+              scrape_interval = "15s";
+            };
+          }
+          {
+            name = "Loki";
+            type = "loki";
+            url = "http://localhost:${toString lokicfg.port}";
+            jsonData = {
+              derivedFields = [
+                {
+                  datasourceUid = "Tempo";
+                  matcherRegex = "\"trace_id\":\"(\\w+)\"";
+                  name = "Trace ID";
+                  url = "$${__value.raw}";
+                }
+              ];
+            };
+          }
+          {
+            name = "Tempo";
+            type = "tempo";
+            url = "http://localhost:${toString tempocfg.port}";
+            jsonData = {
+              tracesToLogs = {
+                datasourceUid = "Loki";
+                mappedTags = [
+                  {
+                    key = "service.name";
+                    value = "service";
+                  }
+                ];
+                mapTagNamesEnabled = true;
+                filterByTraceID = true;
+              };
+              tracesToMetrics = {
+                datasourceUid = "Prometheus";
+              };
+            };
+          }
+        ];
+      };
     };
 
     users.users.proxy-to-grafana = {
