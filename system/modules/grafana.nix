@@ -111,7 +111,7 @@ in
       };
 
       provision = {
-        enable = true;
+        enable = false;
 
         datasources.settings.datasources = [
           {
