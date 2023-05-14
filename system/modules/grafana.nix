@@ -111,7 +111,7 @@ in
       };
 
       provision = {
-        enable = true;
+        enable = false;
 
         datasources.settings.datasources = [
           {
@@ -152,6 +152,9 @@ in
                 ];
                 mapTagNamesEnabled = true;
                 filterByTraceID = true;
+              };
+              tracesToMetrics = {
+                datasourceUid = "Prometheus";
               };
             };
           }
