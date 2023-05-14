@@ -144,8 +144,13 @@ in
 
   nerosnm.services.neros-dev = {
     enable = true;
-
     secrets = { };
+
+    loki.host = "localhost";
+    loki.port = 9003;
+
+    tempo.host = "localhost";
+    tempo.port = 4317;
   };
 
   nerosnm.services.cacti-dev.enable = true;
