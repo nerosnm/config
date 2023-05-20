@@ -68,7 +68,7 @@
     cacti-dev.inputs.nixpkgs.follows = "nixpkgs";
     cacti-dev.inputs.flake-utils.follows = "flake-utils";
 
-    neros-dev.url = "git+ssh://git@github.neros.dev/nerosnm/neros.dev.git?ref=main";
+    neros-dev.url = "git+ssh://git@github.neros.dev/nerosnm/neros.dev.git?ref=new-observability";
     neros-dev.inputs.cargo2nix.follows = "cargo2nix";
     neros-dev.inputs.fenix.follows = "fenix";
     neros-dev.inputs.flake-utils.follows = "flake-utils";
