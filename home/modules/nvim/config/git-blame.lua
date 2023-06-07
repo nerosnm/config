@@ -1,5 +1,5 @@
 vim.g.gitblame_enabled = 1
-vim.g.gitblame_message_template = '<committer> • <date> • <sha> • <summary>'
+vim.g.gitblame_message_template = '<author> • <date> • <sha> • <summary>'
 vim.g.gitblame_message_when_not_committed = 'Not committed yet'
 vim.g.gitblame_date_format = '%r'
 vim.g.gitblame_highlight_group = "SpecialComment"
