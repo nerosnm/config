@@ -65,6 +65,7 @@ in
         vim-glsl
         vim-highlightedyank
         vim-javascript
+        vim-jsonnet
         vim-jsx-pretty
         vim-nix
         vim-numbertoggle
