@@ -58,6 +58,7 @@ in
   config = mkIf cfg.enable {
     programs.git = {
       inherit (cfg) enable;
+      lfs.enable = true;
 
       userName = cfg.user.name;
       userEmail = cfg.user.email;

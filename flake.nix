@@ -250,6 +250,7 @@
           erdtree
           fd
           git
+          git-lfs
           gnome-photos
           grafana
           keybase
