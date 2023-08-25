@@ -65,6 +65,7 @@ in
             })
             [
               "atria"
+              "gnomon"
               "pincoya"
               "stribor"
             ];
