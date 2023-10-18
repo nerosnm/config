@@ -57,11 +57,12 @@ in
 
       plugins = with pkgs; with vimPlugins; [
         haskell-vim
+        kotlin-vim
+        nvim-notify
         plenary-nvim
         swift-vim
         telescope-file-browser-nvim
         telescope-fzf-native-nvim
-        nvim-notify
         vim-glsl
         vim-highlightedyank
         vim-javascript
