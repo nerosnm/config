@@ -306,6 +306,7 @@ in
           # Branch/checkout
           balias gig='git checkout'
           balias gif='git branch -d'
+          balias giF='git branch -D'
           balias gid='git checkout -b'
           balias gis='git branch'
           balias gia='git branch -r'
