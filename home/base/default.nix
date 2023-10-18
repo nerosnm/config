@@ -84,6 +84,7 @@ in
 
           -- Zoom in and out
           { key = "-", mods = "CTRL", action = "DecreaseFontSize" },
+          { key = "+", mods = "CTRL", action = "IncreaseFontSize" },
           { key = "=", mods = "CTRL", action = "IncreaseFontSize" },
           { key = "0", mods = "CTRL", action = "ResetFontSize" },
         }
@@ -118,6 +119,8 @@ in
           color_scheme = "OneHalfDark",
           font = wezterm.font("Iosevka Custom", { weight = "Light" }),
           enable_scroll_bar = true,
+
+          scrollback_lines = 10000,
 
           -- colors = {
           --   ansi = {
