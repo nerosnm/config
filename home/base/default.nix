@@ -116,7 +116,7 @@ in
 
         return {
           color_scheme = "OneHalfDark",
-          font = wezterm.font("Iosevka", { weight = "Light", }),
+          font = wezterm.font("Iosevka Custom", { weight = "Light" }),
           enable_scroll_bar = true,
 
           -- colors = {

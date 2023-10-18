@@ -23,7 +23,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Absolute bleeding edge version of nixpkgs, not tested or cached yet.
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    #
+    # commit 80e825ede84cd9b5b04db94b7173041d22156838 breaks custom iosevka
+    nixpkgs-master.url = "github:nixos/nixpkgs/3751f6abb015d6141f33acd82ef7a55e76a02217";
 
     # This branch of nixpkgs is more likely than `nixos-22.11` to have cached
     # binaries for Darwin platforms.
@@ -54,7 +56,6 @@
     # For vendoring Nix packages and fetching the latest version of their
     # sources.
     nvfetcher.url = "github:berberman/nvfetcher";
-    nvfetcher.inputs.nixpkgs.follows = "nixpkgs-unstable";
     nvfetcher.inputs.flake-utils.follows = "flake-utils";
 
     cargo2nix.url = "github:cargo2nix/cargo2nix";
@@ -238,7 +239,7 @@
         inherit (unstable)
           age-plugin-yubikey
           bat
-          cachix
+          # cachix
           cargo-about
           cargo-deny
           cargo-expand

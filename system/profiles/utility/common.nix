@@ -5,7 +5,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    cachix
+    # cachix
     doing
     tectonic
     python39Packages.pygments

@@ -13,7 +13,7 @@
       btop
       coreutils
       curl
-      dconf2nix
+      # dconf2nix
       dig
       direnv
       dnsutils
@@ -36,7 +36,6 @@
       ripgrep
       sd
       skim
-      tealdeer
       tokei
       unzip
       wget
