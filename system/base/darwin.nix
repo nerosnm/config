@@ -199,7 +199,7 @@
       };
     };
 
-    keyboard.enableKeyMapping = true;
-    keyboard.remapCapsLockToControl = true;
+    # keyboard.enableKeyMapping = true;
+    # keyboard.remapCapsLockToControl = true;
   };
 }
