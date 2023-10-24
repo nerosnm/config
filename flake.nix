@@ -23,9 +23,10 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Absolute bleeding edge version of nixpkgs, not tested or cached yet.
-    #
-    # commit 80e825ede84cd9b5b04db94b7173041d22156838 breaks custom iosevka
-    nixpkgs-master.url = "github:nixos/nixpkgs/3751f6abb015d6141f33acd82ef7a55e76a02217";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+
+    # Fix for iosevka build failures due to Node.js issues.
+    nixpkgs-iosevka-fix.url = "github:NixOS/nixpkgs/refs/pull/262124/head";
 
     # This branch of nixpkgs is more likely than `nixos-22.11` to have cached
     # binaries for Darwin platforms.
@@ -190,6 +191,26 @@
         ]
         (name: inputs."${name}".packages."${system}".default);
 
+      upgradeToCustomChannels = system: final: prev:
+        let
+          nodejsPath = inputs.nixpkgs-iosevka-fix + "/pkgs/development/web/nodejs";
+          nodeVersion = x: final.callPackage (nodejsPath + "/v${x}.nix");
+          v14 = nodeVersion "14";
+          v16 = nodeVersion "16";
+          v18 = nodeVersion "18";
+          v20 = nodeVersion "20";
+        in
+        {
+          nodejs_14 = v14 { openssl = final.openssl_1_1; };
+          nodejs-slim_14 = v14 { enableNpm = false; openssl = final.openssl_1_1; };
+          nodejs_16 = v16 { };
+          nodejs-slim_16 = v16 { enableNpm = false; };
+          nodejs_18 = v18 { };
+          nodejs-slim_18 = v18 { enableNpm = false; };
+          nodejs_20 = v20 { };
+          nodejs-slim_20 = v20 { enableNpm = false; };
+        };
+
       # A function that imports `nixpkgs-master` for the given system, with all
       # relevant upgrade overlays applied. In the case of `nixpkgs-master`, the
       # only relevant upgrade overlay is the `upgradeToFromInput` overlay, to
@@ -200,6 +221,7 @@
         channel = nixpkgs-master;
         inherit system;
         upgradeOverlays = [
+          (upgradeToCustomChannels system)
           (upgradeToFromInput system)
         ];
       };
@@ -227,6 +249,7 @@
         inherit system;
         upgradeOverlays = [
           (upgradeToMaster (masterFor system))
+          (upgradeToCustomChannels system)
           (upgradeToFromInput system)
         ];
       };
@@ -288,6 +311,7 @@
         upgradeOverlays = [
           (upgradeToUnstable (unstableFor system))
           (upgradeToMaster (masterFor system))
+          (upgradeToCustomChannels system)
           (upgradeToFromInput system)
         ];
       };

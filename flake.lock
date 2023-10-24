@@ -343,19 +343,35 @@
         "type": "github"
       }
     },
+    "nixpkgs-iosevka-fix": {
+      "locked": {
+        "lastModified": 1698076537,
+        "narHash": "sha256-lGDxeiCslgvucmTZY4tgmfd9mvs3YzI0HqAww2O8368=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "63936105934d57ac7c318f1b8292e3fc8c74ddda",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "refs/pull/262124/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1693214190,
-        "narHash": "sha256-mM7ubzmZHcbUt1epydpe0d/bCJIga7wzyTd0dA25Hm4=",
+        "lastModified": 1698077296,
+        "narHash": "sha256-kEMdDs0JfiiYZaLRloND5PWMVMn4W3lnSLsasxDTgLw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3751f6abb015d6141f33acd82ef7a55e76a02217",
+        "rev": "8970fe57a70128bb5447967a69213f6415ea3cb5",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "ref": "master",
         "repo": "nixpkgs",
-        "rev": "3751f6abb015d6141f33acd82ef7a55e76a02217",
         "type": "github"
       }
     },
@@ -487,6 +503,7 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-darwin": "nixpkgs-darwin",
+        "nixpkgs-iosevka-fix": "nixpkgs-iosevka-fix",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvfetcher": "nvfetcher",
