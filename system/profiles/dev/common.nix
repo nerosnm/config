@@ -19,7 +19,6 @@
     gh
     # go
     # gopls
-    rust-analyzer
-    # rustup
+    rustup
   ];
 }
