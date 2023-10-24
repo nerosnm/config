@@ -8,6 +8,7 @@ symbol = " "
 # vicmd_symbol = "[❮](bold purple)"
 
 [battery]
+disabled = true
 full_symbol = ""
 charging_symbol = ""
 discharging_symbol = ""
