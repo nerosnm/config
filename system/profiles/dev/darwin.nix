@@ -22,6 +22,7 @@
     ];
 
     casks = [
+      "cool-retro-term"
       "docker"
       "insomnia"
       "jetbrains-toolbox"
