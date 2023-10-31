@@ -60,10 +60,8 @@
     onActivation.upgrade = true;
 
     taps = [
-      "homebrew/cask"
       "homebrew/cask-drivers"
       "homebrew/cask-versions"
-      "homebrew/core"
       "homebrew/services"
     ];
   };
