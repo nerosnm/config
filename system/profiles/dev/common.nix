@@ -11,7 +11,6 @@
     cargo-deny
     cargo-expand
     cargo-generate
-    cargo-lints
     cargo-modules
     cargo-update
     cargo-watch
