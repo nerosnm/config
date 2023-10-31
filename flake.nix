@@ -279,9 +279,13 @@
           tailscale
           tectonic
           tempo
+          tlaplus18
           udisks
           yubikey-manager
           ;
+
+        inherit (unstable.vimPlugins)
+          nvim-treesitter-parsers;
       };
 
       # If we're using Darwin, we should use the Darwin-specific version of

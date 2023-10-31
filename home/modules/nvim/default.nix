@@ -48,9 +48,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.sessionVariables = mkIf cfg.defaultEditor {
+    home.sessionVariables = (mkIf cfg.defaultEditor {
+      # Required for TLA+
+      JAVA_HOME = "${pkgs.jre_minimal}";
+
       EDITOR = "nvim";
-    };
+    });
 
     programs.neovim = {
       inherit (cfg) enable;
@@ -73,11 +76,14 @@ in
         vim-toml
         vimtex
 
+        nvim-treesitter-parsers.tlaplus
+
         (luaPlugin dressing-nvim ./config/dressing.lua)
         (luaPlugin formatter-nvim ./config/formatter.lua)
         (luaPlugin indent-blankline-nvim ./config/indent-blankline.lua)
         (luaPlugin key-menu-nvim ./config/key-menu.lua)
         (luaPlugin lualine-nvim ./config/lualine.lua)
+        (luaPlugin nvim-treesitter ./config/treesitter.lua)
         (luaPlugin onedark-vim ./config/onedark.lua)
         (luaPlugin pkgs.git-blame-nvim ./config/git-blame.lua)
         (luaPlugin pkgs.rust-vim ./config/rust.lua)
@@ -86,6 +92,24 @@ in
         (luaPlugin vim-rooter ./config/rooter.lua)
         (luaPluginInline comment-nvim "require'Comment'.setup {}")
         (luaPluginInline nvim-colorizer-lua "require'colorizer'.setup {}")
+
+        (luaPluginInline tla-nvim ''
+          require"tla".setup {
+            --java_executable = "${pkgs.jre_minimal}",
+            java_opts = { "-XX:+UseParallelGC" },
+            tla2tools = "${pkgs.tlaplus18}/share/java/tla2tools.jar",
+          }
+
+          local tla_group = vim.api.nvim_create_augroup('tla', {})
+          vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+              group = id,
+              pattern = '*.tla',
+              callback = function()
+                  vim.keymap.set('n', 'M', "<cmd>TlaCheck<cr>", { desc = 'Model-check TLA+ code in the current buffer', buffer = true })
+              end,
+          })
+        ''
+        )
       ];
 
       extraPackages = with pkgs; [

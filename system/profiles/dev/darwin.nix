@@ -26,6 +26,7 @@
       "docker"
       "insomnia"
       "jetbrains-toolbox"
+      "tla-plus-toolbox"
     ];
 
     masApps = {

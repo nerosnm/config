@@ -19,5 +19,6 @@
     # go
     # gopls
     rustup
+    tlaplus18
   ];
 }
