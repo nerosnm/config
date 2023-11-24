@@ -55,6 +55,7 @@ in
         rnix-lsp # Nix language server
         shellcheck # For Bash
         texlab # TeX language server
+        python311Packages.python-lsp-server
       ];
     };
   };

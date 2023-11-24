@@ -13,6 +13,14 @@ final: prev: {
     ];
   });
 
+  python311 = prev.python311.override {
+    packageOverrides = pythonFinal: pythonPrev: {
+      build = pythonPrev.build.overrideAttrs (attrs: {
+        __darwinAllowLocalNetworking = true;
+      });
+    };
+  };
+
   iosevka-custom = prev.iosevka.override {
     set = "custom";
     privateBuildPlan = ''
