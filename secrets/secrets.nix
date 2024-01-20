@@ -3,7 +3,6 @@ let
 
   # Public keys of specific machines.
   atria = readFile ../keys/atria.pub;
-  stribor = readFile ../keys/stribor.pub;
   nashira = readFile ../keys/nashira.pub;
 
   # Each of the secrets is given a list of public keys that should be used to 
@@ -27,7 +26,6 @@ let
     "soren-pwhash.age".publicKeys = [ ];
     "tailscale-atria.age".publicKeys = [ atria ];
     "tailscale-grafana.age".publicKeys = [ atria ];
-    "tailscale-stribor.age".publicKeys = [ stribor ];
   };
 
   # Public key of an age-plugin-yubikey key, the counterpart to the keygrip 

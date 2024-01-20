@@ -385,19 +385,6 @@
               ./system/hosts/atria.nix
             ] ++ (pkgs.lib.attrValues self.nixosModules);
           };
-
-        stribor =
-          let
-            system = systems.x86_64-linux;
-            pkgs = stableFor system;
-          in
-          nixpkgs.lib.nixosSystem {
-            inherit system pkgs;
-            modules = [
-              inputs.agenix.nixosModules.age
-              ./system/hosts/stribor.nix
-            ] ++ (pkgs.lib.attrValues self.nixosModules);
-          };
       };
 
       darwinConfigurations = {
@@ -450,21 +437,6 @@
                 system = {
                   user = "root";
                   path = deployLib.activate.nixos self.nixosConfigurations.atria;
-                };
-              };
-            };
-
-          stribor =
-            let
-              deployLib = inputs.deploy-rs.lib.x86_64-linux;
-            in
-            {
-              hostname = "stribor";
-
-              profiles = {
-                system = {
-                  user = "root";
-                  path = deployLib.activate.nixos self.nixosConfigurations.stribor;
                 };
               };
             };
