@@ -1,6 +1,4 @@
 final: prev: {
-  exa = final.callPackage (import ./exa prev) { };
-
   catgirl = prev.catgirl.overrideAttrs (old: {
     patches = (old.patches or [ ]) ++ [
       ./patches/bright.patch

@@ -266,9 +266,9 @@ in
 
         aliases = ''
           # Aliases that are expanded inline (without adding a space after)
-          balias lsl="exa -al"
-          balias lst="exa -alT -I '.git|target'"
-          balias lsta="exa -alT"
+          balias lsl="eza -al"
+          balias lst="eza -alT -I '.git|target'"
+          balias lsta="eza -alT"
 
           # Status/info
           balias ghg='git status'
@@ -335,7 +335,7 @@ in
           balias gnd='git clone'
 
           # Select which folders called target/ inside ~/src to delete
-          balias delete-targets="fd -It d '^target$' ~/src | fzf --multi --preview='exa -al {}/..' | xargs rm -r"
+          balias delete-targets="fd -It d '^target$' ~/src | fzf --multi --preview='eza -al {}/..' | xargs rm -r"
 
           # Select git branches to delete
           balias delete-branches="git branch | rg -v '\*' | cut -c 3- | fzf --multi --preview='git hist {}' | xargs git branch --delete --force"

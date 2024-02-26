@@ -18,7 +18,7 @@
       direnv
       dnsutils
       erdtree
-      exa
+      eza
       fd
       fzf
       git
