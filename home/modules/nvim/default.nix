@@ -76,8 +76,6 @@ in
         vim-toml
         vimtex
 
-        nvim-treesitter-parsers.tlaplus
-
         (luaPlugin dressing-nvim ./config/dressing.lua)
         (luaPlugin formatter-nvim ./config/formatter.lua)
         (luaPlugin indent-blankline-nvim ./config/indent-blankline.lua)
@@ -110,7 +108,39 @@ in
           })
         ''
         )
-      ];
+      ] ++ (with nvim-treesitter-parsers; [
+        bash
+        c
+        c_sharp
+        cmake
+        cpp
+        css
+        dart
+        dockerfile
+        java
+        javascript
+        json
+        jsonnet
+        kotlin
+        lua
+        make
+        markdown
+        markdown_inline
+        nix
+        objc
+        python
+        query
+        ruby
+        rust
+        tlaplus
+        toml
+        tsx
+        typescript
+        vim
+        vimdoc
+        xml
+        yaml
+      ]);
 
       extraPackages = with pkgs; [
         glow

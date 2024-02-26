@@ -1,28 +1,6 @@
-require'indent_blankline'.setup {
-    show_current_context = false,
-    context_patterns = {
-        "class",
-        "^func",
-        "method",
-        "^if",
-        "while",
-        "for",
-        "with",
-        "try",
-        "except",
-        "arguments",
-        "argument_list",
-        "object",
-        "dictionary",
-        "element",
-        "table",
-        "tuple",
-
-        "match",
-        "fn",
-        "impl",
-        "struct",
-        "enum",
-        "use",
+require'ibl'.setup {
+    scope = {
+        show_start = false,
+        show_end = false,
     },
 }
