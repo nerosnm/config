@@ -18,7 +18,6 @@ in
       CLICOLOR = 1;
       LANG = "en_GB.UTF-8";
       LESS = "R";
-      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=240";
     };
 
     file.".indentconfig.yaml".text = ''
@@ -196,13 +195,15 @@ in
       '';
     };
 
-    zoxide.enable = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
     starship.enable = true;
 
     fzf = rec {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
       enableFishIntegration = true;
 
       defaultCommand = "${pkgs.fd}/bin/fd -H --type f";
@@ -216,170 +217,131 @@ in
         [ "--preview '${pkgs.tree}/bin/tree -C {} | head -200'" ];
     };
 
-    zsh =
-      let
-        mkZshPlugin = { pkg, file ? "${pkg.pname}.plugin.zsh" }: rec {
-          name = pkg.pname;
-          src = pkg.src;
-          inherit file;
-        };
+    fish = {
+      enable = true;
 
-        functions = ''
-          # blank aliases
-          typeset -a baliases
-          baliases=()
+      interactiveShellInit = ''
+        export TERM=wezterm
+        set -g fish_key_bindings fish_vi_key_bindings
 
-          balias() {
-            alias $@
-            args="$@"
-            args=''${args%%\=*}
-            baliases+=(''${args##* })
-          }
+        function fish_greeting
+          ${pkgs.fastfetch}/bin/fastfetch
+        end
 
-          # ignored aliases
-          typeset -a ialiases
-          ialiases=()
+        # onehalf theme
+        set -l red e06c75 #e06c75
+        set -l green 98c379 #98c379
+        set -l yellow e5c07b #e5c07b
+        set -l blue 61afef #61afef
+        set -l purple c678dd #c678dd
+        set -l cyan 56b6c2 #56b6c2
 
-          ialias() {
-            alias $@
-            args="$@"
-            args=''${args%%\=*}
-            ialiases+=(''${args##* })
-          }
+        set -l black 282c34 #282c34
+        set -l grey 383e49 #383e49
+        set -l white dcdfe4 #dcdfe4
 
-          # functionality
-          expand-alias-space() {
-            [[ $LBUFFER =~ "\<(''${(j:|:)baliases})\$" ]]; insertBlank=$?
-            if [[ ! $LBUFFER =~ "\<(''${(j:|:)ialiases})\$" ]]; then
-              zle _expand_alias
-            fi
-            zle self-insert
-            # if [[ "$insertBlank" = "0" ]]; then
-            #   zle backward-delete-char
-            # fi
-          }
-          zle -N expand-alias-space
+        set -g fish_color_normal $white
+        set -g fish_color_command $purple
+        set -g fish_color_keyword $yellow
+        set -g fish_color_quote $green
+        set -g fish_color_redirection $white
+        set -g fish_color_end $yellow
+        set -g fish_color_error $red
+        set -g fish_color_param $blue
+        set -g fish_color_comment $grey
+        set -g fish_color_selection --background=$grey
+        set -g fish_color_search_match --background=$grey
+        set -g fish_color_operator $green
+        set -g fish_color_escape $cyan
+        set -g fish_color_autosuggestion $grey
+        set -g fish_color_cancel --background=$grey
 
-          bindkey " " expand-alias-space
-          bindkey -M isearch " " magic-space
-        '';
+        # Completion Pager Colors
+        set -g fish_pager_color_progress $grey
+        set -g fish_pager_color_prefix $cyan
+        set -g fish_pager_color_completion $white
+        set -g fish_pager_color_description $grey
+        set -g fish_pager_color_selected_background --background=$grey
+      '';
 
-        aliases = ''
-          # Aliases that are expanded inline (without adding a space after)
-          balias lsl="eza -al"
-          balias lst="eza -alT -I '.git|target'"
-          balias lsta="eza -alT"
+      shellAbbrs = {
+        lsl = "eza -al";
+        lst = "eza -alT -I '.git|target'";
+        lsta = "eza -alT";
 
-          # Status/info
-          balias ghg='git status'
-          balias ghf='git hist'
-          balias ghd='git diff --color-moved'
-          balias ghs='git diff --color-moved --cached'
-          balias gha='git stash list'
+        # Status/info
+        ghg = "git status";
+        ghf = "git hist";
+        ghd = "git diff --color-moved";
+        ghs = "git diff --color-moved --cached";
+        gha = "git stash list";
 
-          # Changes
-          balias gjg='git add'
-          balias gjf='git checkout --'
-          balias gjd='git add -p'
-          balias gjs='git reset HEAD --'
-          balias gja='git reset -p'
+        # Changes
+        gjg = "git add";
+        gjf = "git checkout --";
+        gjd = "git add -p";
+        gjs = "git reset HEAD --";
+        gja = "git reset -p";
 
-          # Commit
-          balias gkg='git commit'
-          balias gkf='git commit --amend'
-          balias gkd='git commit -m'
+        # Commit
+        gkg = "git commit";
+        gkf = "git commit --amend";
+        gkd = "git commit -m";
 
-          # Push/pull
-          balias glg='git push'
-          balias glf='git push --force-with-lease'
-          balias gld='git push -u'
-          balias gls='git pull'
-          balias gla='git fetch -p --all'
+        # Push/pull
+        glg = "git push";
+        glf = "git push --force-with-lease";
+        gld = "git push -u";
+        gls = "git pull";
+        gla = "git fetch -p --all";
 
-          # Rebase
-          balias gug='git rebase'
-          balias guf='git rebase --onto'
-          balias gud='git rebase -i'
-          balias gus='git rebase --continue'
-          balias gua='git rebase --abort'
+        # Rebase
+        gug = "git rebase";
+        guf = "git rebase --onto";
+        gud = "git rebase -i";
+        gus = "git rebase --continue";
+        gua = "git rebase --abort";
 
-          # Branch/checkout
-          balias gig='git checkout'
-          balias gif='git branch -d'
-          balias giF='git branch -D'
-          balias gid='git checkout -b'
-          balias gis='git branch'
-          balias gia='git branch -r'
+        # Branch/checkout
+        gig = "git checkout";
+        gif = "git branch -d";
+        giF = "git branch -D";
+        gid = "git checkout -b";
+        gis = "git branch";
+        gia = "git branch -r";
 
-          # Stash
-          balias gog='git stash push'
-          balias gof='git stash drop'
-          balias god='git stash push --keep-index'
-          balias gos='git stash pop'
-          balias goa='git stash apply'
+        # Stash
+        gog = "git stash push";
+        gof = "git stash drop";
+        god = "git stash push --keep-index";
+        gos = "git stash pop";
+        goa = "git stash apply";
 
-          # Bisect
-          balias gyg='git bisect start'
-          balias gyf='git bisect reset'
-          balias gyd='git bisect good'
-          balias gys='git bisect bad'
-          balias gya='git bisect run'
+        # Bisect
+        gyg = "git bisect start";
+        gyf = "git bisect reset";
+        gyd = "git bisect good";
+        gys = "git bisect bad";
+        gya = "git bisect run";
 
-          # Merge
-          balias gmg='git merge'
-          balias gmf='git merge --squash'
-          balias gmd='git merge --signoff'
-          balias gms='git merge --continue'
-          balias gma='git merge --abort'
+        # Merge
+        gmg = "git merge";
+        gmf = "git merge --squash";
+        gmd = "git merge --signoff";
+        gms = "git merge --continue";
+        gma = "git merge --abort";
 
-          balias gnd='git clone'
+        gnd = "git clone";
 
-          # Kubernetes
-          balias kc='kubectl'
+        # Kubernetes
+        kc = "kubectl";
 
-          # Select which folders called target/ inside ~/src to delete
-          balias delete-targets="fd -It d '^target$' ~/src | fzf --multi --preview='eza -al {}/..' | xargs rm -r"
+        # Select which folders called target/ inside ~/src to delete
+        delete-targets = "fd -It d '^target$' ~/src | fzf --multi --preview='eza -al {}/..' | xargs rm -r";
 
-          # Select git branches to delete
-          balias delete-branches="git branch | rg -v '\*' | cut -c 3- | fzf --multi --preview='git hist {}' | xargs git branch --delete --force"
-        '';
-      in
-      {
-        enable = true;
-        enableCompletion = true;
-        enableAutosuggestions = true;
-        dotDir = ".config/zsh";
-        defaultKeymap = "viins";
-
-        initExtra = ''
-          ${functions}
-          ${aliases}
-
-          unset RPS1
-
-          bindkey "^?" backward-delete-char
-          bindkey "^W" backward-kill-word
-          bindkey "^H" backward-delete-char
-          bindkey "^U" backward-kill-line
-
-          # Ignore files matching the pattern *.lock when completing arguments to the `nvim`, `vim` 
-          # or `vi` commands.
-          zstyle ':completion:*:*:nvim:*' file-patterns '^*.lock:source-files' '*:all-files'
-          zstyle ':completion:*:*:vim:*' file-patterns '^*.lock:source-files' '*:all-files'
-          zstyle ':completion:*:*:vi:*' file-patterns '^*.lock:source-files' '*:all-files'
-
-          # If zsh is started with NOHISTFILE set, disable history
-          if [ ! -z $NOHISTFILE ] && $NOHISTFILE; then
-            unset HISTFILE
-          fi
-
-          # Remove / and = from $WORDCHARS so that ctrl-w stops at them
-          WORDCHARS=''${WORDCHARS//[\/=]}
-        '';
-
-        plugins = with pkgs; [
-          (mkZshPlugin { pkg = zsh-syntax-highlighting; })
-        ];
+        # Select git branches to delete
+        delete-branches = "git branch | rg -v '\*' | cut -c 3- | fzf --multi --preview='git hist {}' | xargs git branch --delete --force";
       };
+    };
   };
 }

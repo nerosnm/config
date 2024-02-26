@@ -78,8 +78,6 @@
     '';
   };
 
-  programs.zsh.enable = true;
-
   fonts.fonts = with pkgs; [
     iosevka-custom
   ];

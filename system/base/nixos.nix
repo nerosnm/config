@@ -66,6 +66,8 @@
   };
 
   programs.zsh = {
+    enable = true;
+
     # Enable starship
     promptInit = ''
       eval "$(${pkgs.starship}/bin/starship init zsh)"
