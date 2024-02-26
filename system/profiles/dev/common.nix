@@ -7,13 +7,12 @@
 
 {
   environment.systemPackages = with pkgs; [
-    cargo-about
-    cargo-deny
+    # cargo-about
+    # cargo-deny
     cargo-expand
     cargo-generate
     cargo-modules
     cargo-update
-    cargo-watch
     convco
     gh
     # go

@@ -9,22 +9,22 @@
   imports = [ ./common.nix ];
 
   environment.systemPackages = with pkgs; [
-    ninja
-    swig
+    # ninja
+    # swig
     tailscale
   ];
 
   homebrew = {
     brews = [
-      "ios-deploy"
-      "libimobiledevice"
-      "swiftlint"
+      # "ios-deploy"
+      # "libimobiledevice"
+      # "swiftlint"
     ];
 
     casks = [
-      "cool-retro-term"
+      # "cool-retro-term"
       "docker"
-      "insomnia"
+      # "insomnia"
       "jetbrains-toolbox"
       "tla-plus-toolbox"
     ];
