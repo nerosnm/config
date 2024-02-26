@@ -10,7 +10,7 @@ let
   sha256 = "sha256-70kp644jOtJ4wguty/SUFX+YEsoxW12LGg3vZh7BdPY=";
 in
 
-vimUtils.buildVimPluginFrom2Nix {
+vimUtils.buildVimPlugin {
   pname = repo;
   version = rev;
 
