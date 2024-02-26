@@ -14,13 +14,12 @@
   ];
 
   inputs = {
-    # This is the release branch for NixOS 22.11, which is best to use for
-    # system configurations for NixOS machines.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-
     # This branch of nixpkgs has newer versions of packages than `nixos-22.11`,
     # but is less likely to have cached binaries than other branches.
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    #
+    # Commit from the nixpkgs-unstable branch manually selected from
+    # status.nixos.org.
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Absolute bleeding edge version of nixpkgs, not tested or cached yet.
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -28,15 +27,18 @@
     # Fix for iosevka build failures due to Node.js issues.
     nixpkgs-iosevka-fix.url = "github:NixOS/nixpkgs/refs/pull/262124/head";
 
-    # This branch of nixpkgs is more likely than `nixos-22.11` to have cached
-    # binaries for Darwin platforms.
-    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-22.11-darwin";
+    # This branch of nixpkgs is more likely than others to have cached binaries
+    # for Darwin platforms.
+    #
+    # Commit from the nixpkgs-23.11-darwin branch manually selected from
+    # status.nixos.org.
+    nixpkgs-darwin.url = "github:NixOS/nixpkgs/nixpkgs-23.11-darwin";
 
     # Utility functions for writing flakes.
     flake-utils.url = "github:numtide/flake-utils/main";
 
     # Enables management of home directory files using Nix.
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Enables system-level configuration on Darwin platforms.
@@ -51,15 +53,15 @@
 
     # Deploy tool for NixOS servers.
     deploy-rs.url = "github:serokell/deploy-rs/master";
-    deploy-rs.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
     deploy-rs.inputs.utils.follows = "flake-utils";
 
     cargo2nix.url = "github:cargo2nix/cargo2nix";
     cargo2nix.inputs.flake-utils.follows = "flake-utils";
-    cargo2nix.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    cargo2nix.inputs.nixpkgs.follows = "nixpkgs";
 
     fenix.url = "github:nix-community/fenix";
-    fenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    fenix.inputs.nixpkgs.follows = "nixpkgs";
 
     cacti-dev.url = "github:nerosnm/cacti.dev/main";
     cacti-dev.inputs.nixpkgs.follows = "nixpkgs";
@@ -94,7 +96,6 @@
     { self
     , nixpkgs
     , nixpkgs-darwin
-    , nixpkgs-unstable
     , nixpkgs-master
     , flake-utils
     , nix-darwin
@@ -120,6 +121,35 @@
           oxbow-cacti-dev = inputs.oxbow.packages.${system}.oxbow-cacti-dev;
           pomocop = inputs.pomocop.packages.${system}.default;
         })
+
+        # (final: prev: {
+        #   bind = prev.bind.overrideAttrs (_: {
+        #     __darwinAllowLocalNetworking = true;
+        #   });
+        # })
+
+        (final: prev: {
+          pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+            (pythonFinal: pythonPrev: {
+              sphinx = pythonPrev.sphinx.overridePythonAttrs (_: {
+                doCheck = false;
+                __darwinAllowLocalNetworking = true;
+              });
+            })
+          ];
+
+          libuv = prev.libuv.overrideAttrs (_: {
+            doCheck = false;
+          });
+
+          openldap = prev.openldap.overrideAttrs (_: {
+            doCheck = false;
+          });
+
+          # aws-sdk-cpp = prev.aws-sdk-cpp.overrideAttrs (_: {
+          #   doCheck = false;
+          # });
+        })
       ] ++ map (input: input.overlays.default) (with inputs; [
         agenix
       ]);
@@ -133,10 +163,10 @@
 
       # A function that imports the given `channel` (which should be a branch of
       # nixpkgs in the form of an input to this flake, like `nixpkgs` or
-      # `nixpkgs-unstable`) for the system `system`, setting any necessary
-      # config and applying the `upgradeOverlays` in the correct position
-      # between the `baseOverlays` and the customisation overlays (`customPkgs`
-      # and `overrides`).
+      # `nixpkgs-master`) for the system `system`, setting any necessary config
+      # and applying the `upgradeOverlays` in the correct position between the
+      # `baseOverlays` and the customisation overlays (`customPkgs` and
+      # `overrides`).
       #
       # "Correct position" here refers to the convention I've decided on for
       # overlay order in this flake: overlays should be applied in increasing
@@ -224,6 +254,9 @@
       # packages can be upgraded to ones from master.
       upgradeToMaster = master: _: _: {
         inherit (master)
+          # age-plugin-yubikey
+          aws-sdk-cpp
+          # bind
           iosevka
           prismlauncher
           rust-analyzer-unwrapped
@@ -231,80 +264,21 @@
           ;
       };
 
-      # A function that imports `nixpkgs-unstable` for the given system, with
-      # all relevant upgrade overlays applied. In the case of
-      # `nixpkgs-unstable`, the relevant upgrade overlays are
-      # `upgradeWithMaster` (to upgrade any packages that are too old on
-      # unstable to the ones from master), and `upgradeToFromInputs`.
-      unstableFor = system: pkgsFor {
-        channel = nixpkgs-unstable;
-        inherit system;
-        upgradeOverlays = [
-          (upgradeToMaster (masterFor system))
-          (upgradeToCustomChannels system)
-          (upgradeToFromInput system)
-        ];
-      };
-
-      # An overlay that picks packages from `unstable`, regardless of the
-      # channel this overlay is being applied to. This will be applied to all
-      # channels with packages older than the ones in `nixpkgs-unstable`, so
-      # that specific packages can be upgraded to ones from unstable.
-      upgradeToUnstable = unstable: _: _: {
-        inherit (unstable)
-          age-plugin-yubikey
-          bat
-          # cachix
-          cargo-about
-          cargo-deny
-          cargo-expand
-          cargo-generate
-          cargo-modules
-          cargo-update
-          cargo-watch
-          erdtree
-          fd
-          git
-          git-lfs
-          gnome-photos
-          grafana
-          keybase
-          nixpkgs-fmt
-          openssh
-          pounce
-          rage
-          rustup
-          starship
-          streamdeck-ui
-          tailscale
-          tectonic
-          tempo
-          tlaplus18
-          udisks
-          yubikey-manager
-          ;
-
-        inherit (unstable.vimPlugins)
-          nvim-treesitter-parsers;
-      };
-
       # If we're using Darwin, we should use the Darwin-specific version of
-      # nixpkgs. Otherwise, use the release branch.
-      selectStable = system:
+      # nixpkgs. Otherwise, use the main `nixpkgs`.
+      selectBaseNixpkgs = system:
         if (hasSuffix "-darwin" system)
         then nixpkgs-darwin
         else nixpkgs;
 
-      # A function that imports the most relevant stable channel of nixpkgs for
-      # the given system, with all relevant upgrade overlays applied. For stable
-      # channels, the relevant upgrade overlays are `upgradeWithUnstable` (to
-      # upgrade any packages that are too old on stable to the ones from
-      # unstable), `upgradeWithMaster` and `upgradeToFromInput`.
-      stableFor = system: pkgsFor {
-        channel = (selectStable system);
+      # A function that imports the unstable channel of nixpkgs for the given
+      # system, with all relevant upgrade overlays applied. For this channel,
+      # the relevant upgrade overlays are `upgradeToMaster` and
+      # `upgradeToFromInput`.
+      unstableFor = system: pkgsFor {
+        channel = (selectBaseNixpkgs system);
         inherit system;
         upgradeOverlays = [
-          (upgradeToUnstable (unstableFor system))
           (upgradeToMaster (masterFor system))
           (upgradeToCustomChannels system)
           (upgradeToFromInput system)
@@ -319,14 +293,7 @@
     in
     (eachSystem supportedSystems (system:
     let
-      # By using the "stable" packages for the base packages of everything,
-      # including the devShell, the versions of packages will be consistent
-      # across all contexts in this flake. For example, a package that is
-      # upgraded to an unstable version by an overlay will appear as the
-      # unstable version both in the devShell and in system configurations. At
-      # the same time, the maximum number of cached versions of packages will be
-      # used.
-      pkgs = stableFor system;
+      pkgs = unstableFor system;
     in
     {
       packages = {
@@ -362,7 +329,7 @@
         default = pkgs.mkShell {
           name = "nerosnm/config";
           packages = with pkgs; [
-            age-plugin-yubikey
+            # age-plugin-yubikey
             agenix
             deploy-rs
             home-manager
@@ -376,7 +343,7 @@
         atria =
           let
             system = systems.x86_64-linux;
-            pkgs = stableFor system;
+            pkgs = unstableFor system;
           in
           nixpkgs.lib.nixosSystem {
             inherit system pkgs;
@@ -391,7 +358,7 @@
         nashira =
           let
             system = systems.aarch64-darwin;
-            pkgs = stableFor system;
+            pkgs = unstableFor system;
           in
           nix-darwin.lib.darwinSystem {
             inherit system pkgs;
