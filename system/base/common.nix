@@ -49,7 +49,7 @@
   nix = {
     settings = {
       # Prevents impurities in builds
-      sandbox = true;
+      sandbox = "relaxed";
 
       # Give root user and wheel group special Nix privileges.
       trusted-users = [ "root" "@wheel" ];
