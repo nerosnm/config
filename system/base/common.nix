@@ -8,41 +8,41 @@
     systemPackages = with pkgs; [
       asciiquarium
       bat
-      binutils
+      # binutils
       bottom
-      btop
-      coreutils
+      # btop
+      # coreutils
       curl
       # dconf2nix
       dig
       direnv
-      dnsutils
+      # dnsutils
       erdtree
       eza
       fd
       fzf
       git
       glow
-      hyperfine
-      inetutils
+      # hyperfine
+      # inetutils
       jq
       keybase
-      lsof
-      manix
-      moreutils
-      nix-index
-      nmap
+      # lsof
+      # manix
+      # moreutils
+      # nix-index
+      # nmap
       openssh
       ripgrep
       sd
-      skim
+      # skim
       tokei
-      unzip
-      wget
-      xclip
-      xsel
-      youtube-dl
-      zip
+      # unzip
+      # wget
+      # xclip
+      # xsel
+      # youtube-dl
+      # zip
     ];
   };
 
