@@ -154,9 +154,11 @@ in
           -- },
 
           ${optionalString isDarwin ''
-          font_size = 16.0,
-          window_decorations = "RESIZE",
-          native_macos_fullscreen_mode = true,
+            font_size = 16.0,
+            window_decorations = "RESIZE",
+            send_composed_key_when_left_alt_is_pressed = false,
+            send_composed_key_when_right_alt_is_pressed = true,
+            native_macos_fullscreen_mode = true,
           ''}
         }
       '';
