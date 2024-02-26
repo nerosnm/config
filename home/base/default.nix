@@ -334,6 +334,9 @@ in
 
           balias gnd='git clone'
 
+          # Kubernetes
+          balias kc='kubectl'
+
           # Select which folders called target/ inside ~/src to delete
           balias delete-targets="fd -It d '^target$' ~/src | fzf --multi --preview='eza -al {}/..' | xargs rm -r"
 
