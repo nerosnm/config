@@ -8,6 +8,7 @@
     # "zoom" # installed automatically by Pixel
     "loom"
     "notion"
+    "obs"
     "zulip"
   ];
 }
