@@ -4,10 +4,10 @@
 }:
 
 let
-  owner = "f-person";
+  owner = "nerosnm";
   repo = "git-blame.nvim";
-  rev = "1792125237260dc2a03ba57d31c39179e6049f07";
-  sha256 = "sha256-jq3ii4CFa5hpbRMJe9zxl7fVMs/BgWfwBBmEtqn/Bok=";
+  rev = "c14d43806db2bd51da5c83879505ce054577735c";
+  sha256 = "sha256-QTYrjmdw9m49rgfGXIToXaEFojVeMvTBydKWt958GNM=";
 in
 
 vimUtils.buildVimPlugin {
