@@ -14,6 +14,10 @@
     tailscale
   ];
 
+  environment.systemPath = [
+    "/opt/fleet"
+  ];
+
   homebrew = {
     brews = [
       # "ios-deploy"
