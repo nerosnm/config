@@ -258,6 +258,7 @@
           aws-sdk-cpp
           # bind
           iosevka
+          nix-direnv
           prismlauncher
           rust-analyzer-unwrapped
           wezterm
