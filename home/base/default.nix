@@ -115,7 +115,7 @@ in
         end)
 
         return {
-          color_scheme = "OneHalfDark",
+          color_scheme = "OneDark (base16)",
           font = wezterm.font("Iosevka Custom", { weight = "Light" }),
           enable_scroll_bar = true,
 
@@ -158,7 +158,7 @@ in
             window_decorations = "RESIZE",
             send_composed_key_when_left_alt_is_pressed = false,
             send_composed_key_when_right_alt_is_pressed = true,
-            native_macos_fullscreen_mode = true,
+            native_macos_fullscreen_mode = false,
           ''}
         }
       '';
@@ -226,6 +226,9 @@ in
         export TERM=wezterm
         set -g fish_key_bindings fish_vi_key_bindings
 
+        ${pkgs.jujutsu}/bin/jj util completion fish | source
+        ${pkgs.carapace}/bin/carapace jj | source
+
         function fish_greeting
           ${pkgs.fastfetch}/bin/fastfetch
         end
@@ -242,28 +245,31 @@ in
         set -l grey 383e49 #383e49
         set -l white dcdfe4 #dcdfe4
 
-        set -g fish_color_normal $white
-        set -g fish_color_command $purple
-        set -g fish_color_keyword $yellow
-        set -g fish_color_quote $green
-        set -g fish_color_redirection $white
-        set -g fish_color_end $yellow
-        set -g fish_color_error $red
-        set -g fish_color_param $blue
-        set -g fish_color_comment $grey
-        set -g fish_color_selection --background=$grey
-        set -g fish_color_search_match --background=$grey
-        set -g fish_color_operator $green
-        set -g fish_color_escape $cyan
-        set -g fish_color_autosuggestion $grey
-        set -g fish_color_cancel --background=$grey
+        set --universal fish_color_normal $white
+        set --universal fish_color_command $purple
+        set --universal fish_color_keyword $yellow
+        set --universal fish_color_quote $green
+        set --universal fish_color_redirection $white
+        set --universal fish_color_end $yellow
+        set --universal fish_color_error $red
+        set --universal fish_color_param $blue
+        set --universal fish_color_comment $grey
+        set --universal fish_color_selection --background=$grey
+        set --universal fish_color_search_match --background=$grey
+        set --universal fish_color_operator $green
+        set --universal fish_color_escape $cyan
+        set --universal fish_color_autosuggestion $grey
+        set --universal fish_color_cwd $green
+        set --universal fish_color_cwd_root $red
+        set --universal fish_color_cancel --background=$grey
 
         # Completion Pager Colors
-        set -g fish_pager_color_progress $grey
-        set -g fish_pager_color_prefix $cyan
-        set -g fish_pager_color_completion $white
-        set -g fish_pager_color_description $grey
-        set -g fish_pager_color_selected_background --background=$grey
+        set --universal fish_pager_color_progress $grey
+        set --universal fish_pager_color_prefix $cyan
+        set --universal fish_pager_color_completion $white
+        set --universal fish_pager_color_description $grey
+        set --universal fish_pager_color_background --background=$grey
+        set --universal fish_pager_color_selected_background --background=$grey
       '';
 
       shellAbbrs = {
@@ -277,6 +283,11 @@ in
         ghd = "git diff --color-moved";
         ghs = "git diff --color-moved --cached";
         gha = "git stash list";
+
+        jsj = "jj status";
+
+        jfj = "jj log";
+        jfl = "jj log --limit";
 
         # Changes
         gjg = "git add";

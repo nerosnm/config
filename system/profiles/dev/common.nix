@@ -7,6 +7,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    carapace
     # cargo-about
     # cargo-deny
     cargo-expand
@@ -15,6 +16,7 @@
     cargo-update
     convco
     gh
+    jujutsu
     # go
     # gopls
     rustup

@@ -1,4 +1,8 @@
 final: prev: {
+  agenix = prev.agenix.override {
+    ageBin = "${final.rage}/bin/rage";
+  };
+
   catgirl = prev.catgirl.overrideAttrs (old: {
     patches = (old.patches or [ ]) ++ [
       ./patches/bright.patch
@@ -11,27 +15,20 @@ final: prev: {
     ];
   });
 
-  python311 = prev.python311.override {
-    packageOverrides = pythonFinal: pythonPrev: {
-      build = pythonPrev.build.overrideAttrs (attrs: {
-        __darwinAllowLocalNetworking = true;
-      });
-    };
-  };
-
   iosevka-custom = prev.iosevka.override {
-    set = "custom";
+    set = "Custom";
     privateBuildPlan = ''
-      [buildPlans.iosevka-custom]
+      [buildPlans.IosevkaCustom]
       family = "Iosevka Custom"
       spacing = "term"
       serifs = "sans"
-      no-cv-ss = true
+      noCvSs = true
+      exportGlyphNames = false
 
-      [buildPlans.iosevka-custom.variants]
+      [buildPlans.IosevkaCustom.variants]
       inherits = "ss15"
 
-      [buildPlans.iosevka-custom.variants.design]
+      [buildPlans.IosevkaCustom.variants.design]
       digit-form = "old-style"
       capital-g = "toothless-corner-inward-serifed-hooked"
       capital-p = "open-serifless"
@@ -48,13 +45,13 @@ final: prev: {
       u = "toothed-bottom-right-serifed"
       v = "curly-serifless"
       w = "curly-serifless"
-      x = "semi-chancery-curly"
+      x = "semi-chancery-curly-serifless"
       y = "curly-serifless"
       z = "curly-serifless"
       lower-eth = "straight-bar"
-      two = "curly-neck"
-      three = "flat-top"
-      four = "semi-open-non-crossing"
+      two = "curly-neck-serifless"
+      three = "flat-top-serifless"
+      four = "semi-open-non-crossing-serifless"
       seven = "bend-serifed-crossbar"
       underscore = "high"
       guillemet = "curly"
@@ -70,7 +67,7 @@ final: prev: {
       lig-equal-chain = "without-notch"
       lig-hyphen-chain = "with-notch"
 
-      [buildPlans.iosevka-custom.variants.italic]
+      [buildPlans.IosevkaCustom.variants.italic]
       capital-u = "tailed-serifless"
       capital-z = "cursive-with-horizontal-crossbar"
       i = "serifed-diagonal-tailed"
@@ -83,7 +80,7 @@ final: prev: {
       ascii-single-quote = "straight"
       lig-neq = "slightly-slanted-dotted"
 
-      [buildPlans.iosevka-custom.ligations]
+      [buildPlans.IosevkaCustom.ligations]
       enables = [
         "center-ops",
         "center-op-trigger-plus-minus-r",
@@ -141,7 +138,7 @@ final: prev: {
         "connected-hyphen",
       ]
 
-      [buildPlans.iosevka-custom.widths.normal]
+      [buildPlans.IosevkaCustom.widths.Normal]
       shape = 500
       menu = 5
       css = "normal"

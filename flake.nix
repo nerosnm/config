@@ -14,12 +14,13 @@
   ];
 
   inputs = {
-    # This branch of nixpkgs has newer versions of packages than `nixos-22.11`,
+    # This is the release branch for NixOS 23.11, which is best to use for
+    # system configurations for NixOS machines.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+
+    # This branch of nixpkgs has newer versions of packages than `nixos-23.11`,
     # but is less likely to have cached binaries than other branches.
-    #
-    # Commit from the nixpkgs-unstable branch manually selected from
-    # status.nixos.org.
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Absolute bleeding edge version of nixpkgs, not tested or cached yet.
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -63,6 +64,10 @@
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
+    jj.url = "github:bnjmnt4n/jj/ssh-openssh";
+    jj.inputs.flake-utils.follows = "flake-utils";
+    jj.inputs.nixpkgs.follows = "nixpkgs";
+
     cacti-dev.url = "github:nerosnm/cacti.dev/main";
     cacti-dev.inputs.nixpkgs.follows = "nixpkgs";
     cacti-dev.inputs.flake-utils.follows = "flake-utils";
@@ -96,6 +101,7 @@
     { self
     , nixpkgs
     , nixpkgs-darwin
+    , nixpkgs-unstable
     , nixpkgs-master
     , flake-utils
     , nix-darwin
@@ -121,37 +127,9 @@
           oxbow-cacti-dev = inputs.oxbow.packages.${system}.oxbow-cacti-dev;
           pomocop = inputs.pomocop.packages.${system}.default;
         })
-
-        # (final: prev: {
-        #   bind = prev.bind.overrideAttrs (_: {
-        #     __darwinAllowLocalNetworking = true;
-        #   });
-        # })
-
-        (final: prev: {
-          pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-            (pythonFinal: pythonPrev: {
-              sphinx = pythonPrev.sphinx.overridePythonAttrs (_: {
-                doCheck = false;
-                __darwinAllowLocalNetworking = true;
-              });
-            })
-          ];
-
-          libuv = prev.libuv.overrideAttrs (_: {
-            doCheck = false;
-          });
-
-          openldap = prev.openldap.overrideAttrs (_: {
-            doCheck = false;
-          });
-
-          # aws-sdk-cpp = prev.aws-sdk-cpp.overrideAttrs (_: {
-          #   doCheck = false;
-          # });
-        })
       ] ++ map (input: input.overlays.default) (with inputs; [
         agenix
+        jj
       ]);
 
       # An overlay that overrides existing package definitions, such as by
@@ -217,20 +195,17 @@
         let
           nodejsPath = inputs.nixpkgs-iosevka-fix + "/pkgs/development/web/nodejs";
           nodeVersion = x: final.callPackage (nodejsPath + "/v${x}.nix");
-          v14 = nodeVersion "14";
-          v16 = nodeVersion "16";
           v18 = nodeVersion "18";
           v20 = nodeVersion "20";
+          v21 = nodeVersion "21";
         in
         {
-          nodejs_14 = v14 { openssl = final.openssl_1_1; };
-          nodejs-slim_14 = v14 { enableNpm = false; openssl = final.openssl_1_1; };
-          nodejs_16 = v16 { };
-          nodejs-slim_16 = v16 { enableNpm = false; };
           nodejs_18 = v18 { };
           nodejs-slim_18 = v18 { enableNpm = false; };
           nodejs_20 = v20 { };
           nodejs-slim_20 = v20 { enableNpm = false; };
+          nodejs_21 = v21 { };
+          nodejs-slim_21 = v21 { enableNpm = false; };
         };
 
       # A function that imports `nixpkgs-master` for the given system, with all
@@ -254,14 +229,41 @@
       # packages can be upgraded to ones from master.
       upgradeToMaster = master: _: _: {
         inherit (master)
-          # age-plugin-yubikey
           aws-sdk-cpp
-          # bind
           iosevka
+          nix
+          nixos-option
           nix-direnv
           prismlauncher
           rust-analyzer-unwrapped
           wezterm
+          ;
+      };
+
+      # A function that imports the unstable channel of nixpkgs for the given
+      # system, with all relevant upgrade overlays applied. For this channel,
+      # the relevant upgrade overlays are `upgradeToMaster` and
+      # `upgradeToFromInput`.
+      unstableFor = system: pkgsFor {
+        channel = nixpkgs-unstable;
+        inherit system;
+        upgradeOverlays = [
+          (upgradeToMaster (masterFor system))
+          (upgradeToCustomChannels system)
+          (upgradeToFromInput system)
+        ];
+      };
+
+      # An overlay that picks packages from `unstable`, regardless of the
+      # channel this overlay is being applied to. This will be applied to all
+      # channels with packages older than the ones in `nixpkgs-unstable`, so that
+      # specific packages can be upgraded to ones from unstable.
+      upgradeToUnstable = unstable: _: _: {
+        inherit (unstable)
+          age-plugin-yubikey
+
+          # May help avoid ghc compilation from source
+          pandoc
           ;
       };
 
@@ -272,14 +274,15 @@
         then nixpkgs-darwin
         else nixpkgs;
 
-      # A function that imports the unstable channel of nixpkgs for the given
-      # system, with all relevant upgrade overlays applied. For this channel,
-      # the relevant upgrade overlays are `upgradeToMaster` and
-      # `upgradeToFromInput`.
-      unstableFor = system: pkgsFor {
+      # A function that imports the most appropriate stable channel of nixpkgs
+      # for the given system, with all relevant upgrade overlays applied. For
+      # this channel, the relevant upgrade overlays are `upgradeToUnstable`,
+      # `upgradeToMaster` and `upgradeToFromInput`.
+      stableFor = system: pkgsFor {
         channel = (selectBaseNixpkgs system);
         inherit system;
         upgradeOverlays = [
+          (upgradeToUnstable (unstableFor system))
           (upgradeToMaster (masterFor system))
           (upgradeToCustomChannels system)
           (upgradeToFromInput system)
@@ -294,7 +297,7 @@
     in
     (eachSystem supportedSystems (system:
     let
-      pkgs = unstableFor system;
+      pkgs = stableFor system;
     in
     {
       packages = {
@@ -330,7 +333,7 @@
         default = pkgs.mkShell {
           name = "nerosnm/config";
           packages = with pkgs; [
-            # age-plugin-yubikey
+            age-plugin-yubikey
             agenix
             deploy-rs
             home-manager
@@ -344,7 +347,7 @@
         atria =
           let
             system = systems.x86_64-linux;
-            pkgs = unstableFor system;
+            pkgs = stableFor system;
           in
           nixpkgs.lib.nixosSystem {
             inherit system pkgs;
@@ -359,7 +362,7 @@
         nashira =
           let
             system = systems.aarch64-darwin;
-            pkgs = unstableFor system;
+            pkgs = stableFor system;
           in
           nix-darwin.lib.darwinSystem {
             inherit system pkgs;

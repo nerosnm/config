@@ -15,7 +15,7 @@
   ];
 
   environment.systemPath = [
-    "/opt/fleet"
+    "/opt/jetbrains-toolbox"
   ];
 
   homebrew = {

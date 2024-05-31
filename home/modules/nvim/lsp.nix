@@ -51,11 +51,13 @@ in
 
       extraPackages = with pkgs; [
         # ccls # For C/C++ completions
-        # nodePackages.bash-language-server # Bash language server
         rnix-lsp # Nix language server
-        shellcheck # For Bash
         texlab # TeX language server
         # python311Packages.python-lsp-server
+
+        # These cause ghc compilation:
+        # nodePackages.bash-language-server # Bash language server
+        # shellcheck # For Bash
       ];
     };
   };

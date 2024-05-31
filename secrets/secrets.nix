@@ -1,5 +1,5 @@
 let
-  inherit (builtins) mapAttrs readFile;
+  inherit (builtins) mapAttrs readFile removeSuffix;
 
   # Public keys of specific machines.
   atria = readFile ../keys/atria.pub;
