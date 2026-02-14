@@ -1,5 +1,9 @@
 { lib, ... }: {
   homebrew.casks = [
+    # This really does have to be installed through Homebrew, or 1Password will refuse to integrate
+    # with it.
+    "firefox"
+
     "skim"
     "zulip"
   ];
