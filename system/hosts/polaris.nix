@@ -72,6 +72,7 @@
       "subler"
       "teamspeak-client"
       "transmission"
+      "zoom"
     ];
   };
 
