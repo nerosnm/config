@@ -25,7 +25,9 @@
     applicationFirewall = {
       enable = true;
       enableStealthMode = true;
-      blockAllIncoming = true;
+      blockAllIncoming = false;
+
+      # Allow any downloaded app that's been signed to accept incoming requests.
       allowSignedApp = true;
     };
   };
