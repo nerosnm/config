@@ -47,6 +47,10 @@
   };
 
   homebrew = {
+    brews = [
+      "yt-dlp"
+    ];
+
     casks = [
       # This really does have to be installed through Homebrew, or 1Password will refuse to
       # integrate with it.

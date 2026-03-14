@@ -1,7 +1,6 @@
 { pkgsUnstable, ... }: {
   environment.systemPackages = with pkgsUnstable; [
     spotify
-    yt-dlp
   ];
 
   homebrew = {
