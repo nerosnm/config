@@ -13,8 +13,8 @@
     gopls
     jujutsu
     pandoc
-    pdfpc
-    polylux2pdfpc
+    # pdfpc
+    # polylux2pdfpc
     # rust-analyzer
     rustup
     tailscale

@@ -40,9 +40,9 @@
 
   homebrew = {
     casks = [
-      "linearmouse"
+      # "linearmouse"
       "qmk-toolbox"
-      "scroll-reverser"
+      # "scroll-reverser"
       "spotmenu"
       "yubico-authenticator"
     ];
