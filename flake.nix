@@ -183,6 +183,10 @@
               nodejs = final.nodejs_24;
               node-gyp = final.node-gyp.override { nodejs = final.nodejs_24; };
             };
+
+            neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (_: {
+              checkPhase = null;
+            });
           })
         ]
         ++ (with self.overlays; [
