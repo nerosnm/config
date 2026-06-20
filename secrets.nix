@@ -2,19 +2,28 @@ let
   inherit (builtins) mapAttrs readFile;
 
   # Public keys of specific machines.
-  merope = readFile ./keys/merope.pub;
   EQ-0265 = readFile ./keys/EQ-0265.pub;
   maddie-EQ-0265 = readFile ./keys/maddie-EQ-0265.pub;
+  maddie-polaris = readFile ./keys/maddie-polaris.pub;
+  merope = readFile ./keys/merope.pub;
+  polaris = readFile ./keys/polaris.pub;
 
   # Each of the secrets is given a list of public keys that should be used to
   # encrypt them. Right now, only the machine-specific keys from above are added
   # to the list for each secret, because these are the keys that will not
   # necessarily be given access to every secret.
   secrets = {
-    "secrets/id_ed25519_jj_wtf.age".publicKeys = [ merope ];
+    "secrets/catgirl-polaris-libera.age".publicKeys = [maddie-polaris];
+    "secrets/catgirl-polaris-snoonet.age".publicKeys = [maddie-polaris];
+    "secrets/halloy-polaris-config.toml.age".publicKeys = [maddie-polaris];
     "secrets/id_ed25519_jj_ikerian.age".publicKeys = [
       EQ-0265
       maddie-EQ-0265
+    ];
+    "secrets/id_ed25519_jj_wtf.age".publicKeys = [
+      maddie-polaris
+      merope
+      polaris
     ];
     "secrets/id_ed25519_sk_maddie_ikerian.age".publicKeys = [
       EQ-0265
@@ -24,8 +33,13 @@ let
       EQ-0265
       maddie-EQ-0265
     ];
-    "secrets/id_ed25519_sk_maddie_wtf.age".publicKeys = [ ];
+    "secrets/id_ed25519_sk_maddie_wtf.age".publicKeys = [
+      maddie-polaris
+      polaris
+    ];
     "secrets/id_ed25519_sk_maddie_wtf_c.age".publicKeys = [ merope ];
+    "secrets/irc-polaris-libera.pem.age".publicKeys = [maddie-polaris];
+    "secrets/irc-polaris-snoonet.pem.age".publicKeys = [maddie-polaris];
   };
 
   # Keys that should always be able to access every secret, so they can be used to access and

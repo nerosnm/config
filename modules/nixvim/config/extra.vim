@@ -34,6 +34,14 @@ let g:vimtex_imaps_leader = ';'
 " LANGUAGE SETTINGS
 " =================
 
+" ---
+" age
+" ---
+
+augroup age | au!
+    au BufNewFile,BufRead *.toml.age set filetype=toml
+augroup END
+
 " --
 " Go
 " --

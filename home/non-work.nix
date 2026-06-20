@@ -1,8 +1,8 @@
-{ pkgsUnstable, ... }: {
+{ lib, pkgsUnstable, ... }: {
   age.identityPaths = [
-    ../identities/maddie-wtf.txt
-    ../identities/maddie-wtf-c.txt
   ];
+
+  catppuccin.halloy.enable = true;
 
   home.packages = with pkgsUnstable; [
     catgirl
@@ -24,6 +24,12 @@
     zmk-studio
   ];
   home.username = "maddie";
+
+  programs.halloy = {
+    enable = true;
+    package = pkgsUnstable.halloy;
+    settings = lib.mkForce { };
+  };
 
   custom.nixvim = {
     beancount = true;

@@ -171,6 +171,14 @@
             nodejs = final.nodejs_latest;
             nodejs-slim = final.nodejs-slim_latest;
 
+            catgirl = prev.catgirl.overrideAttrs (old: {
+              configureFlags =
+                (old.configureFlags or [ ])
+                ++ (final.lib.optionals final.stdenv.isDarwin [
+                  "--enable-sandman"
+                ]);
+            });
+
             devcontainer = prev.devcontainer.override {
               nodejs = final.nodejs_24;
               node-gyp = final.node-gyp.override { nodejs = final.nodejs_24; };
