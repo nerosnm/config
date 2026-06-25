@@ -1,28 +1,33 @@
-{ lib, pkgsUnstable, ... }: {
+{ lib, pkgs, pkgsUnstable, ... }: {
   age.identityPaths = [
   ];
 
   catppuccin.halloy.enable = true;
 
-  home.packages = with pkgsUnstable; [
-    catgirl
-    convco
-    exercism
-    ghostscript
-    go
-    gopls
-    jujutsu
-    pandoc
-    # pdfpc
-    # polylux2pdfpc
-    # rust-analyzer
-    rustup
-    tailscale
-    tectonic
-    thunderbird-bin
-    uv
-    zmk-studio
-  ];
+  home.packages =
+    with pkgs;
+    [
+      catgirl
+      convco
+      exercism
+      ghostscript
+      go
+      gopls
+      pandoc
+      # pdfpc
+      # polylux2pdfpc
+      # rust-analyzer
+      rustup
+      tailscale
+      tectonic
+      thunderbird-bin
+      uv
+      zmk-studio
+    ]
+    ++ (with pkgsUnstable; [
+      jujutsu
+    ]);
+
   home.username = "maddie";
 
   programs.halloy = {

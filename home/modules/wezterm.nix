@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  pkgsUnstable,
   ...
 }:
 let
@@ -19,7 +18,7 @@ in
     home = {
       sessionSearchVariables = {
         TERMINFO_DIRS = [
-          "${pkgsUnstable.wezterm.terminfo}/share/terminfo"
+          "${pkgs.wezterm.terminfo}/share/terminfo"
         ];
       };
 
@@ -30,7 +29,7 @@ in
 
     programs.wezterm = {
       enable = true;
-      package = pkgsUnstable.wezterm;
+      package = pkgs.wezterm;
 
       extraConfig = ''
         local config = wezterm.config_builder()

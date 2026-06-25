@@ -26,11 +26,10 @@
       (with pkgs; [
         jdk17
         lagrange
-      ])
-      ++ (with pkgsUnstable; [
         prismlauncher
         thorium-reader
-
+      ])
+      ++ (with pkgsUnstable; [
         (python314.withPackages (
           pyPkgs: with pyPkgs; [
             beancount

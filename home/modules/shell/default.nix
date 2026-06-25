@@ -106,11 +106,11 @@ in
 
       direnv = {
         enable = true;
-        package = pkgsUnstable.direnv;
+        package = pkgs.direnv;
 
         nix-direnv = {
           enable = true;
-          package = pkgsUnstable.nix-direnv;
+          package = pkgs.nix-direnv;
         };
 
         stdlib = ''
@@ -129,16 +129,16 @@ in
         enable = true;
         enableFishIntegration = true;
 
-        defaultCommand = "${pkgsUnstable.fd}/bin/fd -H --type f -E '**/.git/*' -E '**/.jj/*'";
+        defaultCommand = "${pkgs.fd}/bin/fd -H --type f -E '**/.git/*' -E '**/.jj/*'";
         defaultOptions = [
           "--height 50%"
           "--border"
         ];
         fileWidgetCommand = "${defaultCommand}";
         fileWidgetOptions = [
-          "--preview '${pkgsUnstable.bat}/bin/bat --color=always --plain --line-range=:200 {}'"
+          "--preview '${pkgs.bat}/bin/bat --color=always --plain --line-range=:200 {}'"
         ];
-        changeDirWidgetCommand = "${pkgsUnstable.fd}/bin/fd --type d";
+        changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
         changeDirWidgetOptions = [ "--preview '${pkgs.tree}/bin/tree -C {} | head -200'" ];
       };
 

@@ -1,5 +1,9 @@
 final: prev: {
   iosevka-custom = prev.iosevka.override {
+    buildNpmPackage = final.buildNpmPackage.override {
+      nodejs = final.nodejs_latest;
+    };
+
     set = "Custom";
     privateBuildPlan = ''
       [buildPlans.IosevkaCustom]

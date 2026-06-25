@@ -30,31 +30,31 @@ let
       ++ (with pkgs; [
         age-plugin-yubikey
         asciiquarium-transparent
+        cargo-expand
+        # cargo-generate
+        # cargo-modules
+        cargo-nextest
+        # cargo-update
+        devpod
         dig
-        erdtree
+        # erdtree
         fzf
         gh
         glow
         hl-log-viewer
         hyperfine
+        ice-bar
         imagemagick
-        iosevka-custom
         lora
         monodraw
-        samply
-        tokei
-      ])
-      ++ (with pkgsUnstable; [
-        cargo-expand
-        cargo-generate
-        cargo-modules
-        cargo-nextest
-        cargo-update
-        devpod
-        ice-bar
+        # samply
         swiftlint
+        tokei
         typst
         typstyle
+      ])
+      ++ (with pkgsUnstable; [
+        iosevka-custom
       ]);
 
       sessionPath = [

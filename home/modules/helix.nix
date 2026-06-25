@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  pkgsUnstable,
   ...
 }:
 let
@@ -18,7 +17,7 @@ in
   config = mkIf cfg.enable {
     programs.helix = {
       enable = true;
-      package = pkgsUnstable.helix;
+      package = pkgs.helix;
       settings = {
         theme = "catppuccin_macchiato";
 

@@ -1,6 +1,6 @@
 {
   lib,
-  pkgsUnstable,
+  pkgs,
   ...
 }:
 let
@@ -10,7 +10,7 @@ in
   options.custom.nixvim = with lib.types; {
     package = mkOption {
       type = package;
-      default = pkgsUnstable.neovim-unwrapped;
+      default = pkgs.neovim-unwrapped;
     };
 
     beancount = mkEnableOption "plugins and config for working with Beancount";

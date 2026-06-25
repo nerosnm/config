@@ -13,25 +13,22 @@
   };
 
   environment = {
-    systemPackages =
-      (with pkgs; [
-        bat
-        curl
-        eza
-        fd
-        git
-        gnupg
-        jq
-        openssh
-        ripgrep
-        sd
-        unzip
-        wget
-        zip
-      ])
-      ++ (with pkgsUnstable; [
-        bottom
-      ]);
+    systemPackages = with pkgs; [
+      bat
+      bottom
+      curl
+      eza
+      fd
+      git
+      gnupg
+      jq
+      openssh
+      ripgrep
+      sd
+      unzip
+      wget
+      zip
+    ];
 
     variables = {
       CURL_CA_BUNDLE = "/etc/ssl/certs/ca-certificates.crt";

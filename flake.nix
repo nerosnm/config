@@ -168,8 +168,8 @@
           })
 
           (final: prev: {
-            nodejs = final.nodejs_latest;
-            nodejs-slim = final.nodejs-slim_latest;
+            # nodejs = final.nodejs_latest;
+            # nodejs-slim = final.nodejs-slim_latest;
 
             catgirl = prev.catgirl.overrideAttrs (old: {
               configureFlags =
@@ -179,10 +179,10 @@
                 ]);
             });
 
-            devcontainer = prev.devcontainer.override {
-              nodejs = final.nodejs_24;
-              node-gyp = final.node-gyp.override { nodejs = final.nodejs_24; };
-            };
+            # devcontainer = prev.devcontainer.override {
+            #   nodejs = final.nodejs_24;
+            #   node-gyp = final.node-gyp.override { nodejs = final.nodejs_24; };
+            # };
 
             neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (_: {
               checkPhase = null;
@@ -200,7 +200,7 @@
       mkUnstableOverlays =
         system:
         [
-          inputs.neovim-nightly-overlay.overlays.default
+          # inputs.neovim-nightly-overlay.overlays.default
         ]
         ++ mkOverlays system;
 
@@ -263,14 +263,14 @@
       {
         devShells.default = pkgs.mkShell {
           name = "maddiemort/config";
-          packages =
-            (with pkgs; [
+          packages = (
+            with pkgs;
+            [
               agenix
               home-manager
-            ])
-            ++ (with pkgsUnstable; [
               age-plugin-yubikey
-            ]);
+            ]
+          );
         };
 
         formatter = pkgs.nixfmt-tree;

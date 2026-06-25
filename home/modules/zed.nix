@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgsUnstable,
+  pkgs,
   ...
 }:
 let
@@ -17,9 +17,9 @@ in
   config = mkIf cfg.enable {
     programs.zed-editor = {
       enable = true;
-      package = pkgsUnstable.zed-editor;
+      package = pkgs.zed-editor;
 
-      extraPackages = with pkgsUnstable; [
+      extraPackages = with pkgs; [
         bash-language-server # Bash language server
         beancount-language-server
         lua-language-server
@@ -265,11 +265,11 @@ in
 
           nil = {
             binary = {
-              path = "${pkgsUnstable.nil}/bin/nil";
+              path = "${pkgs.nil}/bin/nil";
             };
             initialization_options = {
               formatting = {
-                command = [ "${pkgsUnstable.nixfmt}/bin/nixfmt" ];
+                command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
               };
             };
           };

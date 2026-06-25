@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  pkgsUnstable,
   ...
 }:
 let
@@ -88,18 +87,11 @@ in
         [
           telescope-spell-errors
           help-vsplit-nvim
+          jj-blame-nvim
+          telescope-nvim
         ]
         ++ optionals cfg.beancount [
           vim-beancount
-        ]
-      )
-      ++ (
-        with pkgsUnstable;
-        [
-          jj-blame-nvim
-          telescope-nvim
-
-          vimPlugins.nvim-treesitter.withAllGrammars
         ]
         ++ optionals cfg.remote [
           remote-nvim-nvim
@@ -109,8 +101,10 @@ in
         ]
       )
       ++ (
-        with pkgsUnstable.vimPlugins;
+        with pkgs.vimPlugins;
         [
+          nvim-treesitter.withAllGrammars
+
           plenary-nvim
           telescope-file-browser-nvim
           telescope-fzf-native-nvim
@@ -166,43 +160,40 @@ in
         ]
       );
 
-    extraPackages =
-      (with pkgs; [
+    extraPackages = (
+      with pkgs;
+      [
         glow
-      ])
-      ++ (
-        with pkgsUnstable;
-        [
-          typstyle # For typst formatting in formatter.lua
+        typstyle # For typst formatting in formatter.lua
 
-          bash-language-server # Bash language server
-          lua-language-server
-          nil # Nix Language server
-          nixfmt # For nil to format stuff
-          prettier
-          shellcheck # For Bash
-          tinymist # Typst language server
-          tree-sitter
-          typescript-language-server
-          vscode-langservers-extracted
-        ]
-        ++ optionals cfg.beancount [
-          beancount-language-server
-        ]
-        ++ optionals cfg.latex [
-          texlab # TeX language server
-        ]
-        ++ optionals (stdenv.isDarwin && cfg.swift) [
-          # For xcodebuild.nvim. Also requires:
-          #
-          # - jq (installed in system configuration)
-          # - pymobiledevice3 (installed in host-specific system Python packages)
-          # - ripgrep (installed in system configuration)
-          # - xcode-build-server (installed via Homebrew in system configuration)
-          coreutils
-          xcbeautify
-          xcp
-        ]
-      );
+        bash-language-server # Bash language server
+        lua-language-server
+        nil # Nix Language server
+        nixfmt # For nil to format stuff
+        prettier
+        shellcheck # For Bash
+        tinymist # Typst language server
+        tree-sitter
+        typescript-language-server
+        vscode-langservers-extracted
+      ]
+      ++ optionals cfg.beancount [
+        beancount-language-server
+      ]
+      ++ optionals cfg.latex [
+        texlab # TeX language server
+      ]
+      ++ optionals (stdenv.isDarwin && cfg.swift) [
+        # For xcodebuild.nvim. Also requires:
+        #
+        # - jq (installed in system configuration)
+        # - pymobiledevice3 (installed in host-specific system Python packages)
+        # - ripgrep (installed in system configuration)
+        # - xcode-build-server (installed via Homebrew in system configuration)
+        coreutils
+        xcbeautify
+        xcp
+      ]
+    );
   };
 }
