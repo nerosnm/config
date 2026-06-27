@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   pkgsUnstable,
   ...
@@ -19,30 +18,10 @@
       ])
       ++ (with pkgsUnstable; [
         ffmpeg
-
-        (python314.withPackages (
-          pyPkgs: with pyPkgs; [
-            beancount
-            beangulp
-            beanquery
-            fava
-            pygments
-            python-lsp-black
-            python-lsp-server
-          ]
-        ))
       ]);
 
     variables = {
       JRE8 = "${pkgs.jre8}";
-    };
-  };
-
-  launchd.user.agents = {
-    fava = {
-      path = [ config.environment.systemPath ];
-      command = "fava $HOME/Documents/Financial/Accounts/accounts.beancount";
-      serviceConfig.KeepAlive = true;
     };
   };
 

@@ -30,16 +30,13 @@
         thorium-reader
       ])
       ++ (with pkgsUnstable; [
-        (python314.withPackages (
-          pyPkgs: with pyPkgs; [
-            beancount
-            fava
-            pygments
-            # pymobiledevice3
-            python-lsp-black
-            python-lsp-server
-          ]
-        ))
+        python314
+      ])
+      ++ (with pkgsUnstable.python314Packages; [
+        pygments
+        # pymobiledevice3
+        python-lsp-black
+        python-lsp-server
       ]);
 
     sessionVariables = {
@@ -63,6 +60,8 @@
         ];
       };
     };
+
+    beancount.enable = true;
 
     git = {
       user = {

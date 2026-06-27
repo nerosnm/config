@@ -1,6 +1,7 @@
 {
   imports = [
     ./auth.nix
+    ./beancount.nix
     ./defaults.nix
     ./git.nix
     ./helix.nix
