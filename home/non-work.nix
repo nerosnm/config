@@ -1,7 +1,4 @@
 { lib, pkgs, pkgsUnstable, ... }: {
-  age.identityPaths = [
-  ];
-
   catppuccin.halloy.enable = true;
 
   home.packages =

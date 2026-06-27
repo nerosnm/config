@@ -4,6 +4,7 @@ let
   # Public keys of specific machines.
   EQ-0265 = readFile ./keys/EQ-0265.pub;
   maddie-EQ-0265 = readFile ./keys/maddie-EQ-0265.pub;
+  maddie-merope = readFile ./keys/maddie-merope.pub;
   maddie-polaris = readFile ./keys/maddie-polaris.pub;
   merope = readFile ./keys/merope.pub;
   polaris = readFile ./keys/polaris.pub;
@@ -21,6 +22,7 @@ let
       maddie-EQ-0265
     ];
     "secrets/id_ed25519_jj_wtf.age".publicKeys = [
+      maddie-merope
       maddie-polaris
       merope
       polaris
@@ -37,7 +39,10 @@ let
       maddie-polaris
       polaris
     ];
-    "secrets/id_ed25519_sk_maddie_wtf_c.age".publicKeys = [ merope ];
+    "secrets/id_ed25519_sk_maddie_wtf_c.age".publicKeys = [
+      maddie-merope
+      merope
+    ];
     "secrets/irc-polaris-libera.pem.age".publicKeys = [maddie-polaris];
     "secrets/irc-polaris-snoonet.pem.age".publicKeys = [maddie-polaris];
   };
