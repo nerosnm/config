@@ -1,13 +1,17 @@
 {
   description = "System and home configurations for my Darwin workstations";
 
-  nixConfig.extra-experimental-features = "nix-command flakes";
+  nixConfig = {
+    extra-experimental-features = "nix-command flakes";
+    extra-deprecated-features = "or-as-identifier";
+  };
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils/main";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +50,7 @@
       flake-utils,
       nixpkgs,
       nixpkgs-unstable,
+      nixpkgs-master,
       nix-darwin,
       ...
     }@inputs:
@@ -150,7 +155,15 @@
         system:
         [
           (final: prev: {
-            inherit (prev.lixPackageSets.stable)
+            inherit
+              (import nixpkgs-master {
+                inherit system;
+                config.allowUnfree = true;
+              })
+              lixPackageSets
+              ;
+
+            inherit (final.lixPackageSets.stable)
               nixpkgs-review
               nix-eval-jobs
               nix-fast-build

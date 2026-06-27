@@ -286,6 +286,22 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/072a6db25e947df2f31aab9eccd0ab75d5b2da11.tar.gz"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1784309252,
+        "narHash": "sha256-nTwUkS9SgfbTvbS/odZRd+nlMGBhe9qG9Hbp2gv8YeE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b12af353f09eebccfcd9679a68d050672ed285ab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1783279667,
@@ -350,6 +366,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "yknotify-rs": "yknotify-rs"

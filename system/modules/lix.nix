@@ -56,6 +56,7 @@ in
       settings = {
         auto-optimise-store = true;
         extra-experimental-features = "nix-command flakes";
+        extra-deprecated-features = "or-as-identifier broken-string-escape";
 
         substituters = [
           "https://cache.nixos.org/"
