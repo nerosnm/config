@@ -18,7 +18,20 @@ in
       settings = {
         add_newline = true;
 
-        format = "$username$hostname$localip$shlvl$singularity$kubernetes$directory\${custom.jujutsu}\${custom.jujutsu-current-bookmark}\${custom.jujutsu-ahead-bookmark}\${custom.jujutsu-behind-bookmark}$all";
+        format = lib.strings.join "" [
+          "$username"
+          "$hostname"
+          "$localip"
+          "$shlvl"
+          "$singularity"
+          "$kubernetes"
+          "$directory"
+          "\${custom.jujutsu}"
+          "\${custom.jujutsu-current-bookmark}"
+          "\${custom.jujutsu-ahead-bookmark}"
+          "\${custom.jujutsu-behind-bookmark}"
+          "$all"
+        ];
 
         aws.symbol = "  ";
         conda.symbol = "  ";
