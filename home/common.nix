@@ -54,6 +54,14 @@ let
         typstyle
       ])
       ++ (with pkgsUnstable; [
+        (ibm-plex.override {
+          families = [
+            "math"
+            "mono"
+            "sans"
+            "serif"
+          ];
+        })
         iosevka-custom
       ]);
 
