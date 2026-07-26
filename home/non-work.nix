@@ -1,4 +1,10 @@
-{ lib, pkgs, pkgsUnstable, ... }: {
+{
+  lib,
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
+{
   catppuccin.halloy.enable = true;
 
   home.packages =
@@ -15,7 +21,6 @@
       # polylux2pdfpc
       # rust-analyzer
       rustup
-      tailscale
       tectonic
       thunderbird-bin
       uv

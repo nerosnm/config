@@ -1,6 +1,7 @@
 { pkgsUnstable, ... }: {
   environment.systemPackages = with pkgsUnstable; [
     spotify
+    tailscale-gui
   ];
 
   homebrew = {
