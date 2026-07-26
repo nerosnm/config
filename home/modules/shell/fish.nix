@@ -160,6 +160,10 @@ in
 
         list-ignored = "sort (fd -H --no-require-git | psub) (fd -H --no-require-git --no-ignore-vcs | psub) | uniq -u";
       };
+
+      shellAliases = {
+        tailscale = "/usr/local/bin/tailscale";
+      };
     };
   };
 }
